@@ -1,0 +1,26 @@
+#/bin/tcsh
+
+cd /star/u/llope/run14/muapp
+
+set echo
+
+time ./muapp -r 15171035
+
+#time ./muapp -r 14 -y 14 -d 20
+#time ./muapp -r 14 -y 14 -d 21
+
+#time ./muapp -r 13 -y 13 -d 85 
+#time ./muapp -r 13 -y 13 -d 84 
+#time ./muapp -r 13 -y 13 -d 83 
+
+# time ./muapp -d 088
+# time ./muapp -d 089
+# time ./muapp -d 090
+# time ./muapp -d 091
+# time ./muapp -d 092
+# time ./muapp -d 093
+# time ./muapp -d 094
+# time ./muapp -d 161
+
+exit
+
