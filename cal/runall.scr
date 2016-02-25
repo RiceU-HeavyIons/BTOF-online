@@ -1,0 +1,81 @@
+#!/usr/local/bin/tcsh
+
+set echo
+
+cd /star/u/geurts/run15/cal
+
+time ./cal -c 0 -a 2 -r 14 -e 203 -d 0
+time ./cal -c 1 -a 2 -r 14 -e 203 -d 0
+time ./cal -c 1 -a 2 -r 14 -e 203 -d 1
+./collapse_do
+
+#time ./cal -c 0 -a 2 -r 14 -e 15 -d 0
+#time ./cal -c 1 -a 2 -r 14 -e 15 -d 0
+#time ./cal -c 1 -a 2 -r 14 -e 15 -d 1
+
+#time ./cal -c 0 -a 2 -r 14 -e 200 -d 0
+#time ./cal -c 1 -a 2 -r 14 -e 200 -d 0
+#time ./cal -c 1 -a 2 -r 14 -e 200 -d 1
+#./collapse_do
+
+exit
+
+time ./cal -c 0 -a 2 -r 14 -e 200 -d 0
+time ./cal -c 1 -a 2 -r 14 -e 200 -d 0
+time ./cal -c 1 -a 2 -r 14 -e 200 -d 1
+
+time ./cal -c 0 -a 2 -r 13 -e 500 -d 0
+time ./cal -c 1 -a 2 -r 13 -e 500 -d 0
+time ./cal -c 1 -a 2 -r 13 -e 500 -d 1
+
+###time ./cal -c 0 -a 2 -r 10 -e 200 -d 0
+###time ./cal -c 1 -a 2 -r 10 -e 200 -d 0
+
+time ./cal -c 0 -a 2 -r 10 -e 62 -d 0
+time ./cal -c 1 -a 2 -r 10 -e 62 -d 0
+#time ./cal -c 1 -a 2 -r 10 -e 62 -d 1
+
+time ./cal -c 0 -a 2 -r 10 -e 39 -d 0
+time ./cal -c 1 -a 2 -r 10 -e 39 -d 0
+#time ./cal -c 1 -a 2 -r 10 -e 39 -d 1
+
+time ./cal -c 0 -a 2 -r 10 -e 7 -d 0
+time ./cal -c 1 -a 2 -r 10 -e 7 -d 0
+#time ./cal -c 1 -a 2 -r 10 -e 7 -d 1
+
+#---- w/out Zvertex outlier rejection
+time ./cal -c 0 -a 1 -r 10 -e 7 -d 0
+time ./cal -c 0 -a 1 -r 10 -e 39 -d 0
+time ./cal -c 0 -a 1 -r 10 -e 62 -d 0
+
+#---- cross calibrations
+time ./cal -c 2 -a 2 -r 14 -e 200 -d 0
+time ./cal -c 3 -a 2 -r 14 -e 200 -d 0
+time ./cal -c 2 -a 2 -r 14 -e 200 -d 1
+time ./cal -c 3 -a 2 -r 14 -e 200 -d 1
+
+time ./cal -c 2 -a 2 -r 13 -e 500 -d 0
+time ./cal -c 3 -a 2 -r 13 -e 500 -d 0
+time ./cal -c 2 -a 2 -r 13 -e 500 -d 1
+time ./cal -c 3 -a 2 -r 13 -e 500 -d 1
+
+time ./cal -c 2 -a 2 -r 10 -e 62 -d 0
+time ./cal -c 3 -a 2 -r 10 -e 62 -d 0
+#time ./cal -c 2 -a 2 -r 10 -e 62 -d 1
+#time ./cal -c 3 -a 2 -r 10 -e 62 -d 1
+
+time ./cal -c 2 -a 2 -r 10 -e 39 -d 0
+time ./cal -c 3 -a 2 -r 10 -e 39 -d 0
+#time ./cal -c 2 -a 2 -r 10 -e 39 -d 1
+#time ./cal -c 3 -a 2 -r 10 -e 39 -d 1
+
+time ./cal -c 2 -a 2 -r 10 -e 7 -d 0
+time ./cal -c 3 -a 2 -r 10 -e 7 -d 0
+#time ./cal -c 2 -a 2 -r 10 -e 7 -d 1
+#time ./cal -c 3 -a 2 -r 10 -e 7 -d 1
+
+unset echo
+exit
+
+
+

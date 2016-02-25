@@ -1,0 +1,58 @@
+#!/bin/tcsh
+
+set echo
+
+cd /star/u/geurts/run14/caleval
+
+time ./caleval -c 0 -e 203 -r 14
+time ./caleval -c 1 -e 203 -r 14 -d 0
+time ./caleval -c 1 -e 203 -r 14 -d 1
+
+#time ./caleval -c 0 -e 15 -r 14
+#time ./caleval -c 1 -e 15 -r 14 -d 0
+#time ./caleval -c 1 -e 15 -r 14 -d 1
+
+#time ./caleval -c 0 -e 200 -r 14
+#time ./caleval -c 1 -e 200 -r 14 -d 0
+#time ./caleval -c 1 -e 200 -r 14 -d 1
+
+exit
+
+time ./caleval -c 0 -e 200 -r 14
+time ./caleval -c 1 -e 200 -r 14 -d 0
+#time ./caleval -c 2 -e 500 -r 13 -d 0
+#time ./caleval -c 3 -e 500 -r 13 -d 0
+time ./caleval -c 1 -e 200 -r 14 -d 1
+#time ./caleval -c 2 -e 500 -r 13 -d 1
+#time ./caleval -c 3 -e 500 -r 13 -d 1
+
+time ./caleval -c 0 -e 500 -r 13
+time ./caleval -c 1 -e 500 -r 13 -d 0
+#time ./caleval -c 2 -e 500 -r 13 -d 0
+#time ./caleval -c 3 -e 500 -r 13 -d 0
+
+#time ./caleval -c 0 -e 200 -r 10
+#time ./caleval -c 1 -e 200 -r 10 -d 0
+##time ./caleval -c 2 -e 200 -r 10 -d 0
+##time ./caleval -c 3 -e 200 -r 10 -d 0
+
+time ./caleval -c 0 -e  62 -r 10
+time ./caleval -c 1 -e  62 -r 10 -d 0
+#time ./caleval -c 2 -e  62 -r 10 -d 0
+#time ./caleval -c 3 -e  62 -r 10 -d 0
+
+time ./caleval -c 0 -e  39 -r 10
+time ./caleval -c 1 -e  39 -r 10 -d 0
+#time ./caleval -c 2 -e  39 -r 10 -d 0
+#time ./caleval -c 3 -e  39 -r 10 -d 0
+
+time ./caleval -c 0 -e   7 -r 10
+time ./caleval -c 1 -e   7 -r 10 -d 0
+#time ./caleval -c 2 -e   7 -r 10 -d 0
+#time ./caleval -c 3 -e   7 -r 10 -d 0
+
+unset echo
+exit
+
+
+

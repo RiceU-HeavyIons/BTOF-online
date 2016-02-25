@@ -1,0 +1,114 @@
+#!/bin/tcsh
+
+cd /star/u/geurts/run15/cal
+
+root -b -q collapse.C << endit
+cal_run14auhe200_ic0_ia2
+endit
+root -b -q collapse.C << endit
+cal_run14auhe200_ic1_ia2_mxq
+endit
+root -b -q collapse.C << endit
+cal_run14auhe200_ic1_ia2_bbq
+endit
+
+# root -b -q collapse.C << endit
+# cal_run14auau015_ic0_ia2
+# endit
+# root -b -q collapse.C << endit
+# cal_run14auau015_ic1_ia2_mxq
+# endit
+# root -b -q collapse.C << endit
+# cal_run14auau015_ic1_ia2_bbq
+# endit
+
+# root -b -q collapse.C << endit
+# cal_run14auau200_ic0_ia2
+# endit
+# root -b -q collapse.C << endit
+# cal_run14auau200_ic1_ia2_mxq
+# endit
+# root -b -q collapse.C << endit
+# cal_run14auau200_ic1_ia2_bbq
+# endit
+
+exit
+
+root -b -q collapse.C << endit
+cal_run14auau200_ic0_ia2
+endit
+root -b -q collapse.C << endit
+cal_run14auau200_ic1_ia2_bbq
+endit
+root -b -q collapse.C << endit
+cal_run14auau200_ic1_ia2_mxq
+endit
+root -b -q collapse.C << endit
+cal_run14auau200_ic2_ia2_bbq
+endit
+root -b -q collapse.C << endit
+cal_run14auau200_ic3_ia2_bbq
+endit
+root -b -q collapse.C << endit
+cal_run14auau200_ic2_ia2_mxq
+endit
+root -b -q collapse.C << endit
+cal_run14auau200_ic3_ia2_mxq
+endit
+
+root -b -q collapse.C << endit
+cal_run10auau062_ic0_ia2
+endit
+root -b -q collapse.C << endit
+cal_run10auau062_ic1_ia2_bbq
+endit
+root -b -q collapse.C << endit
+cal_run10auau062_ic2_ia2_bbq
+endit
+root -b -q collapse.C << endit
+cal_run10auau062_ic3_ia2_bbq
+endit
+
+root -b -q collapse.C << endit
+cal_run10auau039_ic0_ia2
+endit
+root -b -q collapse.C << endit
+cal_run10auau039_ic1_ia2_bbq
+endit
+root -b -q collapse.C << endit
+cal_run10auau039_ic2_ia2_bbq
+endit
+root -b -q collapse.C << endit
+cal_run10auau039_ic3_ia2_bbq
+endit
+
+root -b -q collapse.C << endit
+cal_run10auau007_ic0_ia2
+endit
+root -b -q collapse.C << endit
+cal_run10auau007_ic1_ia2_bbq
+endit
+root -b -q collapse.C << endit
+cal_run10auau007_ic2_ia2_bbq
+endit
+root -b -q collapse.C << endit
+cal_run10auau007_ic3_ia2_bbq
+endit
+
+root -b -q collapse.C << endit
+cal_run13pp500_ic0_ia2
+endit
+root -b -q collapse.C << endit
+cal_run13pp500_ic1_ia2_bbq
+endit
+root -b -q collapse.C << endit
+cal_run13pp500_ic1_ia2_mxq
+endit
+root -b -q collapse.C << endit
+cal_run13pp500_ic2_ia2_bbq
+endit
+root -b -q collapse.C << endit
+cal_run13pp500_ic3_ia2_bbq
+endit
+
+exit
