@@ -1,5 +1,5 @@
-// $Id: doer.h,v 1.1 2016/02/25 16:02:52 geurts Exp $
-// Author: W.J. Llope 2009/06/01
+// $Id: doer.h,v 1.2 2016/02/29 21:41:36 geurts Exp $
+ // Author: W.J. Llope 2009/06/01
 
 #include <DAQ_READER/daqReader.h>
 #include <DAQ_READER/daq_dta.h>
@@ -23,7 +23,7 @@
 #include <DAQ_TPX/daq_tpx.h>
 #include <DAQ_TRG/daq_trg.h>
 
-#include "StTriggerData2013.h"
+#include "StTriggerData2016.h"
 
 #include <TFile.h>
 #include <TTree.h>

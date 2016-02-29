@@ -1,4 +1,4 @@
-// $Id: doer_tof.cc,v 1.1 2016/02/25 16:02:52 geurts Exp $
+// $Id: doer_tof.cc,v 1.2 2016/02/29 21:41:36 geurts Exp $
 // Author: W.J. Llope 2009/06/01
 
 #include <stdio.h>
@@ -299,7 +299,7 @@ int tof_doer(daqReader *rdr, struct P2P_st *P2P, struct doer_st *TOF,
 							cout<<"Tray ID???"<<trayid<<" ....skipping event"<<endl;
 							return -1;
 						}
-						vpd_ch 		= TsPacket::upvpd_map(half, p->GetTdc(), p->GetRawChannel());
+						vpd_ch 		= TsPacket::upvpd_map(trayid, half, p->GetTdc(), p->GetRawChannel());
 						coco 		= GetLETime(p, bunch);
 						trgdtime	= GetTrgDTime(p, bunch);
 						cocous		= ((float)coco)*COARSEBIN2NS/1000.;
@@ -425,7 +425,7 @@ int tof_doer(daqReader *rdr, struct P2P_st *P2P, struct doer_st *TOF,
 						}
 
 					} else {		// VPD....
-						vpd_ch 		= TsPacket::upvpd_map(half, p->GetTdc(), p->GetRawChannel());
+					  vpd_ch 		= TsPacket::upvpd_map(trayid, half, p->GetTdc(), p->GetRawChannel());
 						vpd_ch		= TMath::Abs(vpd_ch);
 						edgetime	= p->GetEdgeTime();
 						edgetimens	= (25./1024.)*(Float_t)edgetime;
