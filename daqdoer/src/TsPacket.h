@@ -1,4 +1,4 @@
-// $Id: TsPacket.h,v 1.1 2016/02/25 16:02:52 geurts Exp $
+// $Id: TsPacket.h,v 1.2 2016/02/29 21:55:15 geurts Exp $
 // Author: Kohei Kajimoto 2006/08/04
 
 /*************************************************************************
@@ -240,7 +240,7 @@ public:
   //===========================================================
 
   static Short_t submarine_map(UChar_t tdc, UChar_t ch);
-  static Short_t upvpd_map(UChar_t half, UChar_t tdc, UChar_t ch);
+  static Short_t upvpd_map(int trayid, UChar_t half, UChar_t tdc, UChar_t ch);
 
   Short_t GetRawChannel() const { return channel; }
   Short_t GetChannel() const { return tdc_ch; }
