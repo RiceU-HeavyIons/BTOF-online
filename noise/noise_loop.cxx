@@ -5,7 +5,8 @@ float fxrangeuse[12][5][30] = {0};
 
 float TRIGGERWINDOWWIDTH_MTD = 25.0E-06;
 //float TRIGGERWINDOWWIDTH_TOF = 1.650E-06;
-float TRIGGERWINDOWWIDTH_TOF = 5.0E-06;
+//float TRIGGERWINDOWWIDTH_TOF = 5.0E-06;
+float TRIGGERWINDOWWIDTH_TOF = 2.0E-06; // as of run 17056042 changed TOF readout window from 5us to 2us
 
 Bool_t reject;
 int itrayinloop;
