@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<job>
+<command>
+starver SL16j
+cd /star/u/geurts/BTOF-online/noise
+./noise -r 18024006
+</command>
+<stdout URL="file:/star/u/geurts/logs/noise18024006.log" />
+</job>
