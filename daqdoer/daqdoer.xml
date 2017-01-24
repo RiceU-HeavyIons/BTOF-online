@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<job>
+<command>
+starver SL16j
+cd /star/u/geurts/BTOF-online/daqdoer
+./daqdoer /star/data05/scratch/geurts/daq/2017/024/18024006/*.daq &lt;&lt; endd
+1
+18024006
+endd
+</command>
+<stdout URL="file:/star/u/geurts/logs/18024006.log" />
+</job>
