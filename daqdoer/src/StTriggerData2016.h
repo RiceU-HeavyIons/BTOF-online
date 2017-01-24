@@ -1,6 +1,6 @@
 /***************************************************************************
  *
- * $Id: StTriggerData2016.h,v 1.1 2016/02/29 21:41:36 geurts Exp $
+ * $Id: StTriggerData2016.h,v 2.2 2016/02/11 14:22:03 ullrich Exp $
  *
  * Author: Akio Ogawa, Dec 2015
  ***************************************************************************
@@ -10,9 +10,6 @@
  ***************************************************************************
  *
  * $Log: StTriggerData2016.h,v $
- * Revision 1.1  2016/02/29 21:41:36  geurts
- * *** empty log message ***
- *
  * Revision 2.2  2016/02/11 14:22:03  ullrich
  * Add fcts to access MTD DSM and QT info.
  *
@@ -25,7 +22,8 @@
 #define StTriggerData2016_hh
 
 #include "StTriggerData.h"
-#include "StDaqLib/TRG/trgStructures2016.h"
+//#include "StDaqLib/TRG/trgStructures2016.h"
+#include "trgStructures2016.h"
 
 class StTriggerData2016 : public StTriggerData {
     

@@ -43,6 +43,8 @@ StTriggerData2009.o: StTriggerData2009.cc
 	$(CXX) $(CXXFLAGS) -c $<
 #StTriggerData2012.o: StTriggerData2012.cc
 #	$(CXX) $(CXXFLAGS) -c $<
+#StTriggerData2013.o: StTriggerData2013.cc
+#	$(CXX) $(CXXFLAGS) -c $<
 StTriggerData2016.o: StTriggerData2016.cc
 	$(CXX) $(CXXFLAGS) -c $<
 doer_pp2pp.o: doer_pp2pp.cc
