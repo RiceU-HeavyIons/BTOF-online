@@ -23,7 +23,7 @@
 #include <DAQ_TPX/daq_tpx.h>
 #include <DAQ_TRG/daq_trg.h>
 
-#include "StTriggerData2016.h"
+#include "StTriggerData2017.h"
 
 #include <TFile.h>
 #include <TTree.h>
@@ -35,7 +35,7 @@ extern int   trigwindowLow[6];
 extern int   trigwindowHigh[6];
 
 //----- new master data block.......................................
-struct doer_st {			// filled once/event - requires coarse counter cut.... 
+struct doer_st {			// filled once/event - requires coarse counter cut....
 	int		vpd_cco[38];	// digitized by TOF
 	float	vpd_tle[38];	// digitized by TOF
 	float	vpd_tte[38];	// digitized by TOF
@@ -57,7 +57,7 @@ struct stop_st {			// filled once/event, variable length/event
 	float	trgdtime[25000];
 	float	tle[25000];
 	float	tte[25000];
-	float	tot[25000];	
+	float	tot[25000];
 };
 struct mtd_st {				// filled once/event, variable length/event
 	int 	nMtdHits;
@@ -73,7 +73,7 @@ struct mtd_st {				// filled once/event, variable length/event
 	float	trgdtime[1000];
 	float	tle[1000];
 	float	tte[1000];
-	float	tot[1000];	
+	float	tot[1000];
 };
 
 
@@ -87,7 +87,7 @@ struct evp_data_st {
     u_int phyword ;		// the Physics Word
     u_int daqbits ;		// "offline" bits aka L3 summary...
     u_longlong daqbits64 ;		// "offline" bits aka L3 summary...
-    u_int daqbits_l1;		// triggers satisfying l1 
+    u_int daqbits_l1;		// triggers satisfying l1
     u_int daqbits_l2;		// triggers satisfying l2
     u_int evt_time ;		// time in UNIX seconds
     u_int seq ;			// event sequence from EVB
@@ -193,7 +193,3 @@ struct INFO_st {
 
 
 //---- end ...............................................................................
-
-
-
-

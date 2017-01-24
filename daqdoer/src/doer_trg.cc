@@ -12,15 +12,15 @@ using namespace std;
 
 #include "doer.h"
 
-// int trg_doer(daqReader *rdr, 
-// 				struct bunch_crossing_st *xing, 
-// 				struct P2P_st *P2P, 
+// int trg_doer(daqReader *rdr,
+// 				struct bunch_crossing_st *xing,
+// 				struct P2P_st *P2P,
 // 				struct DSM_st *DSM,
 // 				struct VPD_st *VPD,
 // 				struct TRG_st *TRG)  {
-int trg_doer(daqReader *rdr, 
-				struct bunch_crossing_st *xing, 
-				struct P2P_st *P2P, 
+int trg_doer(daqReader *rdr,
+				struct bunch_crossing_st *xing,
+				struct P2P_st *P2P,
 				struct VPD_st *VPD,
 				struct TRG_st *TRG)  {
 
@@ -29,15 +29,15 @@ int trg_doer(daqReader *rdr,
     dd = rdr->det("trg")->get("raw") ;
     if (!(dd && dd->iterate())) return -1;
 
-    StTriggerData2016* trg_p;
-    trg_p = new StTriggerData2016((TriggerDataBlk2016*)dd->Void, rdr->run);
+    StTriggerData2017* trg_p;
+    trg_p = new StTriggerData2017((TriggerDataBlk2017*)dd->Void, rdr->run);
 
     xing->xing_lo 		= trg_p->bunchCounterLow();
     xing->xing_hi 		= trg_p->bunchCounterHigh();
     xing->bunch_number 	= trg_p->bunchId7Bit() ;
     xing->b120 			= trg_p->bunchId48Bit() ;
-    //printf(" BunchId 7bit=%d  48bit=%d\n",trg_p->bunchId7Bit(), trg_p->bunchId48Bit());  
-    //printf("    xing 7bit=%d  48bit=%d\n",xing->xing_lo, xing->xing_hi);  
+    //printf(" BunchId 7bit=%d  48bit=%d\n",trg_p->bunchId7Bit(), trg_p->bunchId48Bit());
+    //printf("    xing 7bit=%d  48bit=%d\n",xing->xing_lo, xing->xing_hi);
     // East     : 0, West       : 1;
     // Vertical : 0, Horizontal : 1;
     // Up/Outer : 0, Down/Inner : 1;
@@ -78,7 +78,7 @@ int trg_doer(daqReader *rdr,
     //for(ii=0; ii<8; ii++) DSM->lastTOF[ii] = trg_p->lastTOF(ii);
     //DSM->pp2ppDSM = trg_p->pp2ppDSM();
     //DSM->tcuBits = trg_p->tcuBits();
-    
+
     int tempn[2] = {0};
     for (int i=0;i<16;i++){
     	k	= i+1;													// TRG channels are [1,16] in StEvent
@@ -90,23 +90,23 @@ int trg_doer(daqReader *rdr,
 	    VPD->vpd_trgadc_hi[i+16]	= trg_p->vpdADCHighThr(east,k,0);
 	    VPD->vpd_trgtac_hi[i]		= trg_p->vpdTDCHighThr(west,k,0);
 	    VPD->vpd_trgtac_hi[i+16]	= trg_p->vpdTDCHighThr(east,k,0);
-	    if (VPD->vpd_trgadc[i]		< 0.){ VPD->vpd_trgadc[i]		= 0.; }		
-		if (VPD->vpd_trgadc[i+16]	< 0.){ VPD->vpd_trgadc[i+16]	= 0.; }				
-		if (VPD->vpd_trgtac[i]		< 0.){ VPD->vpd_trgtac[i]		= 0.; }				
-		if (VPD->vpd_trgtac[i+16]	< 0.){ VPD->vpd_trgtac[i+16]	= 0.; }				
-		if (VPD->vpd_trgadc_hi[i]	< 0.){ VPD->vpd_trgadc_hi[i]	= 0.; }				
-		if (VPD->vpd_trgadc_hi[i+16]< 0.){ VPD->vpd_trgadc_hi[i+16]	= 0.; }			
-		if (VPD->vpd_trgtac_hi[i]	< 0.){ VPD->vpd_trgtac_hi[i]	= 0.; }				
-		if (VPD->vpd_trgtac_hi[i+16]< 0.){ VPD->vpd_trgtac_hi[i+16]	= 0.; }			
+	    if (VPD->vpd_trgadc[i]		< 0.){ VPD->vpd_trgadc[i]		= 0.; }
+		if (VPD->vpd_trgadc[i+16]	< 0.){ VPD->vpd_trgadc[i+16]	= 0.; }
+		if (VPD->vpd_trgtac[i]		< 0.){ VPD->vpd_trgtac[i]		= 0.; }
+		if (VPD->vpd_trgtac[i+16]	< 0.){ VPD->vpd_trgtac[i+16]	= 0.; }
+		if (VPD->vpd_trgadc_hi[i]	< 0.){ VPD->vpd_trgadc_hi[i]	= 0.; }
+		if (VPD->vpd_trgadc_hi[i+16]< 0.){ VPD->vpd_trgadc_hi[i+16]	= 0.; }
+		if (VPD->vpd_trgtac_hi[i]	< 0.){ VPD->vpd_trgtac_hi[i]	= 0.; }
+		if (VPD->vpd_trgtac_hi[i+16]< 0.){ VPD->vpd_trgtac_hi[i+16]	= 0.; }
 		//
 	    //if (trg_p->vpdADC(west,k,0)>0 || trg_p->vpdADC(east,k,0)>0){
 	    //	cout<<i<<" "<<trg_p->vpdADC(west,k,0)<<" "<<trg_p->vpdADC(east,k,0)<<endl;
-	    //}	    
+	    //}
 		//
 		if (VPD->vpd_trgtac[i]>200&&VPD->vpd_trgtac[i]<3500){ ++tempn[0]; }		// west
 		if (VPD->vpd_trgtac[i+16]>200&&VPD->vpd_trgtac[i+16]<3500){ ++tempn[1]; }		// west
 		//
-	}  
+	}
 
 //	if (tempn[0]<3||tempn[1]<3){
 //	    for (int i=0;i<16;i++){
@@ -116,14 +116,14 @@ int trg_doer(daqReader *rdr,
 //			if (VPD->vpd_trgtac_hi[i+16]>200&&VPD->vpd_trgtac_hi[i+16]<3500){ cout<<"doer_trg ... MXQ EAST trgch="<<i<<" adc="<<VPD->vpd_trgadc_hi[i+16]<<" tac="<<VPD->vpd_trgtac_hi[i+16]<<endl; }
 //		}
 //	}
-	
+
     for (int i=0;i<24;i++){
     	k	= i+1;
     	TRG->bbc_adc[i]		= trg_p->bbcADC(west,k,0);
     	TRG->bbc_tac[i]		= trg_p->bbcTDC(west,k,0);
     	TRG->bbc_adc[i+24]	= trg_p->bbcADC(east,k,0);
     	TRG->bbc_tac[i+24]	= trg_p->bbcTDC(east,k,0);
-    	if (TRG->bbc_adc[i]		< 0.){ TRG->bbc_adc[i]		= 0.;} 
+    	if (TRG->bbc_adc[i]		< 0.){ TRG->bbc_adc[i]		= 0.;}
 		if (TRG->bbc_tac[i]		< 0.){ TRG->bbc_tac[i]		= 0.;}
 		if (TRG->bbc_adc[i+24]	< 0.){ TRG->bbc_adc[i+24]	= 0.;}
 		if (TRG->bbc_tac[i+24]	< 0.){ TRG->bbc_tac[i+24]	= 0.;}
@@ -147,7 +147,7 @@ int trg_doer(daqReader *rdr,
     	TRG->mtd_tac[i]		= trg_p->mtdTdc(west,k,0);
     	TRG->mtd_adc[i+2]	= trg_p->mtdAdc(east,k,0);
     	TRG->mtd_tac[i+2]	= trg_p->mtdTdc(east,k,0);
-    	
+
 		//if (TRG->mtd_adc[i]>0 || TRG->mtd_adc[i+2]>0 ){
 		//	cout<<" MTD ... "<<i<<" "<<TRG->mtd_adc[i]<<" "<<TRG->mtd_adc[i+2]<<endl;
 		//}
@@ -163,4 +163,3 @@ int trg_doer(daqReader *rdr,
     trg_p	= 0;
     return 0;
 }
-

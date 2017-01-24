@@ -13,7 +13,7 @@ ROOTLIBS     = $(shell root-config --libs)
 
 #ROOTGLIBS    = $(shell root-config --glibs) -lNew -lGui -lGeom
 #ROOTGLIBS    = $(shell root-config --glibs) -lGeom
-ROOTGLIBS = 
+ROOTGLIBS =
 
 CXXFLAGS     = -g -DNEW_DAQ_READER -DRTS_LOG_COLORED -DINSIST_ON_EMC_PSEUDO \
 				$(ROOTCFLAGS) $(STARCFLAGS)
@@ -24,14 +24,14 @@ all:	$(MYPROGS)
 clean:
 	-rm -f *.o
 	-rm -f $(MYPROGS)
-	
+
 #daqdoer: main.o StTriggerData.o StTriggerData2009.o doer_pp2pp.o doer_trg.o doer_tof.o TsPacket.o
 
 #daqdoer: main.o StTriggerData.o StTriggerData2009.o doer_pp2pp.o doer_trg.o doer_tof.o doer_mtd.o doer_utils.o TsPacket.o
 #daqdoer: main.o tof_err_check.o StTriggerData.o StTriggerData2012.o doer_pp2pp.o doer_trg.o doer_tof.o doer_mtd.o doer_utils.o TsPacket.o
 #	$(CXX) -g -m32 -o $@ $(LDLIBS) -Wl,--whole-archive $^ -Wl,--no-whole-archive
 #	-mv -v $@ ..
-daqdoer: main.o tof_err_check.o StTriggerData.o StTriggerData2016.o doer_pp2pp.o doer_trg.o doer_tof.o doer_mtd.o doer_utils.o TsPacket.o
+daqdoer: main.o tof_err_check.o StTriggerData.o StTriggerData2017.o doer_pp2pp.o doer_trg.o doer_tof.o doer_mtd.o doer_utils.o TsPacket.o
 	$(CXX) -g -m32 -o $@ $(LDLIBS) -Wl,--whole-archive $^ -Wl,--no-whole-archive
 	-mv -v $@ ..
 
@@ -45,7 +45,7 @@ StTriggerData2009.o: StTriggerData2009.cc
 #	$(CXX) $(CXXFLAGS) -c $<
 #StTriggerData2013.o: StTriggerData2013.cc
 #	$(CXX) $(CXXFLAGS) -c $<
-StTriggerData2016.o: StTriggerData2016.cc
+StTriggerData2017.o: StTriggerData2017.cc
 	$(CXX) $(CXXFLAGS) -c $<
 doer_pp2pp.o: doer_pp2pp.cc
 	$(CXX) $(CXXFLAGS) -c $<
@@ -64,7 +64,6 @@ TsPacket.o: TsPacket.cxx
 
 #*.o: *.cc
 #	$(CXX) $(CXXFLAGS) -c $<
-#	
+#
 #*.o: *.cxx
 #	$(CXX) $(CXXFLAGS) -c $<
-
