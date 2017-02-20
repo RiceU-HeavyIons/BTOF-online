@@ -30,10 +30,10 @@ Float_t TrayToPhi(int itray){
 	float phi;
 	float dphi	= (6./180.)*TMath::ACos(-1.);
 	if (itray<=60){
-		if (itray>=1&&itray<=13){		phi = (13-itray)*dphi;        } else 
+		if (itray>=1&&itray<=13){		phi = (13-itray)*dphi;        } else
 								{		phi = (13+(60-itray))*dphi;   }
 	} else if (itray>60){
-		if (itray>=103&&itray<=120){	phi	= (itray-103)*dphi;       } else 
+		if (itray>=103&&itray<=120){	phi	= (itray-103)*dphi;       } else
 								   {	phi	= (17 + (itray-60))*dphi; }
 	}
 	return phi;
@@ -91,8 +91,8 @@ void noise::Loop() {
 	Float_t	RadToDeg	= 180./TMath::ACos(-1.);
 
 						 // 0, 1, 2, 3, 4, 5, 6, 7
-	int ModToEtaPosn5[8] = {1, 2, 3, 9, 5, 4, 9, 9};	// index is tdig [0,1,2,4,5], value is eta position [1,5] 
-	int ModToEtaPosn3[8] = {2, 3, 9, 9, 4, 9, 9, 9};	// index is tdig [0,1,2,4,5], value is eta position [1,5] 
+	int ModToEtaPosn5[8] = {1, 2, 3, 9, 5, 4, 9, 9};	// index is tdig [0,1,2,4,5], value is eta position [1,5]
+	int ModToEtaPosn3[8] = {2, 3, 9, 9, 4, 9, 9, 9};	// index is tdig [0,1,2,4,5], value is eta position [1,5]
 	//
 	int ActiveRun13[30] = {8,9,10,11,12,13,14,0,0,15,0,0,0,0,0,0,0,0,0,0,0,1,0,0,2,3,4,5,6,7};
 	int ActiveLabels13[15]= {22,25,26,27,28,29,30,1,2,3,4,5,6,7,10};
@@ -126,8 +126,8 @@ void noise::Loop() {
 				fxrangeuse[is][ip][ib]	= xrangeuse->GetBinContent(ib+1,ip+1,is+1);
 			}
 		}
-	}	
-	
+	}
+
 	sprintf(buf,"/star/institutions/rice/geurts/noise/noise_%d",kRunUse);
 	TString namebase	= TString(buf);
 	TString nameextr	= TString(".root");
@@ -155,7 +155,7 @@ void noise::Loop() {
 	TH1D *hnpevtray_totL= new TH1D("hnpevtray_totL","nHits/tray/ev, low ToT",193,0., 193.);
 	TH1D *hnpev_totH 	= new TH1D("hnpev_totH"    ,"nHits/ev, high ToT"     ,250,0.,1000.);
 	TH1D *hnpevtray_totH= new TH1D("hnpevtray_totH","nHits/tray/ev, high ToT",193,0.,193.);
-	
+
 	TH1D *htrel			= new TH1D("htrel","t-t_{ear}, nHits/tray/ev>25",500,0.,500.);
 	TH1D *htrelzoom		= new TH1D("htrelzoom","t-t_{ear}, nHits/tray/ev>25",200,0.1,50.1);
 	TH2D *htrel_module		= new TH2D("htrel_module","t-t_{ear} vs module, nHits/tray/ev>25",32,-0.5,31.5,250,0.,500.);
@@ -275,20 +275,20 @@ void noise::Loop() {
 			//
 		}
 	}
-	TH2D *hmtdhitz_tota_strip1  = new TH2D("hmtdhitz_tota_strip1" ,"hmtdhitz_tota_strip1" ,50,5.,55.,275,-5.5,5.5);			
-	TH2D *hmtdhitz_tota_strip6  = new TH2D("hmtdhitz_tota_strip6" ,"hmtdhitz_tota_strip6" ,50,5.,55.,275,-5.5,5.5);			
-	TH2D *hmtdhitz_tota_strip12 = new TH2D("hmtdhitz_tota_strip12","hmtdhitz_tota_strip12",50,5.,55.,275,-5.5,5.5);			
-	TH2D *hmtdhitz_totb_strip1  = new TH2D("hmtdhitz_totb_strip1" ,"hmtdhitz_totb_strip1" ,50,5.,55.,275,-5.5,5.5);			
-	TH2D *hmtdhitz_totb_strip6  = new TH2D("hmtdhitz_totb_strip6" ,"hmtdhitz_totb_strip6" ,50,5.,55.,275,-5.5,5.5);			
-	TH2D *hmtdhitz_totb_strip12 = new TH2D("hmtdhitz_totb_strip12","hmtdhitz_totb_strip12",50,5.,55.,275,-5.5,5.5);			
-	TH2D *hmtdhitz_totm_strip1  = new TH2D("hmtdhitz_totm_strip1" ,"hmtdhitz_totm_strip1" ,50,5.,55.,275,-5.5,5.5);			
-	TH2D *hmtdhitz_totm_strip6  = new TH2D("hmtdhitz_totm_strip6" ,"hmtdhitz_totm_strip6" ,50,5.,55.,275,-5.5,5.5);			
-	TH2D *hmtdhitz_totm_strip12 = new TH2D("hmtdhitz_totm_strip12","hmtdhitz_totm_strip12",50,5.,55.,275,-5.5,5.5);			
-	TH2D *hmtdhitz_totm_strip1_norm  = new TH2D("hmtdhitz_totm_strip1_norm" ,"hmtdhitz_totm_strip1_norm" ,50,5.,55.,275,-5.5,5.5);			
-	TH2D *hmtdhitz_totm_strip6_norm  = new TH2D("hmtdhitz_totm_strip6_norm" ,"hmtdhitz_totm_strip6_norm" ,50,5.,55.,275,-5.5,5.5);			
-	TH2D *hmtdhitz_totm_strip12_norm = new TH2D("hmtdhitz_totm_strip12_norm","hmtdhitz_totm_strip12_norm",50,5.,55.,275,-5.5,5.5);			
+	TH2D *hmtdhitz_tota_strip1  = new TH2D("hmtdhitz_tota_strip1" ,"hmtdhitz_tota_strip1" ,50,5.,55.,275,-5.5,5.5);
+	TH2D *hmtdhitz_tota_strip6  = new TH2D("hmtdhitz_tota_strip6" ,"hmtdhitz_tota_strip6" ,50,5.,55.,275,-5.5,5.5);
+	TH2D *hmtdhitz_tota_strip12 = new TH2D("hmtdhitz_tota_strip12","hmtdhitz_tota_strip12",50,5.,55.,275,-5.5,5.5);
+	TH2D *hmtdhitz_totb_strip1  = new TH2D("hmtdhitz_totb_strip1" ,"hmtdhitz_totb_strip1" ,50,5.,55.,275,-5.5,5.5);
+	TH2D *hmtdhitz_totb_strip6  = new TH2D("hmtdhitz_totb_strip6" ,"hmtdhitz_totb_strip6" ,50,5.,55.,275,-5.5,5.5);
+	TH2D *hmtdhitz_totb_strip12 = new TH2D("hmtdhitz_totb_strip12","hmtdhitz_totb_strip12",50,5.,55.,275,-5.5,5.5);
+	TH2D *hmtdhitz_totm_strip1  = new TH2D("hmtdhitz_totm_strip1" ,"hmtdhitz_totm_strip1" ,50,5.,55.,275,-5.5,5.5);
+	TH2D *hmtdhitz_totm_strip6  = new TH2D("hmtdhitz_totm_strip6" ,"hmtdhitz_totm_strip6" ,50,5.,55.,275,-5.5,5.5);
+	TH2D *hmtdhitz_totm_strip12 = new TH2D("hmtdhitz_totm_strip12","hmtdhitz_totm_strip12",50,5.,55.,275,-5.5,5.5);
+	TH2D *hmtdhitz_totm_strip1_norm  = new TH2D("hmtdhitz_totm_strip1_norm" ,"hmtdhitz_totm_strip1_norm" ,50,5.,55.,275,-5.5,5.5);
+	TH2D *hmtdhitz_totm_strip6_norm  = new TH2D("hmtdhitz_totm_strip6_norm" ,"hmtdhitz_totm_strip6_norm" ,50,5.,55.,275,-5.5,5.5);
+	TH2D *hmtdhitz_totm_strip12_norm = new TH2D("hmtdhitz_totm_strip12_norm","hmtdhitz_totm_strip12_norm",50,5.,55.,275,-5.5,5.5);
 	//
-	TH1D *htota_strip1  = new TH1D("htota_strip1" ,"htota_strip1" ,100,5.,55.);	htota_strip1->SetLineColor(3); 		
+	TH1D *htota_strip1  = new TH1D("htota_strip1" ,"htota_strip1" ,100,5.,55.);	htota_strip1->SetLineColor(3);
 	TH1D *htota_strip6  = new TH1D("htota_strip6" ,"htota_strip6" ,100,5.,55.);	htota_strip6->SetLineColor(3);
 	TH1D *htota_strip12 = new TH1D("htota_strip12","htota_strip12",100,5.,55.);	htota_strip12->SetLineColor(3);
 	TH1D *htotb_strip1  = new TH1D("htotb_strip1" ,"htotb_strip1" ,100,5.,55.);	htotb_strip1->SetLineColor(4);
@@ -300,7 +300,7 @@ void noise::Loop() {
 	TH2D *htotm_strip	= new TH2D("htotm_strip"  ,"htotm_strip"  ,12,-0.5,11.5,100,5.,55.);
 
 	TH2D *hmtdonesidedhit	= new TH2D("hmtdonesidedhit","hmtdonesidedhit",30,0.5,30.5,120,0.5,120.5);
-	
+
 	int   nch_vpd_e;
 	int   ich_vpd_e[100];
 	float tot_vpd_e[100];
@@ -318,7 +318,7 @@ void noise::Loop() {
 
 	float mtdstrips[2][12][5][30];
 	float mtdstrtot[2][12][5][30];
-	
+
 	//---- start event loop....
 	if (fChaint == 0) return;
 	Long64_t nentriestree = fChaint->GetEntries();
@@ -336,7 +336,7 @@ void noise::Loop() {
 		thisday			=(kRunUse - thisyear*1000000)/1000;
 		thisrunonday	= kRunUse - thisyear*1000000 - thisday*1000;
 	}
-	
+
 	Long64_t nb = 0;
 	for (Long64_t jentry=0; jentry<nentries;jentry++) {
 		Long64_t ientry = LoadTree(jentry);
@@ -348,7 +348,7 @@ void noise::Loop() {
 		//cout<<nTofHits<<" "<<nTofHitsLE<<" "<<nTofHitsTE<<" "
 		//	<<nMtdHits<<" "<<nMtdHitsLE<<" "<<nMtdHitsTE<<endl;
 		//continue;
-		
+
 		//---- start loop over hits in this event....
 		//
 		for (int it=0;it<300;it++){ nhtray[it] = nhtray_totL[it] = nhtray_totH[it] = 0.; }
@@ -388,7 +388,7 @@ void noise::Loop() {
 			GlobalModule		= tray[ih]*32 + module[ih];
 			GlModToIDinLoop[GlobalModule]	= ModuleIDinLoop;
 			//
-			if (tray[ih]<=120){ 
+			if (tray[ih]<=120){
 				nhittotal			+= 1;
 			} else if (tray[ih]==121 || tray[ih]==122) {
 				nhittotal_vpd		+= 1;
@@ -418,12 +418,12 @@ void noise::Loop() {
 			}
 			//
 			if (tray[ih]<120 && thistot>11.0 && thistot< 30.){
-				++nhitevt_tot; 				
+				++nhitevt_tot;
 				++nhtray[tray[ih]];
 			}
-			if (tray[ih]<120 && thistot>11.0 && thistot<=18.){ 
-				++nhitevt_totL; 
-				++nhtray_totL[tray[ih]]; 
+			if (tray[ih]<120 && thistot>11.0 && thistot<=18.){
+				++nhitevt_totL;
+				++nhtray_totL[tray[ih]];
 				hrate_tray_totL->Fill(tray[ih]);
 				hrate_glmodule_totL->Fill(GlobalModule);
 				hrate_trmodule_totL->Fill(module[ih]);
@@ -432,9 +432,9 @@ void noise::Loop() {
 				hrate_trmodcell_loopid_totL[TrayIDinLoop]->Fill(cell[ih],module[ih]);
 				hrate_loopmodule_totL->Fill(ModuleIDinLoop);
 				hrate_trcell_totL->Fill(cell[ih]);
-			} else if (tray[ih]<120 && thistot>18. && thistot<30.){ 
-				++nhitevt_totH; 
-				++nhtray_totH[tray[ih]]; 
+			} else if (tray[ih]<120 && thistot>18. && thistot<30.){
+				++nhitevt_totH;
+				++nhtray_totH[tray[ih]];
 				hrate_tray_totH->Fill(tray[ih]);
 				hrate_glmodule_totH->Fill(GlobalModule);
 				hrate_trmodule_totH->Fill(module[ih]);
@@ -442,15 +442,15 @@ void noise::Loop() {
 				hrate_trmodcell_loopid_totH[TrayIDinLoop]->Fill(cell[ih],module[ih]);
 				hrate_loopmodule_totH->Fill(ModuleIDinLoop);
 				hrate_trcell_totH->Fill(cell[ih]);
-			} 
+			}
 			//
 			if ((tray[ih]==121||tray[ih]==122) && thistot>10.0 && thistot< 40.){
-				++nhitevt_tot_vpd; 			
+				++nhitevt_tot_vpd;
 				++nhtray[tray[ih]];
 			}
-		}	
+		}
 		//---- end loop over tof hits....
-	
+
 		//---- start loop over mtd hits................
 		int mtdnhitsmodule[5][30]	= {0};
 		for (int ih=0;ih<nMtdHits;ih++){
@@ -478,7 +478,7 @@ void noise::Loop() {
 			//
 //			cout<<kmtdmod<<" "<<ketaposn<<endl;
 			float thistot	= mtte[ih] - mtle[ih];
-			if (thistot<5.0) continue; 
+			if (thistot<5.0) continue;
 			htot_mtd[kmtdtray-1]->Fill(thistot);
 			++nhmtray[kmtdtray-1];
 			//
@@ -495,13 +495,13 @@ void noise::Loop() {
 			if (thistot> 12.0 && thistot< 50.){
 				++nhitevt_tot_mtdBL[kmtdtray-1];
 			}
-			if (thistot> 12.0 && thistot<=17.){ 
+			if (thistot> 12.0 && thistot<=17.){
 				++nhitevt_totL_mtdBL[kmtdtray-1];
 				//hmtdcell_totL->Fill(kmtdglcell);
-			} else if (thistot>17. && thistot<50.){ 
+			} else if (thistot>17. && thistot<50.){
 				++nhitevt_totH_mtdBL[kmtdtray-1];
 				//hmtdcell_totH->Fill(kmtdglcell);
-			} 
+			}
 			//if (kmtdmod==-1){
 			//  cout<<"MTD error.... "<<tray[ih]<<" "<<module[ih]<<" "<<cell[ih]<<" "<<module[ih]*6+cell[ih]<<endl;
 			//}
@@ -521,9 +521,9 @@ void noise::Loop() {
 			mtdstrtot[kmtdstrlr][kmtdstrip-1][ketaposn-1][kmtdtray-1] = mtot[ih];
 			//cout<<kmtdstrlr<<" "<<kmtdstrip<<" "<<ketaposn<<" "<<kmtdtray<<" "<<mtle[ih]<<endl;
 			//
-		}	
+		}
 		//---- end loop over mtd hits....
-		
+
 		//---- MTD Nsignals/event & stripcorr
 		for (int ibl=0;ibl<30;ibl++){
 			for (int ie=0;ie<5;ie++){
@@ -560,40 +560,40 @@ void noise::Loop() {
 					float tave	=            (mtdstrips[0][is][ip][ib]+mtdstrips[1][is][ip][ib])/2.;
 					if (sidea>0.&&sideb>0.){
 						//
-						float Z			= (sidea-sideb); 
+						float Z			= (sidea-sideb);
 						float xmean		= fxmeansuse[is][ip][ib];
 						float xrange	= fxrangeuse[is][ip][ib];
 						float zcal		= (Z-xmean)*(5.0/xrange);
 						hmtdhitz_strip[ip][ib]->Fill(is,Z);
 						hmtdhitz_strip_zoff[ip][ib]->Fill(is,zcal);
 						//
-						htotm_strip->Fill(is,totm); 
-						if (is== 0){ 
-							hmtdhitz_tota_strip1->Fill(tota,zcal); 
-							hmtdhitz_totb_strip1->Fill(totb,zcal); 
-							hmtdhitz_totm_strip1->Fill(totm,zcal); 
-							hmtdhitz_totm_strip1_norm->Fill(totm,zcal); 
-							htota_strip1->Fill(tota); 
-							htotb_strip1->Fill(totb); 
-							htotm_strip1->Fill(totm); 
+						htotm_strip->Fill(is,totm);
+						if (is== 0){
+							hmtdhitz_tota_strip1->Fill(tota,zcal);
+							hmtdhitz_totb_strip1->Fill(totb,zcal);
+							hmtdhitz_totm_strip1->Fill(totm,zcal);
+							hmtdhitz_totm_strip1_norm->Fill(totm,zcal);
+							htota_strip1->Fill(tota);
+							htotb_strip1->Fill(totb);
+							htotm_strip1->Fill(totm);
 						}
-						if (is== 5){ 
-							hmtdhitz_tota_strip6->Fill(tota,zcal); 
-							hmtdhitz_totb_strip6->Fill(totb,zcal); 
-							hmtdhitz_totm_strip6->Fill(totm,zcal); 
-							hmtdhitz_totm_strip6_norm->Fill(totm,zcal); 
-							htota_strip6->Fill(tota); 
-							htotb_strip6->Fill(totb); 
-							htotm_strip6->Fill(totm); 
+						if (is== 5){
+							hmtdhitz_tota_strip6->Fill(tota,zcal);
+							hmtdhitz_totb_strip6->Fill(totb,zcal);
+							hmtdhitz_totm_strip6->Fill(totm,zcal);
+							hmtdhitz_totm_strip6_norm->Fill(totm,zcal);
+							htota_strip6->Fill(tota);
+							htotb_strip6->Fill(totb);
+							htotm_strip6->Fill(totm);
 						}
-						if (is==11){ 
-							hmtdhitz_tota_strip12->Fill(tota,zcal); 
-							hmtdhitz_totb_strip12->Fill(totb,zcal); 
-							hmtdhitz_totm_strip12->Fill(totm,zcal); 
-							hmtdhitz_totm_strip12_norm->Fill(totm,zcal); 
-							htota_strip12->Fill(tota); 
-							htotb_strip12->Fill(totb); 
-							htotm_strip12->Fill(totm); 
+						if (is==11){
+							hmtdhitz_tota_strip12->Fill(tota,zcal);
+							hmtdhitz_totb_strip12->Fill(totb,zcal);
+							hmtdhitz_totm_strip12->Fill(totm,zcal);
+							hmtdhitz_totm_strip12_norm->Fill(totm,zcal);
+							htota_strip12->Fill(tota);
+							htotb_strip12->Fill(totb);
+							htotm_strip12->Fill(totm);
 						}
 						//
 					} else if ((sidea>0&&sideb<=0)||(sidea<=0&&sideb>0)){
@@ -626,7 +626,7 @@ void noise::Loop() {
 			nhittotal_totH_mtdBL[i]	+= nhitevt_totH_mtdBL[i];
 		}
 		//
-		for (int it=0;it<120;it++){ 
+		for (int it=0;it<120;it++){
 			//
 			hnpevtray->Fill(nhtray[it]);
 			hnpevtray_totL->Fill(nhtray_totL[it]);
@@ -686,13 +686,13 @@ void noise::Loop() {
 				float thistot	= tte[ih] - tle[ih];
 				if (tray[ih]<=120){
 					htot_nh->Fill(nhtray[it],thistot);
-					if (nhtray[it]<=10){ htot_nhlow->Fill(thistot); } else 
-					if (nhtray[it]> 10){ htot_nhhig->Fill(thistot); } 
+					if (nhtray[it]<=10){ htot_nhlow->Fill(thistot); } else
+					if (nhtray[it]> 10){ htot_nhhig->Fill(thistot); }
 				}
 			}
 			//
 		}
-		
+
 // 		for (int ie=0;ie<nch_mtd_e;ie++){
 // 			for (int iw=0;iw<nch_mtd_w;iw++){
 // 				//cout<<ie<<" "<<iw<<" "<<ich_mtd_w[iw]<<" "<<ich_mtd_e[ie]<<endl;
@@ -843,7 +843,7 @@ void noise::Loop() {
 			}
 		}
 	}
-	
+
 
 
 	//---- make rate by tray vs IDinLoop graph....
@@ -912,7 +912,7 @@ void noise::Loop() {
 	//-------------------------------------------------------------------------
 	//---- make plots....
 	//
-	gROOT->SetStyle("Plain"); 
+	gROOT->SetStyle("Plain");
 	gStyle->SetOptStat(0);
 	gStyle->SetOptFit(1111);
 	gStyle->SetPadBottomMargin(0.07);
@@ -931,23 +931,23 @@ void noise::Loop() {
  	ccan[ican]->cd(); ccan[ican]->Divide(1,4,0.0001,0.0001);
 		ccan[ican]->cd(1);
 			gPad->SetLogy(1);
-			hrate_tray->SetMinimum(0.1);	
+			hrate_tray->SetMinimum(0.1);
 			hrate_tray->Draw();
 			hrate_tray_totH->Draw("same");
 			hrate_tray_totL->Draw("same");
 		ccan[ican]->cd(2);
-			hrate_glmodule->SetMinimum(0);	
-			hrate_glmodule->Draw();			
+			hrate_glmodule->SetMinimum(0);
+			hrate_glmodule->Draw();
 			hrate_glmodule_totH->Draw("same");
 			hrate_glmodule_totL->Draw("same");
 		ccan[ican]->cd(3);
-			hrate_trmodule->SetMinimum(0);	
-			hrate_trmodule->Draw();	
+			hrate_trmodule->SetMinimum(0);
+			hrate_trmodule->Draw();
 			hrate_trmodule_totH->Draw("same");
 			hrate_trmodule_totL->Draw("same");
 		ccan[ican]->cd(4);
-			hrate_trcell->SetMinimum(0);	
-			hrate_trcell->Draw();			
+			hrate_trcell->SetMinimum(0);
+			hrate_trcell->Draw();
 			hrate_trcell_totH->Draw("same");
 			hrate_trcell_totL->Draw("same");
 	ccan[ican]->cd(); ccan[ican]->Update();
@@ -981,9 +981,9 @@ void noise::Loop() {
 // 	}
 // 	ccan[ican]->cd(); ccan[ican]->Update();
 // 	ccan[ican]->Print("noise.ps");
-	
-	
-	
+
+
+
 	TH1F *frame;
 	//
 //  	++ican; sprintf(buf,"ccan%d",ican);
@@ -1042,12 +1042,12 @@ void noise::Loop() {
 	hrate_loopmodule->Fit(fl,"0Q");
 		fl->GetParameters(flinpars);
 		TF1 *flall = new TF1("flall","pol1",-0.5,159.5);
-			flall->SetParameters(flinpars);	
+			flall->SetParameters(flinpars);
 	TF1 *flH = new TF1("flH",fline,-0.5,159.5,2);
 	hrate_loopmodule_totH->Fit(flH,"0Q");
 		flH->GetParameters(flinparsH);
 		TF1 *flallH = new TF1("flallH","pol1",-0.5,159.5);
-			flallH->SetParameters(flinparsH);	
+			flallH->SetParameters(flinparsH);
 			flallH->SetLineColor(2);
 	//
 	hinfo->Fill(20.0,flinpars[0]);
@@ -1135,7 +1135,7 @@ void noise::Loop() {
 	ccan[ican]->Print("noise.ps");
 	gStyle->SetPadLeftMargin(0.09);
 	gStyle->SetPadRightMargin(0.10);
-		
+
 	//---- loop-correct phi noise....................................
 	TH1D *hrate_nphi	= new TH1D("hrate_nphi","NModules by #Phi",60,-3.,357.);
 	TH1D *hrate_phi		= new TH1D("hrate_phi","rate/cell by #Phi, IDinLoop-Corrected",60,-3.,357.);
@@ -1213,14 +1213,14 @@ void noise::Loop() {
 	hrate_phi_norm->Fit("sintest","0N");
 	hratee_phi_norm->Fit("sinteste","0N");
 	hratew_phi_norm->Fit("sintestw","0N");
-	//	
+	//
  	++ican; sprintf(buf,"ccan%d",ican);
  	ccan[ican] = new TCanvas(buf,buf,0,0,800.,800.*(7.5/10.));
  	ccan[ican]->SetFillColor(10);
  	ccan[ican]->cd(); ccan[ican]->Divide(1,3,0.0001,0.0001);
 	ccan[ican]->cd(1);
 		if (istyle==1){ hrate_glmodule->Draw(); } else
-		if (istyle==2){ hrate_glmodule_totL->Draw(); } 
+		if (istyle==2){ hrate_glmodule_totL->Draw(); }
 	ccan[ican]->cd(2);
 		hrate_nphi->Draw();
 	ccan[ican]->cd(3);
@@ -1231,14 +1231,14 @@ void noise::Loop() {
 		hrate_phi_norm->Draw("same");
 	ccan[ican]->cd(); ccan[ican]->Update();
 	ccan[ican]->Print("noise.ps");
-	//	
+	//
 //  	++ican; sprintf(buf,"ccan%d",ican);
 //  	ccan[ican] = new TCanvas(buf,buf,0,0,800.,800.*(7.5/10.));
 //  	ccan[ican]->SetFillColor(10);
 //  	ccan[ican]->cd(); ccan[ican]->Divide(1,3,0.0001,0.0001);
 // 	ccan[ican]->cd(1);
 //		if (istyle==1){ hrate_glmodule->Draw(); } else
-//		if (istyle==2){ hrate_glmodule_totL->Draw(); } 
+//		if (istyle==2){ hrate_glmodule_totL->Draw(); }
 // 	ccan[ican]->cd(2);
 // 		hratew_nphi->Draw();
 // 	ccan[ican]->cd(3);
@@ -1249,14 +1249,14 @@ void noise::Loop() {
 // 		hratew_phi_norm->Draw("same");
 // 	ccan[ican]->cd(); ccan[ican]->Update();
 // 	ccan[ican]->Print("noise.ps");
-// 	//	
+// 	//
 //  	++ican; sprintf(buf,"ccan%d",ican);
 //  	ccan[ican] = new TCanvas(buf,buf,0,0,800.,800.*(7.5/10.));
 //  	ccan[ican]->SetFillColor(10);
 //  	ccan[ican]->cd(); ccan[ican]->Divide(1,3,0.0001,0.0001);
 // 	ccan[ican]->cd(1);
 //		if (istyle==1){ hrate_glmodule->Draw(); } else
-//		if (istyle==2){ hrate_glmodule_totL->Draw(); } 
+//		if (istyle==2){ hrate_glmodule_totL->Draw(); }
 // 	ccan[ican]->cd(2);
 // 		hratee_nphi->Draw();
 // 	ccan[ican]->cd(3);
@@ -1267,7 +1267,7 @@ void noise::Loop() {
 // 		hratee_phi_norm->Draw("same");
 // 	ccan[ican]->cd(); ccan[ican]->Update();
 // 	ccan[ican]->Print("noise.ps");
-	
+
  	++ican; sprintf(buf,"ccan%d",ican);
  	ccan[ican] = new TCanvas(buf,buf,0,0,800.,800.*(7.5/10.));
  	ccan[ican]->SetFillColor(10);
@@ -1290,18 +1290,18 @@ void noise::Loop() {
  	ccan[ican]->cd(); ccan[ican]->Divide(1,2,0.0001,0.0001);
 		ccan[ican]->cd(1);
 			gPad->SetLogy(1);
-			hnpev->Draw();			
-			hnpev_totL->SetLineColor(4);			
-			hnpev_totH->SetLineColor(2);			
-			hnpev_totL->Draw("same");			
-			hnpev_totH->Draw("same");			
+			hnpev->Draw();
+			hnpev_totL->SetLineColor(4);
+			hnpev_totH->SetLineColor(2);
+			hnpev_totL->Draw("same");
+			hnpev_totH->Draw("same");
 		ccan[ican]->cd(2);
 			gPad->SetLogy(1);
-			hnpevtray->Draw();			
-			hnpevtray_totL->SetLineColor(4);			
-			hnpevtray_totH->SetLineColor(2);			
-			hnpevtray_totL->Draw("same");			
-			hnpevtray_totH->Draw("same");			
+			hnpevtray->Draw();
+			hnpevtray_totL->SetLineColor(4);
+			hnpevtray_totH->SetLineColor(2);
+			hnpevtray_totL->Draw("same");
+			hnpevtray_totH->Draw("same");
 	ccan[ican]->cd(); ccan[ican]->Update();
 	ccan[ican]->Print("noise.ps");
 	//
@@ -1311,22 +1311,22 @@ void noise::Loop() {
  	ccan[ican]->cd(); ccan[ican]->Divide(3,2,0.0001,0.0001);
 		ccan[ican]->cd(1);
 			gPad->SetLogy(1);
-			htrel->Draw();			
+			htrel->Draw();
 		ccan[ican]->cd(2);
 			gPad->SetLogz(1);
-			htrel_module->Draw("colz");			
+			htrel_module->Draw("colz");
 		ccan[ican]->cd(3);
 			gPad->SetLogz(1);
-			htrel_relmodule->Draw("colz");			
+			htrel_relmodule->Draw("colz");
 		ccan[ican]->cd(4);
 			gPad->SetLogy(1);
-			htrelzoom->Draw();			
+			htrelzoom->Draw();
 		ccan[ican]->cd(5);
 			gPad->SetLogy(0);
-			htrelzoom_module->Draw("colz");			
+			htrelzoom_module->Draw("colz");
 		ccan[ican]->cd(6);
 			gPad->SetLogy(0);
-			htrelzoom_relmodule->Draw("colz");			
+			htrelzoom_relmodule->Draw("colz");
 	ccan[ican]->cd(); ccan[ican]->Update();
 	ccan[ican]->Print("noise.ps");
 
@@ -1339,7 +1339,7 @@ void noise::Loop() {
 	for (int i=0;i<32;i++){
 		ccan[ican]->cd(1+i);
 		htrelzoom_relmod_imear[i]->Draw("colz");
-		lpos->Draw(); 
+		lpos->Draw();
 		lneg->Draw();
 	}
 	ccan[ican]->cd(); ccan[ican]->Update();
@@ -1351,19 +1351,19 @@ void noise::Loop() {
  	ccan[ican]->cd(); ccan[ican]->Divide(2,2,0.0001,0.0001);
 		ccan[ican]->cd(1);
 			gPad->SetLogy(1);
-			htotwide->Draw();			
+			htotwide->Draw();
 		ccan[ican]->cd(2);
 			gPad->SetLogy(0);
 			htot->Draw();
 		ccan[ican]->cd(3);
 			gPad->SetLogz(1);
-			htot_nh->Draw("colz");			
+			htot_nh->Draw("colz");
 		ccan[ican]->cd(4);
 			htot_nhlow->SetLineColor(4);
-			htot_nhlow->Scale(1./htot_nhlow->Integral());	
-			htot_nhlow->Draw();	
+			htot_nhlow->Scale(1./htot_nhlow->Integral());
+			htot_nhlow->Draw();
 			htot_nhhig->SetLineColor(2);
-			htot_nhhig->Scale(1./htot_nhhig->Integral());	
+			htot_nhhig->Scale(1./htot_nhhig->Integral());
 			htot_nhhig->Draw("same");
 	ccan[ican]->cd(); ccan[ican]->Update();
 	ccan[ican]->Print("noise.ps");
@@ -1374,12 +1374,12 @@ void noise::Loop() {
 //  	ccan[ican]->cd(); ccan[ican]->Divide(2,2,0.0001,0.0001);
 // 		ccan[ican]->cd(1);
 // 			gPad->SetLogy(1);
-// 			htot_vpd->Draw();			
+// 			htot_vpd->Draw();
 // 		ccan[ican]->cd(2);
-// 			htotx_vpd->Draw("colz");			
+// 			htotx_vpd->Draw("colz");
 // 		ccan[ican]->cd(3);
-// 			//hvpdmap->Draw("colz");			
-// 			hvpdcell->Draw();			
+// 			//hvpdmap->Draw("colz");
+// 			hvpdcell->Draw();
 // 		ccan[ican]->cd(4);
 // 			hp_vpd_tof->Draw();
 // 	ccan[ican]->cd(); ccan[ican]->Update();
@@ -1393,10 +1393,10 @@ void noise::Loop() {
 // 			gPad->SetLogy(1);
 // 			//hmtdcell->SetFillColor(5);
 // 			//hmtdcell->SetFillStyle(1001);
-// 			hmtdcell->SetMinimum(0.5);			
-// 			hmtdcell->Draw();			
-// 			hmtdcell_totH->Draw("same");			
-// 			hmtdcell_totL->Draw("same");			
+// 			hmtdcell->SetMinimum(0.5);
+// 			hmtdcell->Draw();
+// 			hmtdcell_totH->Draw("same");
+// 			hmtdcell_totL->Draw("same");
 // 	ccan[ican]->cd(); ccan[ican]->Update();
 // 	ccan[ican]->Print("noise.ps");
 
@@ -1413,7 +1413,7 @@ void noise::Loop() {
 			//sprintf(buf,"%d",ActiveRun14[i]);
 			sprintf(buf,"%d",i+1);
 			hmtdstripsbl->GetXaxis()->SetBinLabel(i+1,buf);
-		}	
+		}
 		gPad->Update();
 	ccan[ican]->cd(); ccan[ican]->Update();
 	ccan[ican]->Print("noise.ps");
@@ -1430,8 +1430,8 @@ void noise::Loop() {
 		if (hmtdcell_bl[i]->GetEntries()>10){
 			hmtdcell_bl[i]->SetFillColor(5);
 			hmtdcell_bl[i]->SetFillStyle(1001);
-			hmtdcell_bl[i]->SetMinimum(0.5);			
-			hmtdcell_bl[i]->Draw();			
+			hmtdcell_bl[i]->SetMinimum(0.5);
+			hmtdcell_bl[i]->Draw();
 			//gPad->SetLogy(1);
 		}
 	}
@@ -1446,13 +1446,13 @@ void noise::Loop() {
 				sprintf(buf,"BL%d-%d",ibl+1,i+1);
 				mtdplotlabels[i][ibl] = new TLatex(0.15,0.17,buf);
 				mtdplotlabels[i][ibl]->SetTextSize(0.5);
-				mtdplotlabels[i][ibl]->SetNDC();				
+				mtdplotlabels[i][ibl]->SetNDC();
 			}
 		}
 	}
 
 	int kactive = 0;
-		
+
 	kactive = 0;
 	gStyle->SetPadLeftMargin(0.12);
  	++ican; sprintf(buf,"ccan%d",ican);
@@ -1478,7 +1478,7 @@ void noise::Loop() {
 	}
 	ccan[ican]->cd(); ccan[ican]->Update();
 	ccan[ican]->Print("noise.ps");
-	gStyle->SetPadLeftMargin(0.09);	
+	gStyle->SetPadLeftMargin(0.09);
 	//
 	kactive = 0;
 	gStyle->SetPadLeftMargin(0.12);
@@ -1502,7 +1502,7 @@ void noise::Loop() {
 	}
 	ccan[ican]->cd(); ccan[ican]->Update();
 	ccan[ican]->Print("noise.ps");
-	gStyle->SetPadLeftMargin(0.09);	
+	gStyle->SetPadLeftMargin(0.09);
 	//
 	kactive = 0;
 	gStyle->SetPadLeftMargin(0.12);
@@ -1527,7 +1527,7 @@ void noise::Loop() {
 	}
 	ccan[ican]->cd(); ccan[ican]->Update();
 	ccan[ican]->Print("noise.ps");
-	gStyle->SetPadLeftMargin(0.09);	
+	gStyle->SetPadLeftMargin(0.09);
 
 	gStyle->SetTitleFontSize(0.1);
  	++ican; sprintf(buf,"ccan%d",ican);
@@ -1600,7 +1600,7 @@ void noise::Loop() {
 // 					hnhitsmtd27_time->Draw("same");
 // 			ccan[ican]->cd(); ccan[ican]->Update();
 // 			ccan[ican]->Print("noise.ps");
-// 			//	
+// 			//
 // 		}
 // 	}
 
@@ -1625,7 +1625,7 @@ void noise::Loop() {
 	}
 	ccan[ican]->cd(); ccan[ican]->Update();
 	ccan[ican]->Print("noise.ps");
-	gStyle->SetPadLeftMargin(0.09);	
+	gStyle->SetPadLeftMargin(0.09);
 
 	//
 	//---- find TDIG offsets in hitZ plots...
@@ -1693,10 +1693,10 @@ void noise::Loop() {
 // 			hZstrip[i]->Draw();
 // 			//
 // 		}
-// 	} 
+// 	}
 // 	ccan[ican]->cd(); ccan[ican]->Update();
 // 	ccan[ican]->Print("noise.ps");
-// 	gStyle->SetPadLeftMargin(0.09);	
+// 	gStyle->SetPadLeftMargin(0.09);
 // 	cout<<"........................................."<<endl;
 // 	cout<<" meanzcent = "<<meanzcent<<endl;
 // 	cout<<" float zoffsets[12] = {";
@@ -1704,7 +1704,7 @@ void noise::Loop() {
 // 		if (i<11){ cout<<zoffsets[i]<<",";  }
 // 		    else { cout<<zoffsets[i]<<"};"; }
 // 	}
-// 	cout<<endl;	
+// 	cout<<endl;
 // 	cout<<"........................................."<<endl;
 // 	cout<<" meanzmean = "<<meanzmean<<endl;
 // 	cout<<"float zmeansuse[12] = {";
@@ -1712,7 +1712,7 @@ void noise::Loop() {
 // 		if (i<11){ cout<<zmeans[i]<<",";  }
 // 		    else { cout<<zmeans[i]<<"};"; }
 // 	}
-// 	cout<<endl;	
+// 	cout<<endl;
 // 	cout<<"........................................."<<endl;
 
 // 	for (int ibl=0;ibl<30;ibl++){
@@ -1731,7 +1731,7 @@ void noise::Loop() {
 // 				}
 // 			ccan[ican]->cd(); ccan[ican]->Update();
 // 			ccan[ican]->Print("noise.ps");
-// 			gStyle->SetPadLeftMargin(0.09);	
+// 			gStyle->SetPadLeftMargin(0.09);
 // 		}
 // 	}
 
@@ -1760,7 +1760,7 @@ void noise::Loop() {
 			hmtdhitz_totb_strip12->Draw("col");
 	ccan[ican]->cd(); ccan[ican]->Update();
 	ccan[ican]->Print("noise.ps");
-	gStyle->SetPadLeftMargin(0.09);	
+	gStyle->SetPadLeftMargin(0.09);
 	//
 	gStyle->SetPadLeftMargin(0.12);
  	++ican; sprintf(buf,"ccan%d",ican);
@@ -1793,7 +1793,7 @@ void noise::Loop() {
 			hmtdhitz_totm_strip12->Draw("col");
 	ccan[ican]->cd(); ccan[ican]->Update();
 	ccan[ican]->Print("noise.ps");
-	gStyle->SetPadLeftMargin(0.09);	
+	gStyle->SetPadLeftMargin(0.09);
 	//
 	int nbx	= hmtdhitz_totm_strip1->GetNbinsX();
 	int nby	= hmtdhitz_totm_strip1->GetNbinsY();
@@ -1807,26 +1807,26 @@ void noise::Loop() {
 		//cout<<aint1<<" "<<aint6<<" "<<aint12<<endl;
 		float az		= 0;
 		for (int iby=1;iby<=nby;iby++){
-			if (aint1){ 
+			if (aint1){
 				az = hmtdhitz_totm_strip1->GetBinContent(ibx,iby);
-				hmtdhitz_totm_strip1_norm->SetBinContent(ibx,iby,az/aint1); 
+				hmtdhitz_totm_strip1_norm->SetBinContent(ibx,iby,az/aint1);
 				//if (ibx==17) cout<<ibx<<" "<<iby<<" "<<az<<" "<<aint1<<" "<<az/aint1<<endl;
 			} else {
-				hmtdhitz_totm_strip1_norm->SetBinContent(ibx,iby,0); 
+				hmtdhitz_totm_strip1_norm->SetBinContent(ibx,iby,0);
 			}
-			if (aint6){ 
+			if (aint6){
 				az = hmtdhitz_totm_strip6->GetBinContent(ibx,iby);
-				hmtdhitz_totm_strip6_norm->SetBinContent(ibx,iby,az/aint6); 
+				hmtdhitz_totm_strip6_norm->SetBinContent(ibx,iby,az/aint6);
 			} else {
-				hmtdhitz_totm_strip6_norm->SetBinContent(ibx,iby,0); 
+				hmtdhitz_totm_strip6_norm->SetBinContent(ibx,iby,0);
 			}
-			if (aint12){ 
+			if (aint12){
 				az = hmtdhitz_totm_strip12->GetBinContent(ibx,iby);
-				hmtdhitz_totm_strip12_norm->SetBinContent(ibx,iby,az/aint12); 
+				hmtdhitz_totm_strip12_norm->SetBinContent(ibx,iby,az/aint12);
 			} else {
-				hmtdhitz_totm_strip12_norm->SetBinContent(ibx,iby,0); 
+				hmtdhitz_totm_strip12_norm->SetBinContent(ibx,iby,0);
 			}
-		}	
+		}
 	}
 	gStyle->SetPadLeftMargin(0.12);
  	++ican; sprintf(buf,"ccan%d",ican);
@@ -1859,7 +1859,7 @@ void noise::Loop() {
 			hmtdhitz_totm_strip12_norm->Draw("col");
 	ccan[ican]->cd(); ccan[ican]->Update();
 	ccan[ican]->Print("noise.ps");
-	gStyle->SetPadLeftMargin(0.09);	
+	gStyle->SetPadLeftMargin(0.09);
 	//
 	gStyle->SetPadLeftMargin(0.12);
  	++ican; sprintf(buf,"ccan%d",ican);
@@ -1871,7 +1871,7 @@ void noise::Loop() {
 			htotm_strip->Draw("colz");
 	ccan[ican]->cd(); ccan[ican]->Update();
 	ccan[ican]->Print("noise.ps");
-	gStyle->SetPadLeftMargin(0.09);	
+	gStyle->SetPadLeftMargin(0.09);
 
 
 	float meantot_tof	= htot->GetMean();
@@ -1896,7 +1896,7 @@ void noise::Loop() {
 //  	ccan[ican]->cd(); ccan[ican]->Divide(1,1,0.0001,0.0001);
 // 		ccan[ican]->cd(1);
 // 			gPad->SetLogz(1);
-// 			hcellmod->Draw("col");			
+// 			hcellmod->Draw("col");
 // 	ccan[ican]->cd(); ccan[ican]->Update();
 // 	ccan[ican]->Print("noise.ps");
 
@@ -1926,7 +1926,7 @@ void noise::Loop() {
 	}
 	ccan[ican]->cd(); ccan[ican]->Update();
 	ccan[ican]->Print("noise.ps");
-	gStyle->SetPadLeftMargin(0.09);	
+	gStyle->SetPadLeftMargin(0.09);
 
 
 	//----- end of all processing......
@@ -1941,7 +1941,7 @@ void noise::Loop() {
 	sprintf(buf,"/bin/cp %s.pdf /star/u/geurts/WWW/files/",namebase.Data());
 	cout<<"..... noise::loop Executing ... "<<buf<<endl;
 	gSystem->Exec(buf);
-	cout<<"..... noise::loop Done...."<<endl;	
+	cout<<"..... noise::loop Done...."<<endl;
 
 }
 //---- end noise::loop
