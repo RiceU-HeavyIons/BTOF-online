@@ -19,6 +19,8 @@ unsigned int GetLETime(TsPacket *p, int bunch);
 unsigned int GetTrgDTime(TsPacket *p, int bunch);
 int tdcchan2globalstrip(int,int,int,int,int);
 	
+const int MAXMTDHITS = 1200;
+
 int mtd9map[3][8];
 
 int mtd_doer(daqReader *rdr, Int_t iday, Int_t kDataChoice, 
@@ -84,18 +86,18 @@ int mtd_doer(daqReader *rdr, Int_t iday, Int_t kDataChoice,
 	int		nMtdHitsTE		=  0;
 	int		nMtdHitsBL[30]	=  {0};
 
-	int		LE_tray[1000];
-	int		LE_strip[1000];
-	int		LE_chip[1000];
-	int		LE_chan[1000];
-	float	LE_coco[1000];
-	float	LE_trgdtime[1000];
-	float	LE_time[1000];
-	int		TE_tray[1000];
-//	int		TE_strip[1000];
-	int		TE_chan[1000];
-	float	TE_coco[1000];
-	float	TE_time[1000];
+	int		LE_tray[MAXMTDHITS];
+	int		LE_strip[MAXMTDHITS];
+	int		LE_chip[MAXMTDHITS];
+	int		LE_chan[MAXMTDHITS];
+	float	LE_coco[MAXMTDHITS];
+	float	LE_trgdtime[MAXMTDHITS];
+	float	LE_time[MAXMTDHITS];
+	int		TE_tray[MAXMTDHITS];
+//	int		TE_strip[MAXMTDHITS];
+	int		TE_chan[MAXMTDHITS];
+	float	TE_coco[MAXMTDHITS];
+	float	TE_time[MAXMTDHITS];
 
 	ddm = rdr->det("mtd")->get("legacy") ;
 	if(!ddm) return -1;
@@ -174,6 +176,7 @@ int mtd_doer(daqReader *rdr, Int_t iday, Int_t kDataChoice,
 						}
 						if (kDataChoice==1||kDataChoice==3){ cocogood = true; }
 						if (cocogood){
+						  if (nMtdHitsLE<MAXMTDHITS-1){
 							LE_tray[nMtdHitsLE]		= trayid;
 							LE_strip[nMtdHitsLE]	= istrip;
 							LE_chan[nMtdHitsLE]		= ch;
@@ -183,6 +186,9 @@ int mtd_doer(daqReader *rdr, Int_t iday, Int_t kDataChoice,
 							LE_time[nMtdHitsLE]		= edgetimens;
 							++nMtdHitsLE;
 							++nMtdHitsBL[trayid-1];
+						  } else {
+						    cout<<"Too Many LE hits (MTD section)!!!! max=" << MAXMTDHITS << endl;
+						  }
 						}
  					}	//---- end LE trayid check...
  					//
@@ -203,11 +209,15 @@ int mtd_doer(daqReader *rdr, Int_t iday, Int_t kDataChoice,
 						}
 						if (kDataChoice==1||kDataChoice==3){ cocogood = true; }
 						if (cocogood){
+						  if (nMtdHitsTE<MAXMTDHITS-1){
 							TE_tray[nMtdHitsTE]	= trayid;
 							TE_chan[nMtdHitsTE]	= ch;
 							TE_coco[nMtdHitsTE]	= coco;
 							TE_time[nMtdHitsTE]	= edgetimens;
 							++nMtdHitsTE;
+						  } else {
+						    cout << "Too many TE hits (MTD section)!!!! max=" << MAXMTDHITS << endl;
+						  }
 						}
 					}	//---- end TE trayid check...
  					//
