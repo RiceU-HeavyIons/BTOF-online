@@ -6,19 +6,19 @@ Extract the leading edge and trainling edge times for calculating the offline (o
 ## Running the code
 ```bash
 ./make.sh
-./tof_datawindows -o tof\_RN.root -D tof /path/to/daq/file.daq >& tof\_rn.log
+./tof_datawindows -o tof_{RN}.root -D tof /path/to/daq/file.daq >& tof_{RN}.log
 ```
-
-this will produce the root files with 2D histograms of le / tr times versus tray.
+Where {RN} is the run number of interest.
+This will produce the root files with 2D histograms of le / tr times versus tray.
 
 ## Plot & Compute Windows
-Make sure that the input file is named "tof_RN.root" where "RN" is the run number of interest
+Make sure that the input file is named "tof_{RN}.root".
 next:
 
 ```bash
-root -b -q -l 'extract_windows.C( "RN" )'
+root -b -q -l 'extract_windows.C( "{RN}" )'
 ```
 
 This will produce:
-- "tof\_datawindows\_RN.pdf" : a pdf report of the fit and windows
-- "tof\_datawindows\_RN.dat" : the low and high edge values to be uploaded to the DB
+- "tof\_datawindows\_{RN}.pdf" : a pdf report of the fit and windows
+- "tof\_datawindows\_{RN}.dat" : the low and high edge values to be uploaded to the DB
