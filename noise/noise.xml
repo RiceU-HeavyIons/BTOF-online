@@ -1,9 +1,14 @@
-<?xml version="1.0" encoding="utf-8" ?> 
+<?xml version="1.0" encoding="utf-8" ?>
 <job>
 <command>
 starver SL16j
-cd /star/u/geurts/BTOF-online/noise
-./noise -r 18024006
+cd /star/u/geurts/run17/doer
+./daqdoer /gpfs01/star/scratch/geurts/daq/2017/039/18039190/*.daq &lt;&lt; endd
+1
+18039
+endd
+cd /star/u/geurts/run17/noise
+./noise -r 18039
 </command>
-<stdout URL="file:/star/u/geurts/logs/noise18024006.log" />
+<stdout URL="file:/star/u/geurts/logs/18039.log" />
 </job>
