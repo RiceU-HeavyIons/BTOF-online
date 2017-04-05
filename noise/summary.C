@@ -33,7 +33,7 @@ TH1::AddDirectory(kFALSE);
 		if (activeBL[i]){ ++j; }
 	}
 
-	const int 	ndays	=  318;
+	const int 	ndays	=  319;
 	int year[ndays]	= {
 	 10,
 	 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11,
@@ -54,7 +54,7 @@ TH1::AddDirectory(kFALSE);
 	 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16,
 	 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
 	 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
-	 18, 18, 18, 18, 18, 18, 18, 18
+	 18, 18, 18, 18, 18, 18, 18, 18, 18
 	};
 	int day[ndays]	= {
 // year-10 (run-9)
@@ -85,7 +85,7 @@ TH1::AddDirectory(kFALSE);
     13,  20,  23,  33,  48,  52,  57,  62,  70,  71,  76,  78,  79,  80,  81,  89,  90,  93,  94,  96,
    112, 120, 122, 125, 130, 131, 132, 134, 135, 139, 141, 148, 152, 154, 158, 173, 176,
 // year-18
-    35,  37,  40,  44,  45,  47,  50,  53
+    35,  37,  40,  44,  45,  47,  50,  53, 68
 	};
 	float gday[ndays]	= {
 // year-10 (run-9)
@@ -116,7 +116,7 @@ TH1::AddDirectory(kFALSE);
    2207, 2214, 2217, 2227, 2242, 2246, 2251, 2256, 2264, 2265, 2270, 2272, 2273, 2274, 2275, 2283, 2284, 2287, 2288, 2290,
    2306, 2314, 2316, 2319, 2324, 2325, 2326, 2328, 2329, 2333, 2335, 2342, 2346, 2348, 2352, 2367, 2370,
 // year-18
-   2594, 2596, 2599, 2603, 2604, 2606, 2609, 2612
+   2594, 2596, 2599, 2603, 2604, 2606, 2609, 2612, 2627
 	};
 	float		lastday	= day[ndays-1];
 	if (lastday>1000){ lastday	/= 10.; }
@@ -126,7 +126,7 @@ TH1::AddDirectory(kFALSE);
 	TH1D*	hrate_tray[ndays];
 	TH1D*	htot[ndays];
 	TH1D*	htot_mtd[30][ndays];
-	TH2D*	hmtdstripsbl[200];				//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	TH2D*	hmtdstripsbl[300];				//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	TGraph *gglobalnoise	= new TGraph();
 			gglobalnoise->SetMarkerStyle(20);
 			gglobalnoise->SetMarkerColor(1);
@@ -292,7 +292,7 @@ TH1::AddDirectory(kFALSE);
 					hmtdstripsbl[kNmtdstripsbl]->SetName(buf);
 					hmtdstripsbl[kNmtdstripsbl]->SetDirectory(0);
 				++kNmtdstripsbl;
-				if (kNmtdstripsbl>=200){
+				if (kNmtdstripsbl>=300){
 					cout<<"...you need more indices for hmtdstripsbl[]....."<endl;
 					exit(0);
 				}
