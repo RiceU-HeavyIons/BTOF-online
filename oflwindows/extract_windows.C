@@ -57,6 +57,12 @@ void extract_windows( string rn, bool zoomRange = true  ){
 		return;
 	}
 
+	le_vs_tray->GetXaxis()->SetTitle( "Tray #" );
+	le_vs_tray->GetYaxis()->SetTitle( "LE Time (ns)" );
+	le_vs_tray->Draw( "colz" );
+	can->Print( rpName.c_str() );
+
+
 	int size = 500;
 	int signalWidth = 85;
 	int backOff = 30;

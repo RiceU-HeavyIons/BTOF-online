@@ -156,6 +156,7 @@ int main(int argc, char *argv[])
 	int bad=0;
 	
 	for(;;) {
+		if (good > 10000 ) break; 
 	        char *ret = evp->get(0,EVP_TYPE_ANY);
        
 		if(ret) {
@@ -241,7 +242,7 @@ int main(int argc, char *argv[])
 
 		dd = evp->det("sc")->get() ;
 		if(dd && dd->iterate()) {
-			LOG(INFO,"SC found") ;
+			// if(dd) LOG(INFO,"SC found") ;
 			if(strcasecmp(print_det,"sc")==0) {
 				sc_t *sc_p = (sc_t *) dd->Void ;
 				
@@ -264,26 +265,26 @@ int main(int argc, char *argv[])
 		}
 
 		dd = evp->det("fpd")->get("legacy") ;
-		if(dd) LOG(INFO,"FPD found") ;
+		// if(dd) LOG(INFO,"FPD found") ;
 
-		if(ftp_doer(evp,print_det)) LOG(INFO,"FTP found") ;
+		// if(ftp_doer(evp,print_det)) LOG(INFO,"FTP found") ;
 	
 				
 		dd = evp->det("rich")->get("legacy") ;
-		if(dd) LOG(INFO,"RIC found") ;
+		// if(dd) LOG(INFO,"RIC found") ;
 
 		dd = evp->det("ssd")->get("legacy") ;
-		if(dd) LOG(INFO,"SSD found") ;
+		// if(dd) LOG(INFO,"SSD found") ;
 
 		dd = evp->det("svt")->get("legacy") ;
-		if(dd) LOG(INFO,"SVT found") ;
+		// if(dd) LOG(INFO,"SVT found") ;
 
 		
-		if(pmd_doer(evp, print_det)) LOG(INFO,"PMD found") ;
+		// if(pmd_doer(evp, print_det)) LOG(INFO,"PMD found") ;
 
 		dd = evp->det("tof")->get("legacy") ;
 		if(dd) {
-			LOG(INFO,"TOF found") ;
+			// LOG(INFO,"TOF found") ;
 			if(strcasecmp(print_det,"tof")==0) {
 				while(dd->iterate()) {
 			                int nTof = 0;
@@ -370,22 +371,32 @@ int main(int argc, char *argv[])
 		}
 	        tree->Fill();
 
-		if(trg_doer(evp, print_det)) LOG(INFO,"TRG found") ;
+		if(trg_doer(evp, print_det)) {
+			// if(dd) LOG(INFO,"TRG found") ;
+		}
 		
 		/***************** EMCs ************************/
 
-		if(btow_doer(evp, print_det)) LOG(INFO,"BTOW found") ;
+		if(btow_doer(evp, print_det)) {
+			// if(dd) LOG(INFO,"BTOW found") ;
+		}
 
 		// logging done in the doer...
 		bsmd_doer(evp,print_det) ;
 
-		if(etow_doer(evp, print_det)) LOG(INFO,"ETOW found") ;
+		if(etow_doer(evp, print_det)) {
+			// if(dd) LOG(INFO,"ETOW found") ;
+		}
 
-		if(esmd_doer(evp, print_det)) LOG(INFO,"ESMD found") ;
+		if(esmd_doer(evp, print_det)) {
+			// if(dd) LOG(INFO,"ESMD found") ;
+		}
 
 		/******************** TPC (old electronics) ***********************/
 
-		if(tpc_doer(evp,print_det)) LOG(INFO,"TPC found (legacy)") ;
+		if(tpc_doer(evp,print_det)) {
+			// if(dd)LOG(INFO,"TPC found (legacy)") ;
+		}
 
 		/********************** TPX ***************************/
 		// logging is done in the tpx_doer...
@@ -394,25 +405,31 @@ int main(int argc, char *argv[])
 
 
 		/*************************** PP2PP **********************/
-		if(pp2pp_doer(evp,print_det)) LOG(INFO,"PP2PP found") ;
+		if(pp2pp_doer(evp,print_det)) {
+			// if(dd) LOG(INFO,"PP2PP found") ;
+		}
 
 
 		/*************************** L3/HLT09 **************************/
-		if(l3_doer(evp,print_det)) LOG(INFO,"L3/HLT_FY09 found") ;
+		if(l3_doer(evp,print_det)) {
+			// if(dd)LOG(INFO,"L3/HLT_FY09 found") ;
+		}
 
 		/*************************** HLT10 **************************/
-		if(hlt_doer(evp,print_det)) LOG(INFO,"HLT_FY10 found") ;
+		// if(hlt_doer(evp,print_det)) LOG(INFO,"HLT_FY10 found") ;
 
 		/*************************** L4 (HLT 12) *******************/
 		if(l4_doer(evp,print_det)) {
-		    LOG(INFO, "HLT FY12 found");
+		    // LOG(INFO, "HLT FY12 found");
 		}
 
 		/*************************** FGT **************************/
 		fgt_doer(evp,print_det,0) ;
 
 		/*************************** MTD **************************/
-		if(mtd_doer(evp,print_det)) LOG(INFO,"MTD found") ;
+		if(mtd_doer(evp,print_det)) {
+			// if(dd) LOG(INFO,"MTD found") ;
+		}
 
 
 		/*************************** GMT **************************/
@@ -423,14 +440,18 @@ int main(int argc, char *argv[])
 
 
 		/*************************** PXL **************************/
-		if(pxl_doer(evp,print_det)) LOG(INFO,"PXL found") ;
+		if(pxl_doer(evp,print_det)) {
+			// if(dd) LOG(INFO,"PXL found") ;
+		}
 		
 
 
 
 		/************  PSEUDO: SHOULD ONLY BE USED FOR BACKWARD COMPATIBILITY! ************/
 #ifdef INSIST_ON_EMC_PSEUDO
-		if(emc_pseudo_doer(evp,print_det)) LOG(INFO,"EMC found (any detector)") ;
+		if(emc_pseudo_doer(evp,print_det)) {
+			// if(dd) LOG(INFO,"EMC found (any detector)") ;
+		}
 #endif
 
 	}
@@ -775,7 +796,7 @@ static int tpx_doer(daqReader *rdr, const char  *do_print)
 	}
 
 	if(found) {
-		LOG(INFO,"TPX found [%s;%d]",fstr,s_cou) ;
+		// LOG(INFO,"TPX found [%s;%d]",fstr,s_cou) ;
 	}
 
 	return found ;
