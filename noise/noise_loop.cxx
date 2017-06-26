@@ -99,6 +99,7 @@ void noise::Loop() {
 	//
 	// 9,23 are impossible
 	int ActiveRun14[30] = {1,2,3,4,5,6,7,8,0,10,11,12,13,14,15,16,17,18,19,20,21,22,0,24,25,26,27,28,29,30};
+	int ActiveRun17[30] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,0,24,25,26,27,28,29,30};
 
 	float	off_tray[120];
 	float	off_glmod[3840];
@@ -468,7 +469,7 @@ void noise::Loop() {
 			}
 			//
 			//int kx		= ActiveRun13[kmtdtray-1] - 1;
-			int kx			= ActiveRun14[kmtdtray-1] - 1;
+			int kx			= ActiveRun17[kmtdtray-1] - 1;
 			int ky			= (ketaposn-1)*24 + kmtdstrlr*12 + kmtdstrip - 1;
 			if(kx>=0){ hmtdstripsbl->Fill(kx,ky,1); }
 			//
@@ -973,7 +974,7 @@ void noise::Loop() {
 // 	for (int ibl=1;ibl<=30;ibl++){
 // 		sprintf(buf,"htemp%d",ibl-1);
 // 		htemp[ibl-1]	= (TH1D*)hmtdonesidedhit->ProjectionY(buf,ibl,ibl);
-// 		if (ActiveRun14[ibl-1]>0){
+// 		if (ActiveRun17[ibl-1]>0){
 // 			++kkk;
 // 			ccan[ican]->cd(kkk);
 // 			htemp[ibl-1]->Draw();
@@ -1410,7 +1411,7 @@ void noise::Loop() {
 		gPad->SetLogz(1);
 		hmtdstripsbl->Draw("colz");
 		for (int i=0;i<30;i++){
-			//sprintf(buf,"%d",ActiveRun14[i]);
+			//sprintf(buf,"%d",ActiveRun17[i]);
 			sprintf(buf,"%d",i+1);
 			hmtdstripsbl->GetXaxis()->SetBinLabel(i+1,buf);
 		}
@@ -1441,7 +1442,7 @@ void noise::Loop() {
 
 	TLatex *mtdplotlabels[5][30];
 	for (int ibl=0;ibl<30;ibl++){
-		if (ActiveRun14[ibl]>0){
+		if (ActiveRun17[ibl]>0){
 			for (int i=0;i<5;i++){
 				sprintf(buf,"BL%d-%d",ibl+1,i+1);
 				mtdplotlabels[i][ibl] = new TLatex(0.15,0.17,buf);
@@ -1460,7 +1461,7 @@ void noise::Loop() {
  	ccan[ican]->SetFillColor(10);
  	ccan[ican]->cd(); ccan[ican]->Divide(5,30,0.0001,0.0001);
 	for (int ibl=0;ibl<30;ibl++){
-		if (ActiveRun14[ibl]>0){
+		if (ActiveRun17[ibl]>0){
 			for (int i=0;i<5;i++){
 				ccan[ican]->cd(5*kactive+1+i);
 				gPad->SetLogy(1);
@@ -1487,7 +1488,7 @@ void noise::Loop() {
  	ccan[ican]->SetFillColor(10);
  	ccan[ican]->cd(); ccan[ican]->Divide(5,30,0.0001,0.0001);
 	for (int ibl=0;ibl<30;ibl++){
-		if (ActiveRun14[ibl]>0){
+		if (ActiveRun17[ibl]>0){
 			for (int i=0;i<5;i++){
 				ccan[ican]->cd(5*kactive+1+i);
 				gPad->SetLogy(1);
@@ -1511,7 +1512,7 @@ void noise::Loop() {
  	ccan[ican]->SetFillColor(10);
  	ccan[ican]->cd(); ccan[ican]->Divide(5,30,0.0001,0.0001);
 	for (int ibl=0;ibl<30;ibl++){
-		if (ActiveRun14[ibl]>0){
+		if (ActiveRun17[ibl]>0){
 			for (int i=0;i<5;i++){
 				ccan[ican]->cd(5*kactive+1+i);
 				gPad->SetLogz(1);
@@ -1611,7 +1612,7 @@ void noise::Loop() {
  	ccan[ican]->SetFillColor(10);
  	ccan[ican]->cd(); ccan[ican]->Divide(5,30,0.0001,0.0001);
 	for (int ibl=0;ibl<30;ibl++){
-		if (ActiveRun14[ibl]>0){
+		if (ActiveRun17[ibl]>0){
 			for (int i=0;i<5;i++){
 				ccan[ican]->cd(5*kactive+1+i);
 				gPad->SetLogz(1);
@@ -1908,7 +1909,7 @@ void noise::Loop() {
  	ccan[ican]->SetFillColor(10);
  	ccan[ican]->cd(); ccan[ican]->Divide(5,30,0.0001,0.0001);
 	for (int ibl=0;ibl<30;ibl++){
-		if (ActiveRun14[ibl]>0){
+		if (ActiveRun17[ibl]>0){
 			for (int i=0;i<5;i++){
 				ccan[ican]->cd(5*kactive+1+i);
 				//gPad->SetLogy(1);

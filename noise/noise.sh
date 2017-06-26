@@ -30,4 +30,7 @@ echo '<stdout URL="file:'$LOGDIR/$run$day'.log" />' >> $WRKDIR/$infile
 echo '</job>' >> $WRKDIR/$infile
 
 # execute
+cd ~/scheduler
 $SUBMIT $WRKDIR/$infile
+cd -
+
