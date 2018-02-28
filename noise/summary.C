@@ -257,18 +257,18 @@ TH1::AddDirectory(kFALSE);
 		int	thisntot_mtd[30]	= {0};
 		int thisday				= day[iday];
 		if (day[iday]<10  ){
-			sprintf(buf," /star/institutions/rice/geurts/noise/noise_%d00%d.root",year[iday],day[iday]);
+			sprintf(buf," /gpfs01/star/subsysg/TOF/BTOF-online/noise/noise_%d00%d.root",year[iday],day[iday]);
 			kFileID				= year[iday]*1000 + day[iday];
 		} else if (day[iday]<100 ){
-			sprintf(buf," /star/institutions/rice/geurts/noise/noise_%d0%d.root", year[iday],day[iday]);
+			sprintf(buf," /gpfs01/star/subsysg/TOF/BTOF-online/noise/noise_%d0%d.root", year[iday],day[iday]);
 			kFileID				= year[iday]*1000 + day[iday];
 		} else if (day[iday]<1000){
-			sprintf(buf," /star/institutions/rice/geurts/noise/noise_%d%d.root",  year[iday],day[iday]);
+			sprintf(buf," /gpfs01/star/subsysg/TOF/BTOF-online/noise/noise_%d%d.root",  year[iday],day[iday]);
 			kFileID				= year[iday]*1000 + day[iday];
 		} else {
 			thisday	/= 10;
 			kFileID				= year[iday]*1000 + thisday;
-			sprintf(buf," /star/institutions/rice/geurts/noise/noise_%d%d.root",  year[iday],thisday);
+			sprintf(buf," /gpfs01/star/subsysg/TOF/BTOF-online/noise/noise_%d%d.root",  year[iday],thisday);
 		}
 		cout<<"i="<<iday<<"\t y="<<year[iday]<<"\t d="<<day[iday]<<" kFileID="<<kFileID<<"\t"<<buf<<endl;
 		TFile *fin = new TFile(buf,"READ");

@@ -129,7 +129,7 @@ void noise::Loop() {
 		}
 	}
 
-	sprintf(buf,"/star/institutions/rice/geurts/noise/noise_%d",kRunUse);
+	sprintf(buf,"/gpfs01/star/subsysg/TOF/BTOF-online/noise/noise_%d",kRunUse);
 	TString namebase	= TString(buf);
 	TString nameextr	= TString(".root");
 	TString nameroot	= namebase+nameextr;
