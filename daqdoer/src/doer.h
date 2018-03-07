@@ -23,7 +23,7 @@
 #include <DAQ_TPX/daq_tpx.h>
 #include <DAQ_TRG/daq_trg.h>
 
-#include "StTriggerData2017.h"
+#include "StTriggerData2018.h"
 
 #include <TFile.h>
 #include <TTree.h>
