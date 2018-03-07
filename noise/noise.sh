@@ -1,7 +1,8 @@
 #!/bin/sh
+STARLIB=SL17i
 WRKDIR=~/scheduler
 DAQDOER=./daqdoer
-BTOFONLINE=/star/u/geurts/run17
+BTOFONLINE=/star/u/geurts/BTOF-online
 DAQDIR=/gpfs01/star/scratch/geurts/daq
 LOGDIR=/star/u/geurts/logs
 SUBMIT=/afs/rhic.bnl.gov/star/packages/scripts/star-submit
@@ -17,7 +18,7 @@ infile=noise$runnumber.xml
 echo '<?xml version="1.0" encoding="utf-8" ?>' > $WRKDIR/$infile
 echo '<job>' >> $WRKDIR/$infile
 echo '<command>' >> $WRKDIR/$infile
-echo starver SL16j >> $WRKDIR/$infile
+echo starver $STARLIB >> $WRKDIR/$infile
 echo cd $BTOFONLINE/daqdoer >> $WRKDIR/$infile
 echo $DAQDOER $DAQDIR/$year/$day/$runnumber/'*.daq &lt;&lt; endd' >> $WRKDIR/$infile
 echo 1 >> $WRKDIR/$infile
@@ -30,7 +31,5 @@ echo '<stdout URL="file:'$LOGDIR/$run$day'.log" />' >> $WRKDIR/$infile
 echo '</job>' >> $WRKDIR/$infile
 
 # execute
-cd ~/scheduler
-$SUBMIT $WRKDIR/$infile
-cd -
-
+cd $WRKDIR
+$SUBMIT $infile

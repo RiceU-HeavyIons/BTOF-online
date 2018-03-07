@@ -28,32 +28,32 @@ bool SkipMtdStopTreeFill= false;
 //---- map of TRG digitised VPD channel to TOF digitised VPD channel
 // index is TRG ID, result is TOF ID.
 //
-//---- RUN-9 
-//Int_t map_vpd_trg2tof[16] = 
+//---- RUN-9
+//Int_t map_vpd_trg2tof[16] =
 //	{  0,  1,  2,  3,
 //	   6,  7,  8,  9,
 //	  10, 11, 12,  4,
 //	  15, 16, 17, 18 };
 //
 //---- RUN-10
-//Int_t map_vpd_trg2tof_west[16] = 
+//Int_t map_vpd_trg2tof_west[16] =
 //	{  0,  1,  2,  3,
 //	   6,  7,  8, 15,
 //	  10,  9, 12,  4,
 //	  11, 16, 17, 18 };
-//Int_t map_vpd_trg2tof_east[16] = 
+//Int_t map_vpd_trg2tof_east[16] =
 //	{  0,  1, 16,  3,
 //	   6,  7,  8,  9,
 //	  10, 11, 12,  4,
 //	  15,  2, 17, 18 };
-//	  
+//
 //---- RUN-15
-Int_t map_vpd_trg2tof_west[16] = 
+Int_t map_vpd_trg2tof_west[16] =
 	{  0,  1,  2,  3,
 	   6,  7,  8,  9,
 	  10, 11, 12,  4,
 	  15, 16, 17, 18 };
-Int_t map_vpd_trg2tof_east[16] = 
+Int_t map_vpd_trg2tof_east[16] =
 	{  0,  1,  2,  3,
 	   6,  7,  8,  9,
 	  10, 12, 11,  4,
@@ -66,7 +66,7 @@ Int_t map_seq_cntr[8] = { 5, 4, 6, 7, 0, 1, 3, 2 };
 
 //---- definitions...
 //
-int tof_doer(daqReader *rdr, 	struct P2P_st *P2P, struct doer_st *TOF, 
+int tof_doer(daqReader *rdr, 	struct P2P_st *P2P, struct doer_st *TOF,
 								Int_t iday, Int_t kChoice,
 								struct stop_st *STOP, struct INFO_st *MYINFO);
 //
@@ -75,9 +75,9 @@ int mtd_doer(daqReader *rdr,	Int_t iday, Int_t kChoice,
 //
 //int pp2pp_doer(daqReader *rdr, 	int StoreRaw, SVX_st *SVX, Hits_st *Hits, sili_st *si);
 //
-//int trg_doer(daqReader *rdr, 	struct bunch_crossing_st *xing, struct P2P_st *P2P, 
+//int trg_doer(daqReader *rdr, 	struct bunch_crossing_st *xing, struct P2P_st *P2P,
 //								struct DSM_st *DSM, struct VPD_st *VPD, struct TRG_st *TRG);
-int trg_doer(daqReader *rdr, 	struct bunch_crossing_st *xing, struct P2P_st *P2P, 
+int trg_doer(daqReader *rdr, 	struct bunch_crossing_st *xing, struct P2P_st *P2P,
 								struct VPD_st *VPD, struct TRG_st *TRG);
 //
 int tof_err_check(unsigned int words[], int bytes, int rdo1);
@@ -101,7 +101,7 @@ int GetNINO(int tdc,int chan);
 // 2936.8,  0.0,2936.7,2936.0,2935.7,2935.6,2936.6,2935.8,2935.9,2935.7,
 // 2935.8,2926.7,2930.0,2926.7,2926.7,2927.2,2927.0,2919.6,2919.6,2920.4
 // };
-//......................... run12 pp 200 
+//......................... run12 pp 200
 //.... 13039136
 // float TrayTrigTimingPeaks[120] = {
 // 2909.7,2909.8,2909.7,2910.2,2918.0,2917.3,2917.1,2917.4,2916.7,2917.5,
@@ -166,7 +166,7 @@ int GetNINO(int tdc,int chan);
 // 2917.8,2910.1,2913.0,2909.8,2910.1,2910.8,2910.2,2901.7,2901.5,2902.4,
 // 259.5,271.7
 // };
-// 
+//
 //.... run12 uu200 13115018
 // float TrayTrigTimingPeaks[122] = {
 // 2903.3,2902.9,2903.2,2903.4,2911.2,2911.6,2911.0,2911.2,2910.7,2911.4,
@@ -323,24 +323,24 @@ int GetNINO(int tdc,int chan);
 //	int trigwindowHigh[6]={2890,2955,2955,2955,280,295};
 //
 //--- 14070026 run13 pp500
-//	int trigwindowLow[6] ={2780,2845,2845,2845,205,220}; 
+//	int trigwindowLow[6] ={2780,2845,2845,2845,205,220};
 //	int trigwindowHigh[6]={2860,2915,2925,2925,265,280};
 //--- 14073012 run13 pp500 after new TCPU code
-//	int trigwindowLow[6] ={2745,2810,2810,2810,165,180}; 
+//	int trigwindowLow[6] ={2745,2810,2810,2810,165,180};
 //	int trigwindowHigh[6]={2825,2880,2890,2890,225,240};
 //
-//--- 15048021 run14 auau15 
-//	int trigwindowLow[6] ={2835,2900,2900,2900,265,280}; 
+//--- 15048021 run14 auau15
+//	int trigwindowLow[6] ={2835,2900,2900,2900,265,280};
 //	int trigwindowHigh[6]={2915,2970,2980,2980,325,340};
 //--- 15086055 run14 auau200
-//	int trigwindowLow[6] ={2860,2925,2925,2925,275,285}; 
+//	int trigwindowLow[6] ={2860,2925,2925,2925,275,285};
 //	int trigwindowHigh[6]={2920,2985,2985,2985,345,345};
 //--- 15171007 run14 heau200
-//	int trigwindowLow[6] ={2860,2925,2925,2925,275,285}; 
+//	int trigwindowLow[6] ={2860,2925,2925,2925,275,285};
 //	int trigwindowHigh[6]={2920,2985,2985,2985,345,345};
 //
 //--- 16039022 run15 pp200
-	int trigwindowLow[6] ={2760,2825,2825,2825,175,185}; 
+	int trigwindowLow[6] ={2760,2825,2825,2825,175,185};
 	int trigwindowHigh[6]={2820,2885,2885,2885,245,245};
 
 //---- crossing fit info....
@@ -354,7 +354,7 @@ int GetNINO(int tdc,int chan);
 //--- 13039136
 //	float crossingorigin = 71.5277786255;
 //	float crossingperiod = 106.494415283;
-//--- 13041010 
+//--- 13041010
 //	float crossingorigin = 72.5825958252;
 //	float crossingperiod = 106.430671692;
 //--- 13080080 1.6us
@@ -373,13 +373,13 @@ int GetNINO(int tdc,int chan);
 //	float crossingorigin = -2876.52;
 //	float crossingperiod =   106.548;
 //
-//--- 15048021 run14 auau15 
+//--- 15048021 run14 auau15
 //	float crossingorigin = -2902.23;
 //	float crossingperiod =  107.028;
-//--- 15086055 run14 auau200 
+//--- 15086055 run14 auau200
 //	float crossingorigin = -2981.79;
 //	float crossingperiod =  106.387;
-//--- 15171065 run14 heau200 
+//--- 15171065 run14 heau200
 //	float crossingorigin = -2982.8;
 //	float crossingperiod =   106.459;
 //--- 16039022 run15 pp200
@@ -392,7 +392,7 @@ int GetNINO(int tdc,int chan);
 //--- MTD 15048021
 //	int trigwindowLow_mtd[2]  = {2860,2805};	// run14 auau15
 //	int trigwindowHigh_mtd[2] = {2940,2885};
-//--- 15086055 run14 auau200 
+//--- 15086055 run14 auau200
 	int trigwindowLow_mtd[2]  = {2880,2825};	// run14 auau200
 	int trigwindowHigh_mtd[2] = {2950,2895};
 
@@ -441,7 +441,7 @@ int main(int argc, char **argv)
 
 	unsigned long itime_min = -1;
 	unsigned long itime_max =  0;
-		
+
 	struct 	evp_data_st			evp_data;
 	//struct 	sili_st				sili;
 	//struct 	Hits_st				Hits;
@@ -471,28 +471,28 @@ int main(int argc, char **argv)
 
 	int nhitstof_tof;
 	int nhitstof_trg;
- 	
-	// 	// mb1-fast					1			340011	
-	// 	// mb2-slow					2			340012	
-	// 	// ht-11						8			340500	
-	// 	// HLT-tracks					10			340005	
-	// 	// zdc-mon						40			7		
-	// 	// zdc-mon-tac					80			8		
-	// 	// vpd-mon						100			340060	
-	// 	// vpd-mon-tac					200			340061	
-	// 	// bbc-small-mon				400			340052	
-	// 	// bbc-small-mon-narrow		800			340053	
-	// 	// bbc-small-mon-wide			1000		340054	
-	// 	// bbc-large-mon				2000		340065	
-	// 	// bbc-large-mon-narrow		4000		340066	
-	// 	// bbc-large-mon-wide			8000		340067	
-	// 	// zerobias					20000		9300	
-	// 	// HLT-good					40000		340004	
-	// 	// bbc-small-tof-mon-wide		100000		340080	
-	// 	// bbc-small-tof-mon-narrow	200000		340081	
-	// 	// mtd							400000		340710	
-	// 	// tof-200-fast				800000		340300	
-	// 	// tof-250-slow				1000000		340301	
+
+	// 	// mb1-fast					1			340011
+	// 	// mb2-slow					2			340012
+	// 	// ht-11						8			340500
+	// 	// HLT-tracks					10			340005
+	// 	// zdc-mon						40			7
+	// 	// zdc-mon-tac					80			8
+	// 	// vpd-mon						100			340060
+	// 	// vpd-mon-tac					200			340061
+	// 	// bbc-small-mon				400			340052
+	// 	// bbc-small-mon-narrow		800			340053
+	// 	// bbc-small-mon-wide			1000		340054
+	// 	// bbc-large-mon				2000		340065
+	// 	// bbc-large-mon-narrow		4000		340066
+	// 	// bbc-large-mon-wide			8000		340067
+	// 	// zerobias					20000		9300
+	// 	// HLT-good					40000		340004
+	// 	// bbc-small-tof-mon-wide		100000		340080
+	// 	// bbc-small-tof-mon-narrow	200000		340081
+	// 	// mtd							400000		340710
+	// 	// tof-200-fast				800000		340300
+	// 	// tof-250-slow				1000000		340301
 
     //rtsLogOutput(RTS_LOG_STDERR) ;
     //rtsLogLevel(WARN) ;
@@ -511,7 +511,7 @@ int main(int argc, char **argv)
     cout<<"Enter run string for output file name"<<endl;
     cin>>ofilestr;
     cout<<"ofilestr        = "<<ofilestr<<endl;
-    
+
 	if (kDataChoice==0){
 		SkipTrgDetTree		= kFALSE;
 		SkipTofStopTree		= kTRUE;
@@ -530,7 +530,7 @@ int main(int argc, char **argv)
 		SkipTofStopTreeFill	= kTRUE;
 		SkipMtdStopTree		= kFALSE;
 		SkipMtdStopTreeFill	= kFALSE;
-	} else if (kDataChoice==3){ 
+	} else if (kDataChoice==3){
 		SkipTrgDetTree		= kFALSE;
 		SkipTofStopTree		= kFALSE;
 		SkipTofStopTreeFill	= kTRUE;
@@ -545,9 +545,9 @@ int main(int argc, char **argv)
     cout<<"SkipMtdStopTree     = "<<(int)SkipMtdStopTree<<endl;
     cout<<"SkipMtdStopTreeFill = "<<(int)SkipMtdStopTreeFill<<endl;
 
-    sprintf(rootfilename, "/star/institutions/rice/geurts/dd/daqdoer_%s.root", ofilestr);
+    sprintf(rootfilename, "/gpfs01/star/subsysg/TOF/BTOF-online/dd/daqdoer_%s.root", ofilestr);
     cout<<"  out file name = "<<rootfilename<<endl;
-    
+
     TFile *f = new TFile(rootfilename, "RECREATE", "DAQdoer tree");
 	//
 	TH1D *hnwordsfiber[4];
@@ -560,7 +560,7 @@ int main(int argc, char **argv)
 	TH1D *hp_p2p_tof = new TH1D("hp_p2p_tof","hp_p2p_tof",16,-0.5,15.5);
 	TH1D *hp_vpd_trg = new TH1D("hp_vpd_trg","hp_vpd_trg",38,-0.5,37.5);
 	TH1D *hp_p2p_trg = new TH1D("hp_p2p_trg","hp_p2p_trg",16,-0.5,15.5);
-	// 
+	//
 	TH1D *hp_bbc = new TH1D("hp_bbc","hp_bbc",48,-0.5,47.5);
 	TH1D *hp_bbc_tofintime = new TH1D("hp_bbc_tofintime","hp_bbc_tofintime",48,-0.5,47.5);
 	TH1D *hp_bbc_tofearly = new TH1D("hp_bbc_tofearly","hp_bbc_tofearly",48,-0.5,47.5);
@@ -732,7 +732,7 @@ int main(int argc, char **argv)
 		sprintf(tbuf,"Nnino-L0 TIGHT, tray=%d",i);
 		hninocorrtight_tray_diffnoax[i]	= new TH1D(buf,tbuf,49,-24.5,24.5);
 	}
-	
+
  	TH1D *htrgdtime_mtd[2];
  	TH1D *htrgdtimekeep_mtd[2];
  	for (int i=0;i<2;i++){
@@ -748,21 +748,21 @@ int main(int argc, char **argv)
 		htrgdtime_mtd_tray[i] = new TH1D(buf,buf,5201,-0.5,5200.5);
 		sprintf(buf,"htrgdtimekeep_mtd_tray%d",i);
 		htrgdtimekeep_mtd_tray[i] = new TH1D(buf,buf,5201,-0.5,5200.5);
-	}	 	
-	
+	}
+
 	TH1D *hntofhits_crossing[48];
 	for (int i=0;i<48;i++){
 		sprintf(buf,"hntofhits_crossing%d",i);
 		sprintf(tbuf,"TofMult, Crossing=%d",i-28);
 		hntofhits_crossing[i]	= new TH1D(buf,tbuf,200,0.0,TOFMULTMAX);
-	}	
+	}
 
 	TH1D *hnhitstof_tof		= new TH1D("hnhitstof_tof","hnhitstof_tof",700,0.0,3500.);
 	TH1D *hnhitstof_trg		= new TH1D("hnhitstof_trg","hnhitstof_trg",400,0.0,2000.);
-	TH2D *hnhitstof_trgtof	= new TH2D("hnhitstof_trgtof","hnhitstof_trgtof",140,0.0,3500.,80,0.0,2000.);	
+	TH2D *hnhitstof_trgtof	= new TH2D("hnhitstof_trgtof","hnhitstof_trgtof",140,0.0,3500.,80,0.0,2000.);
 	TH1D *hnhitstof_tof_low		= new TH1D("hnhitstof_tof_low","hnhitstof_tof_low",200,0.,TOFMULTMAX);
 	TH1D *hnhitstof_trg_low		= new TH1D("hnhitstof_trg_low","hnhitstof_trg_low",200,0.,TOFMULTMAX);
-	TH2D *hnhitstof_trgtof_low	= new TH2D("hnhitstof_trgtof_low","hnhitstof_trgtof_low",200,0.,TOFMULTMAX,200,0.,TOFMULTMAX);	
+	TH2D *hnhitstof_trgtof_low	= new TH2D("hnhitstof_trgtof_low","hnhitstof_trgtof_low",200,0.,TOFMULTMAX,200,0.,TOFMULTMAX);
 
 	TH1D *hnhitstof_xingall		= new TH1D("hnhitstof_xingall","hnhitstof_xingall",200,0.,TOFMULTMAX);
 	TH1D *hnhitstof_xingtrg		= new TH1D("hnhitstof_xingtrg","hnhitstof_xingtrg",200,0.,TOFMULTMAX);
@@ -775,10 +775,10 @@ int main(int argc, char **argv)
 	TH1D *hnhitstof_xingp2_vpd	= new TH1D("hnhitstof_xingp2_vpd","hnhitstof_xingp2_vpd",200,0.,TOFMULTMAX);
 	TH1D *hnhitstof_xingm7_vpd	= new TH1D("hnhitstof_xingm7_vpd","hnhitstof_xingm7_vpd",200,0.,TOFMULTMAX);
 	TH1D *hnhitstof_xingp7_vpd	= new TH1D("hnhitstof_xingp7_vpd","hnhitstof_xingp7_vpd",200,0.,TOFMULTMAX);
-	
+
 	TH1D *hnhitstof_time 		= 0;
 	TH1D *hnhitsmtd_time[30]	= {0};
-	if (itime_min_use>0 && itime_max_use>itime_min_use){	
+	if (itime_min_use>0 && itime_max_use>itime_min_use){
 		int nsec	= itime_max_use - itime_min_use + 60;
 		cout<<" TimeMin use = "<<itime_min_use<<endl;
 		cout<<" TimeMax use = "<<itime_max_use<<endl;
@@ -811,7 +811,7 @@ int main(int argc, char **argv)
 	Float_t zdc_adc[6];
 	Float_t mtd_tac[4];
 	Float_t mtd_adc[4];
-	if (!SkipTrgDetTree){	
+	if (!SkipTrgDetTree){
 		tp = new TTree("tp","VPD,BBC,ZDC,P2P,MTD tree");
 		Int_t		kseqchain;
 		Int_t		p2p_sin[32];		// 4*Sequence + Chain
@@ -841,7 +841,7 @@ int main(int argc, char **argv)
 		//
 		//tp->Branch("p2p_sin"  ,&p2p_sin[0],  "p2p_sin[32]/I");	// k = 4*seq + chain
 	}
-	
+
 	int nevt_wTofHit = 0;
 	int nevt_wMtdHit = 0;
 	int nhitsevt_tofintime[122] = {0};
@@ -866,7 +866,7 @@ int main(int argc, char **argv)
 	int nhitstof_xingp2_vpd		= 0;
 	int nhitstof_xingm7_vpd		= 0;
 	int nhitstof_xingp7_vpd		= 0;
-		
+
 	TTree *ts;
 	int 	nTofHits=0;
 	int 	nTofHitsLE=0;
@@ -879,8 +879,8 @@ int main(int argc, char **argv)
 	float	trgdtime[10000];
 	float	tle[10000];
 	float	tte[10000];
-	float	tot[10000];	
-	if (!SkipTofStopTree){	
+	float	tot[10000];
+	if (!SkipTofStopTree){
 		ts = new TTree("ts","TOF stop-side tree");
 		//ts->SetMaxTreeSize(100000000000LL);
 		ts->Branch("time",&evttime,"time/i");
@@ -915,8 +915,8 @@ int main(int argc, char **argv)
 	float	mtrgdtime[10000];
 	float	mtle[10000];
 	float	mtte[10000];
-	float	mtot[10000];	
-	if (!SkipMtdStopTree){	
+	float	mtot[10000];
+	if (!SkipMtdStopTree){
 		tm = new TTree("tm","MTD stop-side tree");
 		//tm->SetMaxTreeSize(100000000000LL);
 		tm->Branch("time",&evttime,"time/i");
@@ -943,7 +943,7 @@ int main(int argc, char **argv)
 //-------------------- file loop -----------------------------------------------------------
   cout<<"argc="<<argc<<endl;
   for (int i = 1; i < argc; ++i) {	// file loop
-  
+
   	++filenum;
   	cout<<i<<" "<<argv[i]<<endl;
     evp = new daqReader(argv[i]);	// created with the filename as an argument..
@@ -955,65 +955,65 @@ int main(int argc, char **argv)
 	} else if (strstr(evp->file_name,"st_physics")!=0){
 		if (strstr(evp->file_name,"/star/data03")!=0){
 			sscanf(evp->file_name,"/star/data03/daq/geurts/%d/st_physics_",&runnum);
-		} else if (strstr(evp->file_name,"/star/institutions/rice")!=0){
-	 		sscanf(evp->file_name,"/star/institutions/rice/geurts/%d/st_physics_",&runnum);
+		} else if (strstr(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online")!=0){
+	 		sscanf(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online/daq/%d/st_physics_",&runnum);
 		}
 	} else if (strstr(evp->file_name,"st_tofcosmic")!=0){
 		if (strstr(evp->file_name,"/star/data03")!=0){
 			sscanf(evp->file_name,"/star/data03/daq/geurts/%d/st_",&runnum);
-		} else if (strstr(evp->file_name,"/star/institutions/rice")!=0){
-	 		sscanf(evp->file_name,"/star/institutions/rice/geurts/%d/st_",&runnum);
+		} else if (strstr(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online")!=0){
+	 		sscanf(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online/daq/%d/st_",&runnum);
 		}
 	} else if (strstr(evp->file_name,"st_ftp_")!=0){
 		if (strstr(evp->file_name,"/star/data03")!=0){
 			sscanf(evp->file_name,"/star/data03/daq/tof/geurts/%d/st_",&runnum);
-		} else if (strstr(evp->file_name,"/star/institutions/rice")!=0){
-	 		sscanf(evp->file_name,"/star/institutions/rice/geurts/%d/st_",&runnum);
+		} else if (strstr(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online")!=0){
+	 		sscanf(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online/daq/%d/st_",&runnum);
 		}
 	} else if (strstr(evp->file_name,"st_ht_")!=0){
 		if (strstr(evp->file_name,"/star/data03")!=0){
 			sscanf(evp->file_name,"/star/data03/daq/tof/geurts/%d/st_",&runnum);
-		} else if (strstr(evp->file_name,"/star/institutions/rice")!=0){
-	 		sscanf(evp->file_name,"/star/institutions/rice/geurts/%d/st_",&runnum);
+		} else if (strstr(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online")!=0){
+	 		sscanf(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online/daq/%d/st_",&runnum);
 		}
 	} else if (strstr(evp->file_name,"st_zerobias_")!=0){
 		if (strstr(evp->file_name,"/star/data03")!=0){
 			sscanf(evp->file_name,"/star/data03/daq/tof/geurts/%d/st_",&runnum);
-		} else if (strstr(evp->file_name,"/star/institutions/rice")!=0){
-	 		sscanf(evp->file_name,"/star/institutions/rice/geurts/%d/st_",&runnum);
+		} else if (strstr(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online")!=0){
+	 		sscanf(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online/daq/%d/st_",&runnum);
 		}
 	} else if (strstr(evp->file_name,"st_upc_")!=0){
 		if (strstr(evp->file_name,"/star/data03")!=0){
 			sscanf(evp->file_name,"/star/data03/daq/geurts/%d/st_",&runnum);
-		} else if (strstr(evp->file_name,"/star/institutions/rice")!=0){
-	 		sscanf(evp->file_name,"/star/institutions/rice/geurts/%d/st_",&runnum);
+		} else if (strstr(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online")!=0){
+	 		sscanf(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online/daq/%d/st_",&runnum);
 		}
 	} else if (strstr(evp->file_name,"st_mtd_")!=0){
 		if (strstr(evp->file_name,"/star/data03")!=0){
 			sscanf(evp->file_name,"/star/data03/daq/geurts/%d/st_",&runnum);
-		} else if (strstr(evp->file_name,"/star/institutions/rice")!=0){
-	 		sscanf(evp->file_name,"/star/institutions/rice/geurts/%d/st_",&runnum);
+		} else if (strstr(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online")!=0){
+	 		sscanf(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online/daq/%d/st_",&runnum);
 		}
 	} else if (strstr(evp->file_name,"st_hlt_")!=0){
 		if (strstr(evp->file_name,"/star/data03")!=0){
 			sscanf(evp->file_name,"/star/data03/daq/tof/geurts/%d/st_",&runnum);
-		} else if (strstr(evp->file_name,"/star/institutions/rice")!=0){
-	 		sscanf(evp->file_name,"/star/institutions/rice/geurts/%d/st_",&runnum);
+		} else if (strstr(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online")!=0){
+	 		sscanf(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online/daq/%d/st_",&runnum);
 		}
 	} else if (strstr(evp->file_name,"st_gamma_")!=0){
 		if (strstr(evp->file_name,"/star/data03")!=0){
 			sscanf(evp->file_name,"/star/data03/daq/tof/geurts/%d/st_",&runnum);
-		} else if (strstr(evp->file_name,"/star/institutions/rice")!=0){
-	 		sscanf(evp->file_name,"/star/institutions/rice/geurts/%d/st_",&runnum);
+		} else if (strstr(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online")!=0){
+	 		sscanf(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online/daq/%d/st_",&runnum);
 		}
 	} else {
 		if (strstr(evp->file_name,"/star/data03")!=0){
 			sscanf(evp->file_name,"/star/data03/daq/geurts/%d/",&runnum);
-		} else if (strstr(evp->file_name,"/star/institutions/rice")!=0){
-	 		sscanf(evp->file_name,"/star/institutions/rice/geurts/%d/",&runnum);
+		} else if (strstr(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online")!=0){
+	 		sscanf(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online/daq/%d/",&runnum);
 		}
 	}
-	
+
 	int kyear = runnum/1000000;
 	daynum	= (runnum - kyear*1000000)/1000;
 	int krunonday = (runnum - kyear*1000000 - daynum*1000);
@@ -1105,7 +1105,7 @@ int main(int argc, char **argv)
 		if (evttime_start>0){
 			evttime			   -= evttime_start;
 		}
-		
+
 		//cout<<evp->trgcmd<<" "<<evp->daqcmd<<" "<<evp->trgword<<" "
 		//	<<evp->phyword<<" "<<evp->daqbits<<" "<<evp->daqbits64<<" "
 		//	<<endl;
@@ -1124,7 +1124,7 @@ int main(int argc, char **argv)
 		bool tof200fast = false;
 		bool hlttracks  = false;
 		bool tofmult4	= false;
-		// 
+		//
 		for (int ibit=63;ibit>=0;ibit--){
 			if ((idata>>ibit) & 1){
 				//cout<<1;
@@ -1158,21 +1158,21 @@ int main(int argc, char **argv)
 		//
 		//if (!tofmult4){ continue; }
 		//
-		//if (!bbcmbtof0){ continue; }		
+		//if (!bbcmbtof0){ continue; }
 		//
 		for (int ibit=63;ibit>=0;ibit--){ htrgbits->Fill(ibit,trgbits[ibit]); }
 		++nevt_seen;
 		if (zdc)     { ++ntrg_zdc;      }
 		if (vpd)     { ++ntrg_vpd;      }
 		if (bbcsmall){ ++ntrg_bbcsmall; }
-		
+
 		//---- Get Trigger Detector Data..................................................
 		if (!SkipTrgDetTree){
 			//istat = trg_doer(evp, &xing, &P2P, &DSM, &VPD, &TRG);
 			istat = trg_doer(evp, &xing, &P2P, &VPD, &TRG);
 			if (istat < 0) {
 				//cout<<"....No TRG Data.... "<<ievtnum<<endl;
-				//continue;	
+				//continue;
 			} else {
 				++nev_det[0];
 				// int thistofmult = 0;
@@ -1193,7 +1193,7 @@ int main(int argc, char **argv)
 // 		if (dd){
 // 			while (dd->iterate()){
 // 				tof_t *tof = (tof_t*)dd->Void;
-// 				if (tof){ 
+// 				if (tof){
 // 					for (int r=0;r<4;r++) {					// loop over fibers....
 // 						int nwords	= tof->ddl_words[r];
 // 						for (int i=0;i<nwords;i++){			// loop over words....
@@ -1210,7 +1210,7 @@ int main(int argc, char **argv)
 		istat = tof_doer(evp, &P2P, &TOF, daynum, kDataChoice, &STOP, &MYINFO);
 		if (istat < 0) {
 			//cout<<"....No TOF Data.... "<<ievtnum<<endl;
-			//continue;	
+			//continue;
 		} else {
 			++nev_det[1];
 //?!?!?!?			if (nTofHits){++nevt_wTofHit;}
@@ -1220,21 +1220,21 @@ int main(int argc, char **argv)
 				hnwordsfiber[i]->Fill(MYINFO.nwordsfiber[i]);
 			}
 			//
-		} 
-		if (MYINFO.nhits_intime>5&&MYINFO.nhits_early<5){ 
-			for (int i=63;i>=0;i--){ htrgbits_tofintime->Fill(i,trgbits[i]); }
-			++nevt_tofintime; 
 		}
-		if (MYINFO.nhits_intime<5&&MYINFO.nhits_early>5){ 
+		if (MYINFO.nhits_intime>5&&MYINFO.nhits_early<5){
+			for (int i=63;i>=0;i--){ htrgbits_tofintime->Fill(i,trgbits[i]); }
+			++nevt_tofintime;
+		}
+		if (MYINFO.nhits_intime<5&&MYINFO.nhits_early>5){
 			for (int i=63;i>=0;i--){ htrgbits_tofearly->Fill(i,trgbits[i]); }
-			++nevt_tofearly; 
+			++nevt_tofearly;
 		}
 
 		//---- Get MTD Detector Data......................................................
  		istat = mtd_doer(evp, daynum, kDataChoice, &MTD, &MYINFO);
 		if (istat < 0) {
 			//cout<<"....No MTD Data.... "<<ievtnum<<endl;
-			//continue;	
+			//continue;
 		} else {
 			++nev_det[2];
 			for (int i=0;i<30;i++){
@@ -1256,11 +1256,11 @@ int main(int argc, char **argv)
 		// istat = pp2pp_doer(evp, SiRawFlag, &SVX, &Hits, &sili);
 		// if (istat < 0) {
 		// 	//cout<<"....No P2P Data.... "<<ievtnum<<endl;
-		// 	//continue;	
+		// 	//continue;
 		// } else {
 		// 	++nev_det[2];
 		// }
-				
+
 		//---- Process & Write Data.......................................................
 
 		int  vpdtrg_ne=0,vpdtrg_nw=0;
@@ -1370,7 +1370,7 @@ int main(int argc, char **argv)
 			for (int i=0;i<16;i++){
 				if ((!TakeAllData && p2p_tac[i]>100.0)
 				 || ( TakeAllData)) {
-					hp_p2p_trg->Fill(i,1.);	
+					hp_p2p_trg->Fill(i,1.);
 					if (p2p_tac[i]>100.){
 						liveP2Ptrg	= true;
 					}
@@ -1393,7 +1393,7 @@ int main(int argc, char **argv)
 	// 				}
 	// 			}
 	// 		}
-			//		
+			//
 			//---- BBC information ....................................
 //cout<<MYINFO.nhits_intime<<" "<<MYINFO.nhits_early<<endl;
 			bool is_bbcl;
@@ -1439,7 +1439,7 @@ int main(int argc, char **argv)
 					zdc_tac[i]		= 0.0;
 					zdc_adc[i]		= 0.0;
 				}
-			}	
+			}
 			//
 			//---- MTD information ....................................
 			for (int i=0;i<1;i++){
@@ -1454,7 +1454,7 @@ int main(int argc, char **argv)
 					mtd_tac[i]		= 0.0;
 					mtd_adc[i]		= 0.0;
 				}
-			}	
+			}
 			//
 			//---- TOF information ....................................
 			for (int i=0;i<38;i++){
@@ -1462,17 +1462,17 @@ int main(int argc, char **argv)
 				vpd_tle[i] 		= TOF.vpd_tle[i];
 				vpd_tte[i] 		= TOF.vpd_tte[i];
 				vpd_tot[i] 		= TOF.vpd_tot[i];
-				if (vpd_tle[i]>0.){ 
+				if (vpd_tle[i]>0.){
 					liveVPDtof	= true;
-					hp_vpd_tof->Fill(i,1.); 
+					hp_vpd_tof->Fill(i,1.);
 				}
 			}
-			for (int i=0;i<16;i++){		
+			for (int i=0;i<16;i++){
 				p2p_cco[i] 		= TOF.p2p_cco[i];
 				p2p_tle[i] 		= TOF.p2p_tle[i];
 				p2p_tte[i] 		= TOF.p2p_tte[i];
 				p2p_tot[i] 		= TOF.p2p_tot[i];
-				if (p2p_tle[i]>0.){ 
+				if (p2p_tle[i]>0.){
 					liveP2Ptof	= true;
 					hp_p2p_tof->Fill(i,1.);
 				}
@@ -1492,7 +1492,7 @@ int main(int argc, char **argv)
 // 					ictr		= map_seq_cntr[iseq];
 // 					for (int id=0;id<16;id++){
 // 						ilr		= id%2;
-// 						idet	= 2*ictr + ilr; 
+// 						idet	= 2*ictr + ilr;
 // 						if (p2p_sin[kseqchain]>0 && p2p_tac[id]>100 && p2p_tac[id]<2000 ){
 // 							hpsipmt->Fill(id,idet);
 // 						}
@@ -1502,18 +1502,18 @@ int main(int argc, char **argv)
 // 		}
 //			if (liveP2Ptrg && p2p_tle[i]>0){
 //				cout<<i<<" "<<p2p_cco[i]<<" ";
-//			}	
+//			}
 
 		if (!SkipTofStopTree){
 			nTofHits		= STOP.nTofHits;
 			nTofHitsLE		= STOP.nTofHitsLE;
 			nTofHitsTE		= STOP.nTofHitsTE;
 			nhitstof_tof	= 0;
-			for (int it=0;it<122;it++){ 
-				nhitsevt_tofintime[it] = 0; 
-				nhitsevt_tofintimetight[it] = 0; 
+			for (int it=0;it<122;it++){
+				nhitsevt_tofintime[it] = 0;
+				nhitsevt_tofintimetight[it] = 0;
 			}
-			for (int ic=0;ic<48;ic++){ 
+			for (int ic=0;ic<48;ic++){
 				nhits_crossing[ic]	= 0;
 				nhits_crossing_vpd[ic]	= 0;
 				nhits_crossing_trays[ic]	= 0;
@@ -1529,7 +1529,7 @@ int main(int argc, char **argv)
 			nhitstof_xingp2_vpd		= 0;
 			nhitstof_xingm7_vpd		= 0;
 			nhitstof_xingp7_vpd		= 0;
-			for (int itr=0;itr<64;itr++){ 
+			for (int itr=0;itr<64;itr++){
 				nhits_prec_bytrig[itr] = 0;
 				nhits_tric_bytrig[itr] = 0;
 				nhits_posc_bytrig[itr] = 0;
@@ -1543,7 +1543,7 @@ int main(int argc, char **argv)
 				trgdtime[ih]= STOP.trgdtime[ih];
 				tle[ih]		= STOP.tle[ih];
 				tte[ih]		= STOP.tte[ih];
-				tot[ih]		= STOP.tot[ih];	
+				tot[ih]		= STOP.tot[ih];
 				//
 				int ithub		= GetTHUB(tray[ih]+1);
 				int itrayuse	= tray[ih];
@@ -1643,7 +1643,7 @@ int main(int argc, char **argv)
 				//
 			}
 			if (!SkipTofStopTreeFill){
-				ts->Fill();	
+				ts->Fill();
 			}
 			//
 			for (int i=0;i<38;i++){
@@ -1651,17 +1651,17 @@ int main(int argc, char **argv)
 				vpd_tle[i] 		= TOF.vpd_tle[i];
 				vpd_tte[i] 		= TOF.vpd_tte[i];
 				vpd_tot[i] 		= TOF.vpd_tot[i];
-				if (vpd_tle[i]>0.){ 
+				if (vpd_tle[i]>0.){
 					liveVPDtof	= true;
-					hp_vpd_tof->Fill(i,1.); 
+					hp_vpd_tof->Fill(i,1.);
 				}
 			}
-			for (int i=0;i<16;i++){		
+			for (int i=0;i<16;i++){
 				p2p_cco[i] 		= TOF.p2p_cco[i];
 				p2p_tle[i] 		= TOF.p2p_tle[i];
 				p2p_tte[i] 		= TOF.p2p_tte[i];
 				p2p_tot[i] 		= TOF.p2p_tot[i];
-				if (p2p_tle[i]>0.){ 
+				if (p2p_tle[i]>0.){
 					liveP2Ptof	= true;
 					hp_p2p_tof->Fill(i,1.);
 				}
@@ -1765,7 +1765,7 @@ int main(int argc, char **argv)
 		hnhitstof_xingp2_vpd->Fill(nhitstof_xingp2_vpd);
 		hnhitstof_xingm7_vpd->Fill(nhitstof_xingm7_vpd);
 		hnhitstof_xingp7_vpd->Fill(nhitstof_xingp7_vpd);
-		
+
  		if (!SkipMtdStopTree){
  			nMtdHits		= MTD.nMtdHits;
  			nMtdHitsLE		= MTD.nMtdHitsLE;
@@ -1782,7 +1782,7 @@ int main(int argc, char **argv)
 				mtrgdtime[ih]= MTD.trgdtime[ih];
 				mtle[ih]	= MTD.tle[ih];
 				mtte[ih]	= MTD.tte[ih];
-				mtot[ih]	= MTD.tot[ih];	
+				mtot[ih]	= MTD.tot[ih];
 				//
 				kIndex		= MTD.tray[ih]-1;
 				int iRDO	= 1;
@@ -1792,7 +1792,7 @@ int main(int argc, char **argv)
 				//
 				float dtime	= mtrgdtime[ih];
 				htrgdtime_mtd[iRDO-1]->Fill(dtime);
-				htrgdtime_mtd_tray[kIndex]->Fill(dtime);				
+				htrgdtime_mtd_tray[kIndex]->Fill(dtime);
 				//cout<<MTD.tray[ih]<<" "<<MTD.module[ih]<<" "
 				//	<<MTD.modch[ih]<<" "<<MTD.cell[ih]<<" "
 				//	<<MTD.strip[ih]<<endl;
@@ -1800,11 +1800,11 @@ int main(int argc, char **argv)
 				float alimu	= trigwindowHigh_mtd[iRDO-1];
 				if (dtime>=aliml&&dtime<=alimu){
 					htrgdtimekeep_mtd[iRDO-1]->Fill(dtime);
-					htrgdtimekeep_mtd_tray[kIndex]->Fill(dtime);				
-				}				
+					htrgdtimekeep_mtd_tray[kIndex]->Fill(dtime);
+				}
 			}
 			if (!SkipMtdStopTreeFill){
-				tm->Fill();	
+				tm->Fill();
 			}
 		}
 		//---- end SkipMtdStopTree check...
@@ -1812,13 +1812,13 @@ int main(int argc, char **argv)
 		if (thistime < 0)        { itime_min = thistime; }
 		if (thistime < itime_min){ itime_min = thistime; }
 		if (thistime > itime_max){ itime_max = thistime; }
-		if (ievtnum%1000==0){ 
+		if (ievtnum%1000==0){
 			cout<<"Processed "<<ievtnum<<" ("<<NEVTMAX<<")"
 				<<"\t time="<<evp->evt_time
 				<<"\t Ntof="<<nTofHits
 				<<"\t Nmtd=";
 				for (int ibl=0;ibl<30;ibl++){ cout<<nMtdHitsBL[ibl]; }
-				cout<<endl; 
+				cout<<endl;
 		}
 
 		for (int itr=0;itr<64;itr++){
@@ -1828,7 +1828,7 @@ int main(int argc, char **argv)
 			if (nhits_prec_bytrig[itr]>100){ ++nevts_prec_bytrig[itr]; }
 			if (nhits_tric_bytrig[itr]>100){ ++nevts_tric_bytrig[itr]; }
 			if (nhits_posc_bytrig[itr]>100){ ++nevts_posc_bytrig[itr]; }
-		}			
+		}
 
 		//cout<<nhitstof_tof<<" "<<nhitstof_trg<<endl;
 		hnhitstof_tof->Fill(nhitstof_tof);
@@ -1841,10 +1841,10 @@ int main(int argc, char **argv)
 		if (hnhitstof_time){
 			hnhitstof_time->Fill(evp->evt_time,nhitstof_tof);
 		}
-		
+
     }	//---- end event in file loop....
     delete evp;
-    
+
   }		//---- end file loop....
 
   	//---- Finish
@@ -1871,7 +1871,7 @@ int main(int argc, char **argv)
 		if (nevts_tric_bytrig[itr]){
 			cout<<itr<<"\t"<<nevts_prec_bytrig[itr]<<"\t"<<nevts_tric_bytrig[itr]<<"\t"<<nevts_posc_bytrig[itr]<<endl;
 		}
-	}	
+	}
 	//
 //	cout<<" Nrawhits MTD26   = "<<nMtdHits26_total<<endl;
 //	cout<<" Nrawhits MTD27   = "<<nMtdHits27_total<<endl;
@@ -1887,4 +1887,3 @@ int main(int argc, char **argv)
     //delete evp;
     return 0;
 }
-

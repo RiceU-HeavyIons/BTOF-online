@@ -19,7 +19,7 @@ unsigned int GetLETime(TsPacket *p, int bunch);
 unsigned int GetTrgDTime(TsPacket *p, int bunch);
 int tdcchan2globalstrip(int,int,int,int,int);
 	
-const int MAXMTDHITS = 1200;
+const int MAXMTDHITS = 2900;
 
 int mtd9map[3][8];
 
