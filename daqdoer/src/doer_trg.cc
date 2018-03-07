@@ -29,8 +29,8 @@ int trg_doer(daqReader *rdr,
     dd = rdr->det("trg")->get("raw") ;
     if (!(dd && dd->iterate())) return -1;
 
-    StTriggerData2017* trg_p;
-    trg_p = new StTriggerData2017((TriggerDataBlk2017*)dd->Void, rdr->run);
+    StTriggerData2018* trg_p;
+    trg_p = new StTriggerData2018((TriggerDataBlk2018*)dd->Void, rdr->run);
 
     xing->xing_lo 		= trg_p->bunchCounterLow();
     xing->xing_hi 		= trg_p->bunchCounterHigh();

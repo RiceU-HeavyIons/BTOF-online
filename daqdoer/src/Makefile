@@ -31,7 +31,7 @@ clean:
 #daqdoer: main.o tof_err_check.o StTriggerData.o StTriggerData2012.o doer_pp2pp.o doer_trg.o doer_tof.o doer_mtd.o doer_utils.o TsPacket.o
 #	$(CXX) -g -m32 -o $@ $(LDLIBS) -Wl,--whole-archive $^ -Wl,--no-whole-archive
 #	-mv -v $@ ..
-daqdoer: main.o tof_err_check.o StTriggerData.o StTriggerData2017.o doer_pp2pp.o doer_trg.o doer_tof.o doer_mtd.o doer_utils.o TsPacket.o
+daqdoer: main.o tof_err_check.o StTriggerData.o StTriggerData2018.o doer_pp2pp.o doer_trg.o doer_tof.o doer_mtd.o doer_utils.o TsPacket.o
 	$(CXX) -g -m32 -o $@ $(LDLIBS) -Wl,--whole-archive $^ -Wl,--no-whole-archive
 	-mv -v $@ ..
 
@@ -46,6 +46,8 @@ StTriggerData2009.o: StTriggerData2009.cc
 #StTriggerData2013.o: StTriggerData2013.cc
 #	$(CXX) $(CXXFLAGS) -c $<
 StTriggerData2017.o: StTriggerData2017.cc
+	$(CXX) $(CXXFLAGS) -c $<
+StTriggerData2018.o: StTriggerData2018.cc
 	$(CXX) $(CXXFLAGS) -c $<
 doer_pp2pp.o: doer_pp2pp.cc
 	$(CXX) $(CXXFLAGS) -c $<
