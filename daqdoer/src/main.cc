@@ -949,70 +949,10 @@ int main(int argc, char **argv)
     evp = new daqReader(argv[i]);	// created with the filename as an argument..
     //if(mountpoint) evp->setEvpDisk(mountpoint);
 
-	cout<<i<<"\t "<<argv[i]<<endl;
-	if (strstr(evp->file_name,"st_monitor")!=0){
-		sscanf(evp->file_name,"/star/scratch/geurts/st_monitor_%d_raw",&runnum);
-	} else if (strstr(evp->file_name,"st_physics")!=0){
-		if (strstr(evp->file_name,"/star/data03")!=0){
-			sscanf(evp->file_name,"/star/data03/daq/geurts/%d/st_physics_",&runnum);
-		} else if (strstr(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online")!=0){
-	 		sscanf(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online/daq/%d/st_physics_",&runnum);
-		}
-	} else if (strstr(evp->file_name,"st_tofcosmic")!=0){
-		if (strstr(evp->file_name,"/star/data03")!=0){
-			sscanf(evp->file_name,"/star/data03/daq/geurts/%d/st_",&runnum);
-		} else if (strstr(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online")!=0){
-	 		sscanf(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online/daq/%d/st_",&runnum);
-		}
-	} else if (strstr(evp->file_name,"st_ftp_")!=0){
-		if (strstr(evp->file_name,"/star/data03")!=0){
-			sscanf(evp->file_name,"/star/data03/daq/tof/geurts/%d/st_",&runnum);
-		} else if (strstr(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online")!=0){
-	 		sscanf(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online/daq/%d/st_",&runnum);
-		}
-	} else if (strstr(evp->file_name,"st_ht_")!=0){
-		if (strstr(evp->file_name,"/star/data03")!=0){
-			sscanf(evp->file_name,"/star/data03/daq/tof/geurts/%d/st_",&runnum);
-		} else if (strstr(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online")!=0){
-	 		sscanf(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online/daq/%d/st_",&runnum);
-		}
-	} else if (strstr(evp->file_name,"st_zerobias_")!=0){
-		if (strstr(evp->file_name,"/star/data03")!=0){
-			sscanf(evp->file_name,"/star/data03/daq/tof/geurts/%d/st_",&runnum);
-		} else if (strstr(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online")!=0){
-	 		sscanf(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online/daq/%d/st_",&runnum);
-		}
-	} else if (strstr(evp->file_name,"st_upc_")!=0){
-		if (strstr(evp->file_name,"/star/data03")!=0){
-			sscanf(evp->file_name,"/star/data03/daq/geurts/%d/st_",&runnum);
-		} else if (strstr(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online")!=0){
-	 		sscanf(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online/daq/%d/st_",&runnum);
-		}
-	} else if (strstr(evp->file_name,"st_mtd_")!=0){
-		if (strstr(evp->file_name,"/star/data03")!=0){
-			sscanf(evp->file_name,"/star/data03/daq/geurts/%d/st_",&runnum);
-		} else if (strstr(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online")!=0){
-	 		sscanf(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online/daq/%d/st_",&runnum);
-		}
-	} else if (strstr(evp->file_name,"st_hlt_")!=0){
-		if (strstr(evp->file_name,"/star/data03")!=0){
-			sscanf(evp->file_name,"/star/data03/daq/tof/geurts/%d/st_",&runnum);
-		} else if (strstr(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online")!=0){
-	 		sscanf(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online/daq/%d/st_",&runnum);
-		}
-	} else if (strstr(evp->file_name,"st_gamma_")!=0){
-		if (strstr(evp->file_name,"/star/data03")!=0){
-			sscanf(evp->file_name,"/star/data03/daq/tof/geurts/%d/st_",&runnum);
-		} else if (strstr(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online")!=0){
-	 		sscanf(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online/daq/%d/st_",&runnum);
-		}
-	} else {
-		if (strstr(evp->file_name,"/star/data03")!=0){
-			sscanf(evp->file_name,"/star/data03/daq/geurts/%d/",&runnum);
-		} else if (strstr(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online")!=0){
-	 		sscanf(evp->file_name,"/gpfs01/star/subsysg/TOF/BTOF-online/daq/%d/",&runnum);
-		}
-	}
+
+    // expected data filename st_XXX_runnumber_***
+    char *filename; filename = basename(evp->file_name);
+    sscanf(index(index(filename,'_')+1,'_')+1,"%d_",&runnum);
 
 	int kyear = runnum/1000000;
 	daynum	= (runnum - kyear*1000000)/1000;
