@@ -33,7 +33,6 @@ clean:
 #	-mv -v $@ ..
 daqdoer: main.o tof_err_check.o StTriggerData.o StTriggerData2018.o doer_pp2pp.o doer_trg.o doer_tof.o doer_mtd.o doer_utils.o TsPacket.o
 	$(CXX) -g -m32 -o $@ $(LDLIBS) -Wl,--whole-archive $^ -Wl,--no-whole-archive
-	-mv -v $@ ..
 
 main.o: main.cc
 	$(CXX) $(CXXFLAGS) -c $<

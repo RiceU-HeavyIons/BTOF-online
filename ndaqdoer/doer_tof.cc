@@ -27,31 +27,10 @@ int	cococut_p2p[16];
 int	cococut_p2p_width;
 int	cococut_p2p_500[16] = {119,119,119,119,119,120,119,119,
                            120,120,120,120,119,120,119,119};
-//!!int	cococut_p2p_200[16] = { 95, 95, 95, 95, 94, 95, 94, 94,
-//!!                            95, 95, 95, 95, 94, 95, 94, 94};
-//int	cococut_p2p_200[16] = {119,119,119,119,119,120,119,119,
-//                           120,120,120,120,119,120,119,119};
 int	cococut_p2p_200[16] = {120,120,120,120,
 						   120,120,120,120,
                            120,120,120,120,
                            119,120,119,119};
-
-//---- Run-10 Day 2
-//int cococut_vpd_l		= 114;	// peak is at 115....
-//int cococut_vpd_u		= 119;
-//---- Run-11 pp 500 gev
-//int cococut_vpd_l		= 114;	// peak is at 115....
-//int cococut_vpd_u		= 115;
-//---- Run-11 auau 19.6 gev
-//int cococut_vpd_l		= 113;	// peak is at 114....
-//int cococut_vpd_u		= 115;
-//---- Run-11 auau 200 gev
-//int cococut_vpd_l		= 113;	// peak is at 114....
-//int cococut_vpd_u		= 116;
-
-//---- Run-12 UU 200 gev (and post 5us->500ns start-side trigger window change)
-//int cococut_vpd_l		=  9;	// peak is at 10....
-//int cococut_vpd_u		= 11;
 
 //---- Run-14 AuAu 200 gev
 int cococut_vpd_l		= 11;	// peak is at 10....

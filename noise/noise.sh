@@ -1,5 +1,5 @@
 #!/bin/sh
-STARLIB=SL18b1
+STARLIB=SL18b
 WRKDIR=~/scheduler
 DAQDOER=./daqdoer
 BTOFONLINE=/star/u/geurts/BTOF-online
