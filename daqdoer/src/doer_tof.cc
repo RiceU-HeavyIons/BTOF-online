@@ -17,7 +17,7 @@
 
 bool DEBUG = false;
 
-const int MAXTOFHITS	= 25000;
+const int MAXTOFHITS	= 2500;
 
 unsigned int GetLETime(TsPacket *p, int bunch);
 unsigned int GetTrgDTime(TsPacket *p, int bunch);
@@ -58,114 +58,97 @@ int cococut_vpd_l		= 11;	// peak is at 10....
 int cococut_vpd_u		= 13;
 
 int icall = 0;
-	
-int tof_doer(daqReader *rdr, struct P2P_st *P2P, struct doer_st *TOF, 
-			Int_t iday, Int_t kDataChoice,
-			struct stop_st *STOP, struct INFO_st *MYINFO){
-			
-	//cout<<"in tof_doer....."<<endl;
 
-	char	buf[80];
-    daq_dta *dd;
-    tof_t 	*tof;
-    int		kk;
+
+char	buf[255];
+daq_dta *dd;
+tof_t 	*tof;
+int		kk;
 //	int 	chbase;
-	int 	trayid,moduleid,cellid;
-	int 	half;
-	int 	bunch;
-	int		bunchid;
-	int		bunchid_tray[2][122];
-    int		pid;
-    int		vpd_ch;
-    int		coco,edgetime,cocouse,trgdtime;
-    float	cocous,edgetimens;
-	int		COARSESHIFT;
-	int		iCh_vpd,iCh_p2p,iCh_ind;
-	bool	isVPDhit,isP2Phit;
-	bool	cocogood;
-	TH1D	*h1;
-	TH2D	*h2;
-	int		vpd_cco[38];
-	float	vpd_tle[38];
-	float	vpd_tte[38];
-	float	vpd_tot[38];
-	int		p2p_cco[16];
-	float	p2p_tle[16];
-	float	p2p_tte[16];
-	float	p2p_tot[16];
-	
-	int		telist_n[54];
-	float	telist_t[50][54];
-	
-	bool	bigevent	= false;
-	unsigned int		nwordstouse[4];
-	
-	int	daynum;
-	int	runnum;
-	
-	bool toomanyLE;
-	bool toomanyTE;
+int 	trayid,moduleid,cellid;
+int 	half;
+int 	bunch;
+int		bunchid;
+int		bunchid_tray[2][122];
+int		pid;
+int		vpd_ch;
+int		coco,edgetime,cocouse,trgdtime;
+float	cocous,edgetimens;
+int		COARSESHIFT;
+int		iCh_vpd,iCh_p2p,iCh_ind;
+bool	isVPDhit,isP2Phit;
+bool	cocogood;
+TH1D	*h1;
+TH2D	*h2;
+int		vpd_cco[38];
+float	vpd_tle[38];
+float	vpd_tte[38];
+float	vpd_tot[38];
+int		p2p_cco[16];
+float	p2p_tle[16];
+float	p2p_tte[16];
+float	p2p_tot[16];
 
-//---- Run dependence of CoCo posn.......................
-//---- RUN-9
-// 	if (runnum==10113069 || runnum==10113076){
-// 		COARSESHIFT	=   0;
-// 	} else if (runnum==10113077 || runnum==10113078){
-// 		COARSESHIFT	= -12;
-// 	} else if (runnum>=10125026){
-// 		COARSESHIFT	=  13;
-// 	}
-//---- RUN-10
-//	COARSESHIFT	= 0;
-//---- RUN-11
-//	COARSESHIFT	= 2;	// shift east VPD w.r.t. west VPD coarse counter!!!!
-//---- RUN-12 after 5us->500ns trigger window
-	COARSESHIFT	= 0;	// shift east VPD w.r.t. west VPD coarse counter!!!!
+int		telist_n[54];
+float	telist_t[50][54];
 
-//---- Run-9 			// IDAY
-// 	if (daynum<120){
-// 		cococut_p2p_width = 4;
-// 		for (int ic=0;ic<16;ic++){ cococut_p2p[ic] = cococut_p2p_500[ic]; }
-// 	}else if (daynum>120){
-// //!!		cococut_p2p_width = 2;
-// 		cococut_p2p_width = 4;
-// 		for (int ic=0;ic<16;ic++){ cococut_p2p[ic] = cococut_p2p_200[ic]; }
-// 	}
+bool	bigevent	= false;
+unsigned int		nwordstouse[4];
 
-	//cout<<"rdr pointer = "<<rdr<<endl;
-	dd = rdr->det("tof")->get("legacy") ;
-	if(!dd) return -1;
-	
-	for (int ic=0;ic<38;ic++){ vpd_tle[ic]  = vpd_tte[ic] = vpd_tot[ic] = 0.0; }
-	for (int ic=0;ic<16;ic++){ p2p_tle[ic]  = p2p_tte[ic] = p2p_tot[ic] = 0.0; }
-	for (int ic=0;ic<54;ic++){ telist_n[ic] = 0; }
+int	daynum;
+int	runnum;
 
-	int		nLEseen			=  0;
-	int		nTEseen			=  0;
-	int		nTofHits		=  0;
-	int		nTofHitsLE		=  0;
-	int		nTofHitsTE		=  0;
-	int 	latestLEtray	= -1;
-	int 	latestLEchan	= -1;
-	float	latestLE_coco;
-	float	latestLE_tle;
+bool toomanyLE;
+bool toomanyTE;
 
-	int		LE_tray[MAXTOFHITS];
-	int		LE_chan[MAXTOFHITS];
-	float	LE_coco[MAXTOFHITS];
-	float	LE_bunchid[MAXTOFHITS];
-	float	LE_trgdtime[MAXTOFHITS];
-	float	LE_time[MAXTOFHITS];
-	int		TE_tray[MAXTOFHITS];
-	int		TE_chan[MAXTOFHITS];
-	//float	TE_coco[MAXTOFHITS];
-	//float	TE_trgdtime[MAXTOFHITS];
-	float	TE_time[MAXTOFHITS];
+int		nLEseen			=  0;
+int		nTEseen			=  0;
+int		nTofHits		=  0;
+int		nTofHitsLE		=  0;
+int		nTofHitsTE		=  0;
+int 	latestLEtray	= -1;
+int 	latestLEchan	= -1;
+float	latestLE_coco;
+float	latestLE_tle;
+
+int		LE_tray[MAXTOFHITS];
+int		LE_chan[MAXTOFHITS];
+float	LE_coco[MAXTOFHITS];
+float	LE_bunchid[MAXTOFHITS];
+float	LE_trgdtime[MAXTOFHITS];
+float	LE_time[MAXTOFHITS];
+int		TE_tray[MAXTOFHITS];
+int		TE_chan[MAXTOFHITS];
+//float	TE_coco[MAXTOFHITS];
+//float	TE_trgdtime[MAXTOFHITS];
+float	TE_time[MAXTOFHITS];
 	
 //cout<<"==========================="<<endl;
 
 	bool liveP2Ptrg_e = false;
 	bool liveP2Ptrg_w = false;
+	
+
+int tof_iterate( daqReader *rdr, P2P_st *P2P, doer_st *TOF,  Int_t iday, Int_t kDataChoice, stop_st *STOP, INFO_st *MYINFO ){
+	// cout << "tof_iterate" << endl;
+	COARSESHIFT	= 0;	// shift east VPD w.r.t. west VPD coarse counter!!!!
+
+	nLEseen			=  0;
+	nTEseen			=  0;
+	nTofHits		=  0;
+	nTofHitsLE		=  0;
+	nTofHitsTE		=  0;
+	latestLEtray	= -1;
+	latestLEchan	= -1;
+
+	dd = rdr->det("tof")->get("legacy") ;
+	if(!dd) return -1;
+
+	for (int ic=0;ic<38;ic++){ vpd_tle[ic]  = vpd_tte[ic] = vpd_tot[ic] = 0.0; }
+	for (int ic=0;ic<16;ic++){ p2p_tle[ic]  = p2p_tte[ic] = p2p_tot[ic] = 0.0; }
+	for (int ic=0;ic<54;ic++){ telist_n[ic] = 0; }
+
+
 	if ( P2P->RPWVU1_TAC>100
 	  || P2P->RPWVU2_TAC>100
 	  || P2P->RPWVD1_TAC>100
@@ -182,299 +165,293 @@ int tof_doer(daqReader *rdr, struct P2P_st *P2P, struct doer_st *TOF,
 	  || P2P->RPEHO2_TAC>100
 	  || P2P->RPEHI1_TAC>100
 	  || P2P->RPEHI2_TAC>100 ){ liveP2Ptrg_e = true; }
+	dd = rdr->det("tof")->get("legacy") ;
+	if(!dd) return -1;
 
-	//---- event processing --------------------------------------------
-	while(dd->iterate()) {
-		tof = (tof_t *)dd->Void;
+		while(dd->iterate()) {
+			tof = (tof_t *)dd->Void;
 
- 		icall	= icall + 1;
- 		toomanyLE = toomanyTE = false;
+	 		icall	= icall + 1;
+	 		toomanyLE = toomanyTE = false;
 
-		bigevent	= false;
-		for (int r = 0; r < 4; r++) {		// all 4 fibers....
-			MYINFO->nwordsfiber[r]	= tof->ddl_words[r];
-			nwordstouse[r]	= MYINFO->nwordsfiber[r];			 
-			if (MYINFO->nwordsfiber[r] > 8000){
-				nwordstouse[r]	= 8000;
-				bigevent		= true;
-			}
-		}
-		if (bigevent){
-			cout<<"DDL_WORDS[i] .... call="<<icall<<"\t"
-				<<tof->ddl_words[0]<<" "
-				<<tof->ddl_words[1]<<" "
-				<<tof->ddl_words[2]<<" "
-				<<tof->ddl_words[3]<<"\t time="
-				<<rdr->evt_time
-				<<endl;
-//			return -1;
-		}
-//		if (icall==920){ bigevent = true; }		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-		for (int it=0;it<122;it++){
-			for (int ih=0;ih<2;ih++){
-				bunchid_tray[ih][it]	= -9999;
-			}
-		}
-		
-		//---- loop over fibers....
-		for (int r = 0; r < 4; r++) {		// all 4 fibers....
-			if (bigevent){ cout<<r<<" "<<nwordstouse[r]<<endl; }
-			//---- loop over words in this DDLR...
-			for (u_int i=0; i<nwordstouse[r]; i++) {
-
-				if (bigevent) {
-					cout<<"trying to decode tof->ddl[r][i] .... event="<<icall
-						<<", r="<<r<<", i="<<i<<"("<<nwordstouse[r]<<")"
-						<<"\t ... word= "<<dec<<tof->ddl[r][i]<<"  "
-						<<hex<<uppercase<<tof->ddl[r][i]<<dec
-						<<endl;
+			bigevent	= false;
+			for (int r = 0; r < 4; r++) {		// all 4 fibers....
+				MYINFO->nwordsfiber[r]	= tof->ddl_words[r];
+				nwordstouse[r]	= MYINFO->nwordsfiber[r];			 
+				if (MYINFO->nwordsfiber[r] > 8000){
+					nwordstouse[r]	= 8000;
+					bigevent		= true;
 				}
-				TsPacket *p = new TsPacket(tof->ddl[r][i]);
-				pid 		= p->GetId();
-				isVPDhit 	= isP2Phit 	= false;
-				cocogood	= false;
+			}
+			if (bigevent){
+				cout<<"DDL_WORDS[i] .... call="<<icall<<"\t"
+					<<tof->ddl_words[0]<<" "
+					<<tof->ddl_words[1]<<" "
+					<<tof->ddl_words[2]<<" "
+					<<tof->ddl_words[3]<<"\t time="
+					<<rdr->evt_time
+					<<endl;
+			}
 
-				if (pid == 0x0c) {
-					trayid	= p->GetTrayId();
-					half 	= p->GetHalf();
-					if(bigevent)cout<<"0x0c .. trayid="<<trayid<<" half="<<half<<endl;
-				} else if (pid == 0x2) {
-					bunch 	= p->GetBunchId();			//
-					bunchid = tof->ddl[r][i]&0xFFF;		// these two #s are the same
-					if (trayid>=1 && trayid<=122){
-						bunchid_tray[half][trayid-1] = bunchid;
-					} else {
-						cout<<"bunchid mapping problem ..."<<half<<" "<<trayid<<" "<<bunchid<<endl;
+			for (int it=0;it<122;it++){
+				for (int ih=0;ih<2;ih++){
+					bunchid_tray[ih][it]	= -9999;
+				}
+			}
+			
+			//---- loop over fibers....
+			for (int r = 0; r < 4; r++) {		// all 4 fibers....
+				if (bigevent){ cout<<r<<" "<<nwordstouse[r]<<endl; }
+				//---- loop over words in this DDLR...
+				for (u_int i=0; i<nwordstouse[r]; i++) {
+
+					if (bigevent) {
+						cout<<"trying to decode tof->ddl[r][i] .... event="<<icall
+							<<", r="<<r<<", i="<<i<<"("<<nwordstouse[r]<<")"
+							<<"\t ... word= "<<dec<<tof->ddl[r][i]<<"  "
+							<<hex<<uppercase<<tof->ddl[r][i]<<dec
+							<<endl;
 					}
-					if(bigevent)cout<<"bunch ... "<<bunchid<<endl;
-				} else if (pid == 0xe) {
-					if(bigevent)cout<<"0x0e .. do nothing"<<endl;
-				//
-				//---- LE hit....................................................
-				} else if (p->IsLE()) { 					// leading edge
-					++nLEseen;
-					int ch 	= 96*half + p->GetChannelTray5();
-					if(bigevent)cout<<"LE   .. tray,ch="<<trayid<<" "<<ch<<endl;
-					if (trayid <= 120) {	
-						//
-						moduleid	= ch/6;
-						cellid		= ch - 6*moduleid;
-						coco 		= GetLETime(p, bunch);
-						trgdtime	= GetTrgDTime(p, bunch);
-						edgetime	= p->GetEdgeTime();
-						edgetimens	= (25./1024.)*(Float_t)edgetime;
-						//
-						//TEST
-						//int timeinbin = ((tof->ddl[r][i]&0x7ffff)<<2)+((tof->ddl[r][i]>>19)&0x03);
-						//cout<<edgetime<<" "<<timeinbin<<endl;
-						//TEST
-						//if(bigevent){
-						//	cout<<"LE trayid<120 .. module="<<moduleid<<" edgetime="<<edgetime<<endl;
-						//}
-						if (nTofHitsLE<MAXTOFHITS-1){
-							LE_tray[nTofHitsLE]		= trayid-1;
-							LE_chan[nTofHitsLE]		= ch;
-							LE_coco[nTofHitsLE]		= coco;
-							LE_bunchid[nTofHitsLE]	= bunchid;
-							LE_trgdtime[nTofHitsLE]	= trgdtime;
-							LE_time[nTofHitsLE]		= edgetimens;
-							++nTofHitsLE;
-//cout<<"LE_tray TOF ... "<<trayid-1<<" "<<nTofHitsLE<<endl;
-							latestLEtray	= trayid;
-							latestLEchan	= ch;
-							latestLE_coco	= coco;
-							latestLE_tle	= edgetimens;
+					TsPacket *p = new TsPacket(tof->ddl[r][i]);
+					pid 		= p->GetId();
+					isVPDhit 	= isP2Phit 	= false;
+					cocogood	= false;
+
+					if (pid == 0x0c) {
+						trayid	= p->GetTrayId();
+						half 	= p->GetHalf();
+						if(bigevent)cout<<"0x0c .. trayid="<<trayid<<" half="<<half<<endl;
+					} else if (pid == 0x2) {
+						bunch 	= p->GetBunchId();			//
+						bunchid = tof->ddl[r][i]&0xFFF;		// these two #s are the same
+						if (trayid>=1 && trayid<=122){
+							bunchid_tray[half][trayid-1] = bunchid;
+						} else {
+							cout<<"bunchid mapping problem ..."<<half<<" "<<trayid<<" "<<bunchid<<endl;
+						}
+						if(bigevent)cout<<"bunch ... "<<bunchid<<endl;
+					} else if (pid == 0xe) {
+						if(bigevent)cout<<"0x0e .. do nothing"<<endl;
+					//
+					//---- LE hit....................................................
+					} else if (p->IsLE()) { 					// leading edge
+						++nLEseen;
+						int ch 	= 96*half + p->GetChannelTray5();
+						if(bigevent)cout<<"LE   .. tray,ch="<<trayid<<" "<<ch<<endl;
+						if (trayid <= 120) {	
 							//
-							if (DEBUG){
+							moduleid	= ch/6;
+							cellid		= ch - 6*moduleid;
+							coco 		= GetLETime(p, bunch);
+							trgdtime	= GetTrgDTime(p, bunch);
+							edgetime	= p->GetEdgeTime();
+							edgetimens	= (25./1024.)*(Float_t)edgetime;
+							//
+							//TEST
+							//int timeinbin = ((tof->ddl[r][i]&0x7ffff)<<2)+((tof->ddl[r][i]>>19)&0x03);
+							//cout<<edgetime<<" "<<timeinbin<<endl;
+							//TEST
+							//if(bigevent){
+							//	cout<<"LE trayid<120 .. module="<<moduleid<<" edgetime="<<edgetime<<endl;
+							//}
+							if (nTofHitsLE<MAXTOFHITS-1){
+								LE_tray[nTofHitsLE]		= trayid-1;
+								LE_chan[nTofHitsLE]		= ch;
+								LE_coco[nTofHitsLE]		= coco;
+								LE_bunchid[nTofHitsLE]	= bunchid;
+								LE_trgdtime[nTofHitsLE]	= trgdtime;
+								LE_time[nTofHitsLE]		= edgetimens;
+								++nTofHitsLE;
+								latestLEtray	= trayid;
+								latestLEchan	= ch;
+								latestLE_coco	= coco;
+								latestLE_tle	= edgetimens;
+								//
+								if (DEBUG){
 								cout<<"Tray LE "<<nTofHitsLE<<" "<<trayid<<" "<<ch<<" "<<moduleid<<" "<<cellid<<"\t "
-									<<edgetime<<" "<<edgetimens<<endl;
+										<<edgetime<<" "<<edgetimens<<endl;
+									}
+								
+							} else {
+								cout<<"Too Many LE hits (TOF section)!!!!  icall="<<icall<<"  nh="<<nTofHitsLE<<endl;
 							}
-						} else {
-							cout<<"Too Many LE hits (TOF section)!!!!  icall="<<icall<<"  nh="<<nTofHitsLE<<endl;
-						}
 
-					} else {
-						if (trayid!=121&&trayid!=122){
-							cout<<"Tray ID???"<<trayid<<" ....skipping event"<<endl;
-							return -1;
-						}
-						vpd_ch 		= TsPacket::upvpd_map(trayid, half, p->GetTdc(), p->GetRawChannel());
-						coco 		= GetLETime(p, bunch);
-						trgdtime	= GetTrgDTime(p, bunch);
-						cocous		= ((float)coco)*COARSEBIN2NS/1000.;
-						edgetime	= p->GetEdgeTime();
-						edgetimens	= (25./1024.)*(Float_t)edgetime;
-						cocouse		= coco;
-//cout<<"doer_tof VPD hit... "<<trayid<<" "<<ch<<" "<<vpd_ch<<endl;
-						if (trayid==122){						// shift VPD east coarse counter!!!!
-							cocouse		= coco - COARSESHIFT;
-						}
-						if(bigevent)cout<<"VPD LE  .. ch="<<vpd_ch<<" "<<edgetime<<" "<<coco<<endl;
-						//
-						if (nTofHitsLE<MAXTOFHITS-1){
-							LE_tray[nTofHitsLE]		= trayid-1;
-							LE_chan[nTofHitsLE]		= ch;
-							LE_coco[nTofHitsLE]		= coco;
-							LE_bunchid[nTofHitsLE]	= bunchid;
-							LE_trgdtime[nTofHitsLE]	= trgdtime;
-							LE_time[nTofHitsLE]		= edgetimens;
-							++nTofHitsLE;
-//cout<<"LE_tray TOF ... "<<trayid-1<<" "<<nTofHitsLE<<endl;
-							latestLEtray	= trayid;
-							latestLEchan	= ch;
-							latestLE_coco	= coco;
-							latestLE_tle	= edgetimens;
 						} else {
-							cout<<"Too Many LE hits (VPD section)!!!! "<<icall<<endl;
-						}
-						//
-						if (vpd_ch<20){
-							if (trayid==121){ iCh_vpd=vpd_ch-1    ; isVPDhit=true; }
-							if (trayid==122){ iCh_vpd=vpd_ch-1+19 ; isVPDhit=true; }
-						} else if (vpd_ch>=20) {
-							if (trayid==121){ iCh_p2p=vpd_ch-20   ; isP2Phit=true; }
-							if (trayid==122){ iCh_p2p=vpd_ch-20+8 ; isP2Phit=true; }
-						}
-						if (isVPDhit){ iCh_ind =    iCh_vpd; } else
-						if (isP2Phit){ iCh_ind = 38+iCh_p2p; } 
-						//
-						if (isVPDhit){
- 							if(trayid==121){
- 								h1=(TH1D*)gDirectory->Get("hcoco_vpdw"); h1->Fill(cocouse,1.0);
- 							} else if (trayid==122){
- 								h1=(TH1D*)gDirectory->Get("hcoco_vpde"); h1->Fill(cocouse,1.0);
- 							}
- 							if (cocouse>=cococut_vpd_l 
- 							 && cocouse<=cococut_vpd_u){
- 								cocogood	= true;
- 							}
- 							if (kDataChoice==1){ cocogood = true; }
-							if (cocogood && edgetimens>0.0){
+							if (trayid!=121&&trayid!=122){
+								cout<<"Tray ID???"<<trayid<<" ....skipping event"<<endl;
+								return -1;
+							}
+							vpd_ch 		= TsPacket::upvpd_map(trayid, half, p->GetTdc(), p->GetRawChannel());
+							coco 		= GetLETime(p, bunch);
+							trgdtime	= GetTrgDTime(p, bunch);
+							cocous		= ((float)coco)*COARSEBIN2NS/1000.;
+							edgetime	= p->GetEdgeTime();
+							edgetimens	= (25./1024.)*(Float_t)edgetime;
+							cocouse		= coco;
+							if (trayid==122){						// shift VPD east coarse counter!!!!
+								cocouse		= coco - COARSESHIFT;
+							}
+							if(bigevent)cout<<"VPD LE  .. ch="<<vpd_ch<<" "<<edgetime<<" "<<coco<<endl;
+							//
+							if (nTofHitsLE<MAXTOFHITS-1){
+								LE_tray[nTofHitsLE]		= trayid-1;
+								LE_chan[nTofHitsLE]		= ch;
+								LE_coco[nTofHitsLE]		= coco;
+								LE_bunchid[nTofHitsLE]	= bunchid;
+								LE_trgdtime[nTofHitsLE]	= trgdtime;
+								LE_time[nTofHitsLE]		= edgetimens;
+								++nTofHitsLE;
+								latestLEtray	= trayid;
+								latestLEchan	= ch;
+								latestLE_coco	= coco;
+								latestLE_tle	= edgetimens;
+							} else {
+								cout<<"Too Many LE hits (VPD section)!!!! "<<icall<<endl;
+							}
+							//
+							if (vpd_ch<20){
+								if (trayid==121){ iCh_vpd=vpd_ch-1    ; isVPDhit=true; }
+								if (trayid==122){ iCh_vpd=vpd_ch-1+19 ; isVPDhit=true; }
+							} else if (vpd_ch>=20) {
+								if (trayid==121){ iCh_p2p=vpd_ch-20   ; isP2Phit=true; }
+								if (trayid==122){ iCh_p2p=vpd_ch-20+8 ; isP2Phit=true; }
+							}
+							if (isVPDhit){ iCh_ind =    iCh_vpd; } else
+							if (isP2Phit){ iCh_ind = 38+iCh_p2p; } 
+							//
+							if (isVPDhit){
 	 							if(trayid==121){
-	 								h1=(TH1D*)gDirectory->Get("hcocokeep_vpdw"); h1->Fill(cocouse,1.0);
+	 								h1=(TH1D*)gDirectory->Get("hcoco_vpdw"); h1->Fill(cocouse,1.0);
 	 							} else if (trayid==122){
-	 								h1=(TH1D*)gDirectory->Get("hcocokeep_vpde"); h1->Fill(cocouse,1.0);
+	 								h1=(TH1D*)gDirectory->Get("hcoco_vpde"); h1->Fill(cocouse,1.0);
 	 							}
-								if((vpd_tle[iCh_vpd] < 0.001     )		// first hit in channel
-								|| (vpd_tle[iCh_vpd] > edgetimens)){	// substitute for earliest hit
-										vpd_cco[iCh_vpd] = cocouse;								
-										vpd_tle[iCh_vpd] = edgetimens;
-										//cout<<"LE ... "<<iCh_vpd<<" "<<edgetimens<<" "<<cocouse<<endl;
+	 							if (cocouse>=cococut_vpd_l 
+	 							 && cocouse<=cococut_vpd_u){
+	 								cocogood	= true;
+	 							}
+	 							if (kDataChoice==1){ cocogood = true; }
+								if (cocogood && edgetimens>0.0){
+		 							if(trayid==121){
+		 								h1=(TH1D*)gDirectory->Get("hcocokeep_vpdw"); h1->Fill(cocouse,1.0);
+		 							} else if (trayid==122){
+		 								h1=(TH1D*)gDirectory->Get("hcocokeep_vpde"); h1->Fill(cocouse,1.0);
+		 							}
+									if((vpd_tle[iCh_vpd] < 0.001     )		// first hit in channel
+									|| (vpd_tle[iCh_vpd] > edgetimens)){	// substitute for earliest hit
+											vpd_cco[iCh_vpd] = cocouse;								
+											vpd_tle[iCh_vpd] = edgetimens;
+											//cout<<"LE ... "<<iCh_vpd<<" "<<edgetimens<<" "<<cocouse<<endl;
+									}
+								}
+							} else if (isP2Phit){
+	 							if(trayid==121){
+	 								h1=(TH1D*)gDirectory->Get("hcoco_p2pw"); h1->Fill(cocouse,1.0);
+	 							} else if (trayid==122){
+	 								h1=(TH1D*)gDirectory->Get("hcoco_p2pe"); h1->Fill(cocouse,1.0);
+	 							}
+	 							sprintf(buf,"hcoco_p2p%d",iCh_p2p);
+	 							h1=(TH1D*)gDirectory->Get(buf); h1->Fill(cocouse,1.0);	
+	 							if (liveP2Ptrg_w && trayid==121){
+	 								sprintf(buf,"hcoco_p2p_p2p%d",iCh_p2p);
+	 								h1=(TH1D*)gDirectory->Get(buf); h1->Fill(cocouse,1.0);	
+	 							}
+								if (liveP2Ptrg_e && trayid==122){
+	 								sprintf(buf,"hcoco_p2p_p2p%d",iCh_p2p);
+	 								h1=(TH1D*)gDirectory->Get(buf); h1->Fill(cocouse,1.0);	
+	 							}
+								//
+								//if (cocouse>=80 && cocouse<=125){
+									cocogood	= true;
+	 							if (kDataChoice==1){ cocogood = true; }
+								//
+								if (cocogood && edgetimens>0.0){
+									if((p2p_tle[iCh_p2p]== 0.        )
+									|| (p2p_tle[iCh_p2p] > edgetimens)){
+											p2p_cco[iCh_p2p] = cocouse;								
+											p2p_tle[iCh_p2p] = edgetimens;
+											//cout<<iCh_p2p<<" "<<edgetimens<<" "<<cocouse<<endl;
+									}
 								}
 							}
-						} else if (isP2Phit){
- 							if(trayid==121){
- 								h1=(TH1D*)gDirectory->Get("hcoco_p2pw"); h1->Fill(cocouse,1.0);
- 							} else if (trayid==122){
- 								h1=(TH1D*)gDirectory->Get("hcoco_p2pe"); h1->Fill(cocouse,1.0);
- 							}
- 							sprintf(buf,"hcoco_p2p%d",iCh_p2p);
- 							h1=(TH1D*)gDirectory->Get(buf); h1->Fill(cocouse,1.0);	
- 							if (liveP2Ptrg_w && trayid==121){
- 								sprintf(buf,"hcoco_p2p_p2p%d",iCh_p2p);
- 								h1=(TH1D*)gDirectory->Get(buf); h1->Fill(cocouse,1.0);	
- 							}
-							if (liveP2Ptrg_e && trayid==122){
- 								sprintf(buf,"hcoco_p2p_p2p%d",iCh_p2p);
- 								h1=(TH1D*)gDirectory->Get(buf); h1->Fill(cocouse,1.0);	
- 							}
 							//
-							//if (cocouse>=80 && cocouse<=125){
-//							if (cocouse>=cococut_p2p[iCh_p2p] 
-//							 && cocouse<=cococut_p2p[iCh_p2p]+cococut_p2p_width){
-								cocogood	= true;
-//							}
- 							if (kDataChoice==1){ cocogood = true; }
-							//
-							if (cocogood && edgetimens>0.0){
-								if((p2p_tle[iCh_p2p]== 0.        )
-								|| (p2p_tle[iCh_p2p] > edgetimens)){
-										p2p_cco[iCh_p2p] = cocouse;								
-										p2p_tle[iCh_p2p] = edgetimens;
-										//cout<<iCh_p2p<<" "<<edgetimens<<" "<<cocouse<<endl;
-								}
+						}	//---- end LE trayid check...
+						//
+					//---- TE hit....................................................
+					} else if (p->IsTE()) { 					// trailing edge
+						++nTEseen;
+						int ch 	= 96*half + p->GetChannelTray5();
+						if(bigevent)cout<<"TE   .. tray,ch="<<trayid<<" "<<ch<<endl;
+						if (trayid <= 120 ){
+
+							moduleid	= ch/6;
+							cellid		= ch - 6*moduleid;
+							coco 		= GetLETime(p, bunch);
+							trgdtime	= GetTrgDTime(p, bunch);
+							edgetime	= p->GetEdgeTime();
+							edgetimens	= (25./1024.)*(Float_t)edgetime;
+							if(bigevent)cout<<"VPD TE  .. ch="<<vpd_ch<<" "<<edgetime<<" "<<coco<<endl;
+							if (nTofHitsTE<MAXTOFHITS-1){
+								TE_tray[nTofHitsTE]	= trayid-1;
+								TE_chan[nTofHitsTE]	= ch;
+								//TE_coco[nTofHitsTE]	= coco;
+								//TE_trgdtime[nTofHitsTE]	= trgdtime;
+								TE_time[nTofHitsTE]	= edgetimens;
+								++nTofHitsTE;
+							} else {
+								cout<<"Too Many TE hits (TOF section)!!!!  icall="<<icall<<"  nh="<<nTofHitsTE<<endl;
 							}
-						}
+
+						} else {		// VPD....
+						  vpd_ch 		= TsPacket::upvpd_map(trayid, half, p->GetTdc(), p->GetRawChannel());
+							vpd_ch		= TMath::Abs(vpd_ch);
+							edgetime	= p->GetEdgeTime();
+							edgetimens	= (25./1024.)*(Float_t)edgetime;
+							//
+							if (nTofHitsTE<MAXTOFHITS-1){
+								TE_tray[nTofHitsTE]	= trayid-1;
+								TE_chan[nTofHitsTE]	= ch;
+								//TE_coco[nTofHitsTE]	= coco;
+								//TE_trgdtime[nTofHitsTE]	= trgdtime;
+								TE_time[nTofHitsTE]	= edgetimens;
+								++nTofHitsTE;
+							} else {
+								cout<<"Too Many TE hits (VPD section)!!!! "<<icall<<endl;
+							}
+							//
+							if (vpd_ch<20){
+								if (trayid==121){ iCh_vpd=vpd_ch-1    ; isVPDhit=true; }
+								if (trayid==122){ iCh_vpd=vpd_ch-1+19 ; isVPDhit=true; }
+							} else if (vpd_ch>=20) {
+								if (trayid==121){ iCh_p2p=vpd_ch-20   ; isP2Phit=true; }
+								if (trayid==122){ iCh_p2p=vpd_ch-20+8 ; isP2Phit=true; }
+							}
+							if (isVPDhit){ iCh_ind =    iCh_vpd; } else
+							if (isP2Phit){ iCh_ind = 38+iCh_p2p; } 
+							//
+							if(edgetimens>0.001&&iCh_ind>=0&&iCh_ind<38){
+								kk			 			 = telist_n[iCh_ind];
+								telist_t[kk][iCh_ind]	 = edgetimens;
+								telist_n[iCh_ind]		+= 1;
+							//} else if (edgetimens>0.){
+							//	cout<<"TE VPD huh? "<<trayid<<" "
+							//		<<vpd_ch<<" "<<iCh_ind<<" "<<edgetime<<endl;	
+							}
+							//
+						}	//---- end LE trayid check...
 						//
-					}	//---- end LE trayid check...
+					}	//---- end packetype check...
 					//
-				//---- TE hit....................................................
-				} else if (p->IsTE()) { 					// trailing edge
-					++nTEseen;
-					int ch 	= 96*half + p->GetChannelTray5();
-					if(bigevent)cout<<"TE   .. tray,ch="<<trayid<<" "<<ch<<endl;
-					if (trayid <= 120 ){
+					if (trayid>122){ return -1; }
+					if (bigevent) cout<<"moving to next word..."<<endl;
+					delete p;
+				}	//---- end loop over words in this DDLR....
+			}	//---- end  loop over 4 DDLRs....
+		}	//---- end dd iterator...
+}
 
-						moduleid	= ch/6;
-						cellid		= ch - 6*moduleid;
-						coco 		= GetLETime(p, bunch);
-						trgdtime	= GetTrgDTime(p, bunch);
-						edgetime	= p->GetEdgeTime();
-						edgetimens	= (25./1024.)*(Float_t)edgetime;
-						if(bigevent)cout<<"VPD TE  .. ch="<<vpd_ch<<" "<<edgetime<<" "<<coco<<endl;
-						if (nTofHitsTE<MAXTOFHITS-1){
-							TE_tray[nTofHitsTE]	= trayid-1;
-							TE_chan[nTofHitsTE]	= ch;
-							//TE_coco[nTofHitsTE]	= coco;
-							//TE_trgdtime[nTofHitsTE]	= trgdtime;
-							TE_time[nTofHitsTE]	= edgetimens;
-							++nTofHitsTE;
-						} else {
-							cout<<"Too Many TE hits (TOF section)!!!!  icall="<<icall<<"  nh="<<nTofHitsTE<<endl;
-						}
 
-					} else {		// VPD....
-					  vpd_ch 		= TsPacket::upvpd_map(trayid, half, p->GetTdc(), p->GetRawChannel());
-						vpd_ch		= TMath::Abs(vpd_ch);
-						edgetime	= p->GetEdgeTime();
-						edgetimens	= (25./1024.)*(Float_t)edgetime;
-						//
-						if (nTofHitsTE<MAXTOFHITS-1){
-							TE_tray[nTofHitsTE]	= trayid-1;
-							TE_chan[nTofHitsTE]	= ch;
-							//TE_coco[nTofHitsTE]	= coco;
-							//TE_trgdtime[nTofHitsTE]	= trgdtime;
-							TE_time[nTofHitsTE]	= edgetimens;
-							++nTofHitsTE;
-						} else {
-							cout<<"Too Many TE hits (VPD section)!!!! "<<icall<<endl;
-						}
-						//
-						if (vpd_ch<20){
-							if (trayid==121){ iCh_vpd=vpd_ch-1    ; isVPDhit=true; }
-							if (trayid==122){ iCh_vpd=vpd_ch-1+19 ; isVPDhit=true; }
-						} else if (vpd_ch>=20) {
-							if (trayid==121){ iCh_p2p=vpd_ch-20   ; isP2Phit=true; }
-							if (trayid==122){ iCh_p2p=vpd_ch-20+8 ; isP2Phit=true; }
-						}
-						if (isVPDhit){ iCh_ind =    iCh_vpd; } else
-						if (isP2Phit){ iCh_ind = 38+iCh_p2p; } 
-						//
-						if(edgetimens>0.001&&iCh_ind>=0&&iCh_ind<38){
-							kk			 			 = telist_n[iCh_ind];
-							telist_t[kk][iCh_ind]	 = edgetimens;
-							telist_n[iCh_ind]		+= 1;
-						//} else if (edgetimens>0.){
-						//	cout<<"TE VPD huh? "<<trayid<<" "
-						//		<<vpd_ch<<" "<<iCh_ind<<" "<<edgetime<<endl;	
-						}
-						//
-					}	//---- end LE trayid check...
-					//
-				}	//---- end packetype check...
-				//
-				if (trayid>122){ return -1; }
-				if (bigevent) cout<<"moving to next word..."<<endl;
-				delete p;
-			}	//---- end loop over words in this DDLR....
-		}	//---- end  loop over 4 DDLRs....
-	}	//---- end dd iterator...
-
-	//---- post-event processing --------------------------------------------
-
-	//---- bunchid check....
-	//
+int tof_analyze(daqReader *rdr,  P2P_st *P2P,  doer_st *TOF,   Int_t iday,  Int_t kDataChoice,  stop_st *STOP,  INFO_st *MYINFO){
+	// cout << "START_tof_analyze" << endl;
 	int refbunchid_h0	= bunchid_tray[0][0];
 	int refbunchid_h1	= bunchid_tray[1][0];
 	if (refbunchid_h0 != refbunchid_h1){
@@ -584,13 +561,23 @@ int tof_doer(daqReader *rdr, struct P2P_st *P2P, struct doer_st *TOF,
 
 
 	const int MAXNHITPERCELL	= 20;
-	int		BUF_nle[23424];
-	int		BUF_nte[23424];
-	float	BUF_tle[MAXNHITPERCELL][23424];		
-	float	BUF_tte[MAXNHITPERCELL][23424];		
-	float	BUF_coco[MAXNHITPERCELL][23424];		
-	float	BUF_bunchid[MAXNHITPERCELL][23424];		
-	float	BUF_trgdtime[MAXNHITPERCELL][23424];		
+
+	int		*BUF_nle = new int[23424];
+	int		*BUF_nte = new int[23424];
+
+	float	**BUF_tle = new float*[MAXNHITPERCELL];		
+	float	**BUF_tte = new float*[MAXNHITPERCELL];		
+	float	**BUF_coco = new float*[MAXNHITPERCELL];		
+	float	**BUF_bunchid = new float*[MAXNHITPERCELL];		
+	float	**BUF_trgdtime = new float*[MAXNHITPERCELL];		
+	for ( int i = 0; i < MAXNHITPERCELL; i++ ){
+		BUF_tle[i] = new float[23424];
+		BUF_tte[i] = new float[23424];
+		BUF_coco[i] = new float[23424];
+		BUF_bunchid[i] = new float[23424];
+		BUF_trgdtime[i] = new float[23424];
+	}
+
 	for (int i=0;i<23424;i++){					
 		BUF_nle[i] = BUF_nte[i] = 0;
 	}
@@ -796,7 +783,44 @@ int tof_doer(daqReader *rdr, struct P2P_st *P2P, struct doer_st *TOF,
 
 	if (toomanyLE){ cout<<"Lots of LE Hits ... "<<icall<<endl; return -1;}
 	if (toomanyTE){ cout<<"Lots of TE Hits ... "<<icall<<endl; return -1;}
+
+	delete[] BUF_nle;
+	delete[] BUF_nte;
+
+	for ( int i = 0; i < MAXNHITPERCELL; i++ ){
+		delete[] BUF_tle[i];
+		delete[] BUF_tte[i];
+		delete[] BUF_coco[i];
+		delete[] BUF_bunchid[i];
+		delete[] BUF_trgdtime[i];
+	}
+
+	delete[] BUF_tle;
+	delete[] BUF_tte;
+	delete[] BUF_coco;
+	delete[] BUF_bunchid;
+	delete[] BUF_trgdtime;
+
+	// cout << "END_tof_analyze" << endl;
+
 	return 0;
+}
+
+
+int tof_doer(	daqReader *rdr, 
+				P2P_st *P2P, 
+				doer_st *TOF,  
+				Int_t iday, 
+				Int_t kDataChoice, 
+				stop_st *STOP, 
+				INFO_st *MYINFO){
+	// cout << "tof_doer" << endl;
+	tof_iterate( rdr, P2P, TOF, iday, kDataChoice, STOP, MYINFO );
+	tof_analyze( rdr, P2P, TOF, iday, kDataChoice, STOP, MYINFO );
+	return 0;
+	
+
+	
 }	
 //---- end tof doer....
 
