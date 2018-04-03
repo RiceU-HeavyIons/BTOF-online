@@ -3,7 +3,7 @@ STARLIB=SL18b
 WRKDIR=~/scheduler
 DAQDOER=./daqdoer
 BTOFONLINE=/star/u/geurts/BTOF-online
-DAQDIR=/gpfs01/star/scratch/geurts/daq
+DAQDIR=/gpfs01/star/scratch/geurts/restricted/daq
 LOGDIR=/star/u/geurts/logs
 SUBMIT=/afs/rhic.bnl.gov/star/packages/scripts/star-submit
 
