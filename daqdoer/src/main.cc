@@ -1755,7 +1755,7 @@ int main(int argc, char **argv)
 		if (thistime < 0)        { itime_min = thistime; }
 		if (thistime < itime_min){ itime_min = thistime; }
 		if (thistime > itime_max){ itime_max = thistime; }
-		if (ievtnum%1000==0){
+		if (ievtnum%50000==0){
 			cout<<"Processed "<<ievtnum<<" ("<<NEVTMAX<<")"
 				<<"\t time="<<evp->evt_time
 				<<"\t Ntof="<<nTofHits
