@@ -22,12 +22,12 @@ echo starver $STARLIB >> $WRKDIR/$infile
 echo cd $BTOFONLINE/daqdoer >> $WRKDIR/$infile
 echo $DAQDOER $DAQDIR/$year/$day/$runnumber/'*.daq &lt;&lt; endd' >> $WRKDIR/$infile
 echo 1 >> $WRKDIR/$infile
-echo $run$day >> $WRKDIR/$infile
+echo $runnumber >> $WRKDIR/$infile
 echo endd >> $WRKDIR/$infile
 echo cd $BTOFONLINE/noise >> $WRKDIR/$infile
-echo "./noise -r $run$day" >> $WRKDIR/$infile
+echo "./noise -r $runnumber" >> $WRKDIR/$infile
 echo '</command>' >> $WRKDIR/$infile
-echo '<stdout URL="file:'$LOGDIR/$run$day'.log" />' >> $WRKDIR/$infile
+echo '<stdout URL="file:'$LOGDIR/$runnumber'.log" />' >> $WRKDIR/$infile
 echo '</job>' >> $WRKDIR/$infile
 
 # execute
