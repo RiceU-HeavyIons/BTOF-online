@@ -129,7 +129,7 @@ void noise::Loop() {
 		}
 	}
 
-	sprintf(buf,"/gpfs01/star/subsysg/TOF/BTOF-online/noise/noise_%d",kRunUse);
+	sprintf(buf,DEFAULT_OUT_DIR"/noise_%d",kRunUse);
 	TString namebase	= TString(buf);
 	TString nameextr	= TString(".root");
 	TString nameroot	= namebase+nameextr;
@@ -1936,10 +1936,10 @@ void noise::Loop() {
 	sprintf(buf,"/bin/mv %s.ps %s.ps","noise",namebase.Data());
 	cout<<"..... noise::loop Executing ... "<<buf<<endl;
 	gSystem->Exec(buf);
-	sprintf(buf,"/usr/bin/ps2pdf %s.ps %s.pdf",namebase.Data(),namebase.Data());
+	sprintf(buf,PS2PDF" %s.ps %s.pdf",namebase.Data(),namebase.Data());
 	cout<<"..... noise::loop Executing ... "<<buf<<endl;
 	gSystem->Exec(buf);
-	sprintf(buf,"/bin/cp %s.pdf /star/u/geurts/WWW/files/",namebase.Data());
+	sprintf(buf,"/bin/cp %s.pdf " DEFAULT_PUB_DIR"/",namebase.Data());
 	cout<<"..... noise::loop Executing ... "<<buf<<endl;
 	gSystem->Exec(buf);
 	cout<<"..... noise::loop Done...."<<endl;
