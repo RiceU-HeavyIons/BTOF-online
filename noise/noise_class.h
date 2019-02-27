@@ -31,16 +31,16 @@ using namespace std;
 //#include "/star/u/llope/lit/SplineFit/TSplineFit.h"
 
 // default directories (BNL)
-//#define DEFAULT_IN_DIR /gpfs01/star/subsysg/TOF/BTOF-online/dd/
-//#define DEFAULT_OUT_DIR "/gpfs01/star/subsysg/TOF/BTOF-online/noise/"
-//#define DEFAULT_PUB_DIR "/star/u/geurts/WWW/files/"
-//#define PS2PDF "/usr/bin/ps2pdf"
+#define DEFAULT_IN_DIR /gpfs01/star/subsysg/TOF/BTOF-online/dd/
+#define DEFAULT_OUT_DIR "/gpfs01/star/subsysg/TOF/BTOF-online/noise/"
+#define DEFAULT_PUB_DIR "/star/u/geurts/WWW/files/"
+#define PS2PDF "/usr/bin/ps2pdf"
 
 // default directories (Rice)
-#define DEFAULT_IN_DIR "/macstar/star4/btof/dd/"
-#define DEFAULT_OUT_DIR "/macstar/star4/btof/noise/"
-#define DEFAULT_PUB_DIR "/macstar/star4/btof/pub/"
-#define PS2PDF "/usr/local/bin/ps2pdf"
+//#define DEFAULT_IN_DIR "/macstar/star4/btof/dd/"
+//#define DEFAULT_OUT_DIR "/macstar/star4/btof/noise/"
+//#define DEFAULT_PUB_DIR "/macstar/star4/btof/pub/"
+//#define PS2PDF "/usr/local/bin/ps2pdf"
 
 class noise {
 public :
