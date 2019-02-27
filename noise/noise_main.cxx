@@ -7,25 +7,6 @@ int main(int argc, char **argv) {
 	Int_t	krun		= 99999999;
 	Int_t	ntd			= 0;
 
-/*
-// set working environment
-char const* tmp = getenv("BTOF_NOISE_DIR");
-tmp = getenv("BTOF_DD_DIR");
-if (tmp)  btof_dd_dir=tmp;
- else	btof_dd_dir=".";
- cout << "data   : " << btof_dd_dir << endl;
-
-tmp = getenv("BTOF_NOISE_DIR");
-if (tmp)  btof_noise_dir=tmp;
-else	btof_noise_dir=".";
-cout << "results: " << btof_noise_dir << endl;
-
-tmp = getenv("BTOF_PUB_DIR");
-if (tmp)  btof_pub_dir=tmp;
- else	btof_pub_dir=".";
-cout << "pub    : " << btof_pub_dir << endl;
-*/
-
 	for (int i=1; i<argc; i++) {
 		if (argc>1){
 			if (argv[i][0] == '-') {
