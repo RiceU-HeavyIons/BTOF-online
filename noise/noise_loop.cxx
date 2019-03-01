@@ -639,7 +639,7 @@ void noise::Loop() {
 				int		imear	= -1;
 				//---- find time of earliest hit in this event in this tray
 				for (int ih=0;ih<nTofHits;ih++){
-					if (tray[ih]=it){
+					if (tray[ih]==it){
 						int		kglmod	= tray[ih]*32 + module[ih];
 						float	tabs	= tle[ih]-off_tray[it]-off_glmod[kglmod];
 						if (tabs<tear){
@@ -652,7 +652,7 @@ void noise::Loop() {
 				//---- now plot times in this tray relative to earliest hit
 				if (ihear>-1){
 					for (int ih=0;ih<nTofHits;ih++){
-						if (tray[ih]=it){
+						if (tray[ih]==it){
 							int		kglmod	= tray[ih]*32 + module[ih];
 							float	tabs	= tle[ih]-off_tray[it]-off_glmod[kglmod];
 							htrel->Fill(tabs-tear);
