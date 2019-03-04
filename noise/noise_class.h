@@ -30,6 +30,18 @@ using namespace std;
 
 //#include "/star/u/llope/lit/SplineFit/TSplineFit.h"
 
+// default directories (BNL)
+#define DEFAULT_IN_DIR /gpfs01/star/subsysg/TOF/BTOF-online/dd/
+#define DEFAULT_OUT_DIR "/gpfs01/star/subsysg/TOF/BTOF-online/noise/"
+#define DEFAULT_PUB_DIR "/star/u/geurts/WWW/files/"
+#define PS2PDF "/usr/bin/ps2pdf"
+
+// default directories (Rice)
+//#define DEFAULT_IN_DIR "/macstar/star4/btof/dd/"
+//#define DEFAULT_OUT_DIR "/macstar/star4/btof/noise/"
+//#define DEFAULT_PUB_DIR "/macstar/star4/btof/pub/"
+//#define PS2PDF "/usr/local/bin/ps2pdf"
+
 class noise {
 public :
 
@@ -42,21 +54,22 @@ public :
 	virtual void     Loop();
 	virtual Bool_t   Notify();
 	virtual void     Show(Long64_t entry = -1);
-	
+
 	TFile		   *finput;
 	TTree          *fChaint;   //!pointer to the analyzed TTree or TChain
 	Int_t           fCurrentt; //!current Tree number in a TChain
 	TTree          *fChainm;   //!pointer to the analyzed TTree or TChain
 	Int_t           fCurrentm; //!current Tree number in a TChain
-	
+
 	Int_t			kRunUse;
 	Int_t			nToDo;
-	
+//	string noise_in_dir, noise_out_dir, noise_pub_dir;
+
 	TH1D *hnhitstof_time;
 	TH1D *hnhitsmtd26_time;
 	TH1D *hnhitsmtd27_time;
 	TH1D *hnhitsmtd28_time;
-	
+
 	// Declaration of leaf types
 	Int_t           day;
 	Int_t           run;
@@ -95,7 +108,7 @@ public :
 	Float_t         mtle[100000];   //[nMtdHits]
 	Float_t         mtte[100000];   //[nMtdHits]
 	Float_t         mtot[100000];   //[nMtdHits]
-	
+
 	// List of branches
 	TBranch        *b_day;   //!
 	TBranch        *b_run;   //!
@@ -126,4 +139,3 @@ public :
    TBranch        *b_mtot;   //!
 
 };
-

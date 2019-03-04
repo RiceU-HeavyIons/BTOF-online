@@ -8,7 +8,9 @@ noise::noise(TTree *treet, TTree *treem, Int_t krun, Int_t ntd)
 	cout<<"..... noise::noise kRunUse = "<<kRunUse<<endl;
 	cout<<"..... noise::noise nToDo   = "<<nToDo<<endl;
 
-	sprintf(buf,"/gpfs01/star/subsysg/TOF/BTOF-online/dd/daqdoer_%d.root",kRunUse);
+	//sprintf(buf,"/gpfs01/star/subsysg/TOF/BTOF-online/dd/daqdoer_%d.root",kRunUse);
+sprintf(buf,DEFAULT_IN_DIR"/daqdoer_%d.root",kRunUse);
+
 
 //	if (kRunUse != 14112036){
 		finput	= new TFile(buf);

@@ -129,7 +129,7 @@ void noise::Loop() {
 		}
 	}
 
-	sprintf(buf,"/gpfs01/star/subsysg/TOF/BTOF-online/noise/noise_%d",kRunUse);
+	sprintf(buf,DEFAULT_OUT_DIR"/noise_%d",kRunUse);
 	TString namebase	= TString(buf);
 	TString nameextr	= TString(".root");
 	TString nameroot	= namebase+nameextr;
@@ -639,7 +639,7 @@ void noise::Loop() {
 				int		imear	= -1;
 				//---- find time of earliest hit in this event in this tray
 				for (int ih=0;ih<nTofHits;ih++){
-					if (tray[ih]=it){
+					if (tray[ih]==it){
 						int		kglmod	= tray[ih]*32 + module[ih];
 						float	tabs	= tle[ih]-off_tray[it]-off_glmod[kglmod];
 						if (tabs<tear){
@@ -652,7 +652,7 @@ void noise::Loop() {
 				//---- now plot times in this tray relative to earliest hit
 				if (ihear>-1){
 					for (int ih=0;ih<nTofHits;ih++){
-						if (tray[ih]=it){
+						if (tray[ih]==it){
 							int		kglmod	= tray[ih]*32 + module[ih];
 							float	tabs	= tle[ih]-off_tray[it]-off_glmod[kglmod];
 							htrel->Fill(tabs-tear);
@@ -1936,10 +1936,10 @@ void noise::Loop() {
 	sprintf(buf,"/bin/mv %s.ps %s.ps","noise",namebase.Data());
 	cout<<"..... noise::loop Executing ... "<<buf<<endl;
 	gSystem->Exec(buf);
-	sprintf(buf,"/usr/bin/ps2pdf %s.ps %s.pdf",namebase.Data(),namebase.Data());
+	sprintf(buf,PS2PDF" %s.ps %s.pdf",namebase.Data(),namebase.Data());
 	cout<<"..... noise::loop Executing ... "<<buf<<endl;
 	gSystem->Exec(buf);
-	sprintf(buf,"/bin/cp %s.pdf /star/u/geurts/WWW/files/",namebase.Data());
+	sprintf(buf,"/bin/cp %s.pdf " DEFAULT_PUB_DIR"/",namebase.Data());
 	cout<<"..... noise::loop Executing ... "<<buf<<endl;
 	gSystem->Exec(buf);
 	cout<<"..... noise::loop Done...."<<endl;
