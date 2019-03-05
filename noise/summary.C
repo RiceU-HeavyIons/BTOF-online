@@ -5,6 +5,19 @@ const float mtd11area = 331.;
 
 const float TRAYCUTOFF = 4.;
 
+
+int GetDayNum(int im, int id){
+	int idaynum	= 0;
+	if (im==1){ idaynum = id; } else				// jan
+	if (im==2){ idaynum = id+31; } else				// feb
+	if (im==3){ idaynum = id+31+28; } else			// mar
+	if (im==4){ idaynum = id+31+28+31; } else		// apr
+	if (im==5){ idaynum = id+31+28+31+30; } 		// may
+	//cout<<im<<" "<<id<<" "<<idaynum<<endl;
+	return idaynum;
+}
+
+
 void summary(){
 
 TH1::AddDirectory(kFALSE);
@@ -329,7 +342,7 @@ TH1::AddDirectory(kFALSE);
 					hmtdstripsbl[kNmtdstripsbl]->SetDirectory(0);
 				++kNmtdstripsbl;
 				if (kNmtdstripsbl>=maxmtdstripsbl){
-					cout<<"...you need more indices for hmtdstripsbl[]....."<endl;
+					cout<<"...you need more indices for hmtdstripsbl[]....."<<endl;
 					exit(0);
 				}
 			}
@@ -461,7 +474,7 @@ TH1::AddDirectory(kFALSE);
  	ccan[ican] = new TCanvas(buf,buf,0,0,700,500);
  	ccan[ican]->SetFillColor(10);
  	ccan[ican]->cd(); ccan[ican]->Divide(1,1,0.0001,0.0001);
-		frame	=	gPad->DrawFrame(-21,0,(year[ndays-1]-11)*365+lastday+6,100);
+		TH1F *frame	=	gPad->DrawFrame(-21,0,(year[ndays-1]-11)*365+lastday+6,100);
 			frame->GetXaxis()->SetTitle("day number");
 			frame->GetYaxis()->SetTitle("global noise rate per channel (Hz)");
 		for (int i=0;i<nmodes;i++){ modes[i]->Draw(); }
@@ -871,15 +884,4 @@ TH1::AddDirectory(kFALSE);
 	gSystem->Exec(buf);
 	cout<<"..... Done...."<<endl;
 
-}
-
-int GetDayNum(int im, int id){
-	int idaynum	= 0;
-	if (im==1){ idaynum = id; } else				// jan
-	if (im==2){ idaynum = id+31; } else				// feb
-	if (im==3){ idaynum = id+31+28; } else			// mar
-	if (im==4){ idaynum = id+31+28+31; } else		// apr
-	if (im==5){ idaynum = id+31+28+31+30; } 		// may
-	//cout<<im<<" "<<id<<" "<<idaynum<<endl;
-	return idaynum;
 }
