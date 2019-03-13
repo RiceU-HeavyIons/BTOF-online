@@ -1,3 +1,9 @@
-*.o
+cal/cal
+caleval/caleval
+dataqa/dataqa
+muapp/muapp
+ndaqdoer/daqdoer
 noise/noise
-
+*.o
+*.ps
+*.pdf
