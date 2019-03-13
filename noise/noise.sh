@@ -9,7 +9,7 @@ SUBMIT=/afs/rhic.bnl.gov/star/packages/scripts/star-submit
 
 for runnumber in $@
 do
- echo '=== Run Number: '$runnumber' ==='
+ echo '=== Scheduling Run Number: '$runnumber' ==='
  #runnumber=$1
 
  run=${runnumber:0:2}
