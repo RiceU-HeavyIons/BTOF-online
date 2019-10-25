@@ -19,7 +19,7 @@ do
 
  # build input file
  echo '<?xml version="1.0" encoding="utf-8" ?>' > $WRKDIR/$infile
- echo '<job>' >> $WRKDIR/$infile
+ echo '<job name="tof noise ' $runnumber'" >' >> $WRKDIR/$infile
  echo '<command>' >> $WRKDIR/$infile
  echo starver $STARLIB >> $WRKDIR/$infile
  echo cd $BTOFONLINE/daqdoer >> $WRKDIR/$infile
@@ -37,4 +37,3 @@ do
  cd $WRKDIR
  $SUBMIT $infile
 done
-
