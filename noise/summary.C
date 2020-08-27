@@ -1,10 +1,8 @@
-
 const float tofarea =  20.;
 const float mtd9area = 218.;
 const float mtd11area = 331.;
 
 const float TRAYCUTOFF = 4.;
-
 
 int GetDayNum(int im, int id){
 	int idaynum	= 0;
@@ -46,133 +44,39 @@ TH1::AddDirectory(kFALSE);
 		if (activeBL[i]){ ++j; }
 	}
 
-	const int 	ndays	=  439;
-	int year[ndays]	= {
-// 1 entry
-	 10,
-// 27 entries
-	 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11,
-	 11, 11, 11, 11, 11, 11, 11,
-// 37 entries
-	 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12,
-	 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12,
-// 52 entries
-	 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13,
-	 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13,
-	 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13,
-// 36 entries
-	 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14,
-	 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14,
-// 87 entries
-	 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
-	 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
-	 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
-	 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
-	 15, 15, 15, 15, 15, 15, 15,
-// 33 entries
-	 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16,
-	 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16,
-// 37 entries
-	 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
-	 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
-// 53 entries
-	 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18,
-	 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18,
-	 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18,
-// 5 entries
-	 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19,
-         19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19,
-         19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19,
-         19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19
-	};
-	int day[ndays]	= {
-// year-10 (run-9)
-	 350,
-// year-11
-	   7,  13,  43,  55,  83,  97, 104, 112, 118, 125, 133, 139, 147, 155, 159, 166, 174, 180, 200, 204,
-	 207, 327, 328, 333, 341, 346, 348,
-// year-12
-	  22,  26,  27,  32,  42,  61,  63,  65,  66,  71,  73,  77,  89,  95,  98, 103, 104, 109, 110, 111,
-	 118, 119, 124, 131, 133, 138, 144, 146, 152, 166, 180, 181, 182, 184,
-// year-13
-	 343, 347, 361,  31,  32,  33,  35,  40,  45,  46,  60,  67,  72,  74,  80,  88,  97, 102, 110, 114,
-	 122, 124, 130, 134, 136, 137, 138, 139, 141, 144, 151, 153, 154, 156, 157, 158, 160, 165, 166, 169,
-	 171, 172, 174, 175, 176, 177, 179,1791,1792, 180,1801, 181,1811, 182, 185,
-// year-14
-	  37,  39,  42,  45,  59,  67,  74,  77,  79,  80,  81,  83,  86,  87,  88,  89,  90,  96,  98 ,101,
-	 103, 107, 109, 112, 116, 119, 125, 128, 131, 139, 143, 148, 156, 158, 160, 162,
-// year-15
-          31,  32,  35,  36,  38,  39,  40,  50,  52,  53,  54,  55,  56,  57,  58,  59,  60,  61,  62,  63,
-	  66,  67,  68,  69,  70,  73,  75,  77,  82,  83,  85,  86,  87,  88,  89,  90,  93,  95,  96,  99,
-	 106, 107, 108, 109, 111, 115, 116, 117, 118, 120, 121, 122, 127, 128, 130, 131, 133, 134, 136, 137,
-	1371, 138, 141, 143, 145, 146, 148, 149, 150, 153, 154, 156, 158, 160, 161, 164, 166, 172, 174, 175,
-	 178, 181, 182, 184, 186, 187, 327,
-// year-16
-	  12,  16,  18,  19,  20,  23,  24,  27,  31,  35,  37,  47,  49,  55,  63,  71,  74,  81,  91,  96,
-	 104, 110, 111, 117, 122, 130, 133, 146, 148, 160, 170, 173, 175,
-// year-17 (run-16)
-          13,  20,  23,  33,  48,  52,  57,  62,  70,  71,  76,  78,  79,  80,  81,  89,  90,  93,  94,  96,
-	 112, 120, 122, 125, 130, 131, 132, 134, 135, 139, 141, 148, 152, 154, 158, 173, 176,
-// year-18
-	  35,  37,  40,  44,  45,  47,  50,  53,  68,  75,  88,  89,  93,  95, 100, 102, 103, 105, 107, 110,
-	 112, 116, 117, 119, 121, 126, 127, 128, 129, 130, 131, 132, 133, 134, 137, 139, 142, 143, 144, 145,
-	 146, 147, 149, 150, 151, 153, 154, 158, 160, 164, 167, 169, 170,
-// year 19 (run18)
-	 53,  56,   57,  59,  60,  62,  63,  65,  66,  67,  68,  71,  73,  77,  78,  80,  81,  82,  83,  84,
-	 86,  91,   93,  94,  95,  97,  98,  99, 100, 104, 106, 107, 108, 109, 113, 114, 115, 116, 117, 118,
-	 119, 120, 121, 122, 123, 124, 125, 127, 128, 129, 134, 135, 136, 137, 139, 140, 141, 142, 144, 146,
-	 148, 150, 151, 153, 154, 155, 156, 158, 159, 161, 162, 163, 165, 170, 171, 172
-//        1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18   19   20
-	};
-	float gday[ndays]	= {
-// year-10 (run-9)
-	-15,
-// year-10
-	  7,   13,   43,   55,   83,   97,  104,  112,  118,  125,  133,  139,  147,  155,  159,  166,  174,  180,  200,  204,
-	207,  327,  328,  333,  341,  346,  348,
-// year-12
-	387,  391,  392,  397,  407,  426,  428,  430,  431,  436,  438,  442,  454,  460,  463,  468,  469,  474,  475,  476,
-	483,  484,  489,  496,  498,  503,  509,  511,  517,  531,  545,  546,  547, 549,
-// year-13
-	708,  712,  726,  761,  762,  763,  765,  770,  775,  776,  790,  797,  802,  804,  810,  818,  827,  832,  840,  844,
-	852,  854,  860,  864,  866,  867,  868,  869,  871,  874,  881,  883,  884,  886,  887,  888,  890,  895,  896,  899,
-	901,  902,  904,  905,  906,  907,  909,909.1,909.2,  910,910.1,  911,911.1,  912,  915,
-// year-14
-	1132, 1134, 1137, 1140, 1154, 1166, 1173, 1176, 1178, 1179, 1180, 1182, 1185, 1186, 1187, 1188, 1189, 1195, 1197, 1200,
-	1202, 1206, 1208, 1211, 1215, 1218, 1224, 1227, 1230, 1238, 1242, 1247, 1255, 1257, 1259, 1261,
-// year-15
-	1495, 1496, 1499, 1500, 1502, 1503, 1504, 1514, 1516, 1517, 1518, 1519, 1520, 1521, 1522, 1523, 1524, 1525, 1526, 1527,
-	1530, 1531, 1532, 1533, 1534, 1537, 1539, 1541, 1546, 1547, 1549, 1550, 1551, 1552, 1553, 1554, 1557, 1559, 1560, 1563,
-	1570, 1571, 1572, 1573, 1575, 1579, 1580, 1581, 1582, 1584, 1585, 1586, 1591, 1592, 1594, 1595, 1597, 1598, 1600, 1601,
-	1601, 1602, 1605, 1607, 1609, 1610, 1612, 1613, 1614, 1617, 1618, 1620, 1622, 1624, 1625, 1628, 1630, 1636, 1638, 1639,
-	1642, 1645, 1646, 1648, 1650, 1651, 1791,
-// year-16
-	1841, 1845, 1847, 1848, 1849, 1852, 1853, 1856, 1860, 1864, 1866, 1876, 1878, 1884, 1892, 1900, 1903, 1910, 1920, 1925,
-	1933, 1939, 1940, 1946, 1951, 1959, 1962, 1975, 1977, 1989, 1999, 2002, 2004,
-// year-17
-	2207, 2214, 2217, 2227, 2242, 2246, 2251, 2256, 2264, 2265, 2270, 2272, 2273, 2274, 2275, 2283, 2284, 2287, 2288, 2290,
-	2306, 2314, 2316, 2319, 2324, 2325, 2326, 2328, 2329, 2333, 2335, 2342, 2346, 2348, 2352, 2367, 2370,
-// year-18
-	2594, 2596, 2599, 2603, 2604, 2606, 2609, 2612, 2627, 2634, 2647, 2648, 2652, 2654, 2659, 2661, 2662, 2664, 2666, 2669,
-	2671, 2675, 2676, 2678, 2680, 2685, 2686, 2687, 2688, 2689, 2690, 2691, 2692, 2693, 2696, 2698, 2701, 2702, 2703, 2704,
-	2705, 2706, 2708, 2709, 2710, 2712, 2713, 2717, 2719, 2723, 2726, 2728, 2729,
-// year 19
-	2977, 2980, 2981, 2983, 2984, 2986, 2987, 2989, 2990, 2991, 2992, 2995, 2997, 3001, 3002, 3004, 3005, 3006, 3007, 3008,
-	3010, 3015, 3017, 3018,	3019, 3021, 3022, 3023, 3024, 3028, 3030, 3031, 3032, 3033, 3037, 3038, 3039, 3040, 3041, 3042,
-        3043, 3044, 3045, 3046, 3047, 3048, 3049, 3051, 3052, 3053, 3058, 3059, 3060, 3061, 3063, 3064, 3065, 3066, 3068, 3070,
-	3072, 3074, 3075, 3077, 3048, 3079, 3080, 3082, 3083, 3085, 3086, 3087, 3089, 3094, 3095, 3096
-//       1     2     3     4     5     6     7     8     9     10    11    12    13    14    15    16    17    18    19    20
-	};
+
+	ifstream input;
+	string line;
+	int ndays = 0;
+	input.open("input.txt");
+	while (getline(input, line))	
+	{
+		ndays++;
+	}
+	input.close();
+	int runnum[ndays], year[ndays], day[ndays];
+	input.open("input.txt");
+	for (int i=0; i<ndays; i++)
+	{
+		getline(input, line);
+		runnum[i] = atoi (line.c_str());
+		year[i] = runnum[i]/1000;
+		day[i] = runnum[i] - year[i]*1000;
+	}
+	
+	float gday[ndays];
+	for (int n = 0; n<=ndays; n++){
+	gday[n] = (year[n]-11)*365 + day[n] + (year[n]-9)/4;	// (year[n]-9)/4 = number of leap days (works until year 2100!)	
+	}
+
 	float		lastday	= day[ndays-1];
 	if (lastday>1000){ lastday	/= 10.; }
-	float 	timetotalTOF[ndays]	= {0};
-	float 	timetotalMTD[ndays]	= {0};
+	float 	timetotalTOF[ndays];
+	float 	timetotalMTD[ndays];
 	TH1D*	hinfo[ndays];
-	TH1D*	hrate_tray[ndays];
+	TH1D*	hrate_tray[523];
 	TH1D*	htot[ndays];
 	TH1D*	htot_mtd[30][ndays];
-        const int maxmtdstripsbl(330);
-	TH2D*	hmtdstripsbl[maxmtdstripsbl];				//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	TGraph *gglobalnoise	= new TGraph();
     	gglobalnoise->SetMarkerStyle(20);
 	    gglobalnoise->SetMarkerSize(0.2);
@@ -233,75 +137,17 @@ TH1::AddDirectory(kFALSE);
 	TGraph *gMCW_day	= new TGraph();
 			gMCW_day->SetName("gMCW_day");
 
-	//---- get MCW data (Run-11).....
-	//
-    ifstream    isc;
-	string 		str;
-    int			iline=0, ikeep=-1;
-	int			iy,imo,id,ih,imi,is,ifrac,idaynum;
-	UInt_t		starttime,thistime;
-    float		tMCW;
-    int 		num_tMCW[200]	= {0};
-    float		avg_tMCW[200]	= {0};
-    isc.open("./MCW.txt" ,ifstream::in);
-    while (isc.good()){
-		getline(isc,str); ++iline;
-		sscanf(str.c_str(),"%d/%d/%d %d:%d:%d.%d %f",&imo,&id,&iy,&ih,&imi,&is,&ifrac,&tMCW);
- 		TDatime*	da = new TDatime(iy,imo,id,ih,imi,is);
- 		thistime	= da->Convert();
-		if (iline==1){
-			starttime	= thistime;
-		}
-		Bool_t keepit	= kTRUE;
-		if (tMCW<20.){ keepit = kFALSE; }
-		if (keepit){
-			++ikeep;
-			idaynum		= GetDayNum(imo,id);
-			++num_tMCW[idaynum];
-			avg_tMCW[idaynum]	+= tMCW;
-			gMCW->SetPoint(ikeep,thistime-starttime,tMCW);
-		}
-		delete da;
-    }
-    int ndays_MCW	= 0;
-	for (int i=1;i<200;i++){
-		if (num_tMCW[i]){
-			avg_tMCW[i]	/= (float)num_tMCW[i];
-			gMCW_day->SetPoint(ndays_MCW,365+i,avg_tMCW[i]);	// run-11 offset!!!!
-			//cout<<365+i<<" "<<avg_tMCW[i]<<endl;
-			++ndays_MCW;
-		}
-	}
-	//cout<<"Nlines="<<iline<<"\t Nkept="<<ikeep+1<<endl;
-	//cout<<"starttime="<<starttime<<"\t stop="<<thistime<<"\t interval="<<thistime-starttime<<endl;
-	//cout<<"Nbins="<<(thistime-starttime)/500<<endl;
-	//
-	//---- end MCW data....
 
 
 	TLatex *thistext	= new TLatex();
 		thistext->SetTextSize(0.175);
 		thistext->SetNDC();
-	int kNmtdstripsbl	= 0;
-	int kFileID;
 	for (int iday=0;iday<ndays;iday++){
 		int	thisntot_mtd[30]	= {0};
 		int thisday				= day[iday];
-		if (day[iday]<10  ){
-			sprintf(buf," /gpfs01/star/subsysg/TOF/BTOF-online/noise/noise_%d00%d.root",year[iday],day[iday]);
-			kFileID				= year[iday]*1000 + day[iday];
-		} else if (day[iday]<100 ){
-			sprintf(buf," /gpfs01/star/subsysg/TOF/BTOF-online/noise/noise_%d0%d.root", year[iday],day[iday]);
-			kFileID				= year[iday]*1000 + day[iday];
-		} else if (day[iday]<1000){
-			sprintf(buf," /gpfs01/star/subsysg/TOF/BTOF-online/noise/noise_%d%d.root",  year[iday],day[iday]);
-			kFileID				= year[iday]*1000 + day[iday];
-		} else {
-			thisday	/= 10;
-			kFileID				= year[iday]*1000 + thisday;
-			sprintf(buf," /gpfs01/star/subsysg/TOF/BTOF-online/noise/noise_%d%d.root",  year[iday],thisday);
-		}
-		cout<<"i="<<iday<<"\t y="<<year[iday]<<"\t d="<<day[iday]<<" kFileID="<<kFileID<<"\t"<<buf<<endl;
+		if (day[iday]<1000  ){
+			sprintf(buf,"/macstar/star4/btof/noise/noise_%d.root",runnum[iday]);}
+		cout<<"i="<<iday<<"\t y="<<year[iday]<<"\t d="<<day[iday]<<" kFileID="<<runnum[iday]<<"\t"<<buf<<endl;
 		TFile *fin = new TFile(buf,"READ");
 			fin->cd();
 			hrate_tray[iday]	= (TH1D*)gDirectory->Get("hrate_tray");
@@ -334,19 +180,6 @@ TH1::AddDirectory(kFALSE);
 					thisntot_mtd[i]		= 0;
 				}
 			}
-			//
-			if (kFileID>=14042){
-				hmtdstripsbl[kNmtdstripsbl]	= (TH2D*)gDirectory->Get("hmtdstripsbl");
-					sprintf(buf,"hmtdstripsbl%d",kNmtdstripsbl);
-					hmtdstripsbl[kNmtdstripsbl]->SetName(buf);
-					hmtdstripsbl[kNmtdstripsbl]->SetDirectory(0);
-				++kNmtdstripsbl;
-				if (kNmtdstripsbl>=maxmtdstripsbl){
-					cout<<"...you need more indices for hmtdstripsbl[]....."<<endl;
-					exit(0);
-				}
-			}
-			//
 		fin->Close();
 		//
 		float ntrays = 0.0;
@@ -405,14 +238,11 @@ TH1::AddDirectory(kFALSE);
 		gmeantot->SetPoint(iday,gday[iday],ameantot_tof);
 		for (int i=0;i<30;i++){
 			gglobalnoisecm2_mtd[i]->SetPoint(iday,gday[iday],gnmtd[i]/mtd11area);
-//			if (i==26)cout<<iday<<" "<<gday[iday]<<" "<<gnmtd[i]/mtd11area<<endl;
 			if (thisntot_mtd[i]>50){
 				gmeantot_mtd[i]->SetPoint(iday,gday[iday],ameantot_mtd[i]);
 			}
 		}
-		//
 	}
-	cout<<"Found "<<kNmtdstripsbl<<" instances of hmtdstripsbl...."<<endl;
 
 	gStyle->SetOptStat(0);
 	gStyle->SetPadRightMargin(0.02);
@@ -536,32 +366,9 @@ TH1::AddDirectory(kFALSE);
 			legb->Draw();
 	ccan[ican]->Update(); ccan[ican]->cd();
 	ccan[ican]->Print("summary_noise.ps");
-	//
-//  	++ican; sprintf(buf,"ccan%d",ican);
-//  	ccan[ican] = new TCanvas(buf,buf,0,0,700,500);
-//  	ccan[ican]->SetFillColor(10);
-//  	ccan[ican]->cd(); ccan[ican]->Divide(1,1,0.0001,0.0001);
-// 		frame	=	gPad->DrawFrame(1130,0,1270,8.5);
-// 			frame->GetXaxis()->SetTitle("Run-13 day number (x=1095 is Jan 1, 2013)  ");
-// 			frame->GetYaxis()->SetTitle("global noise rate per channel (Hz/cm^{2})");
-// 		gglobalnoisecm2->Draw("PL");
-// 		gglobalnoisecm2_mtd[25]->Draw("PL");
-// 		gglobalnoisecm2_mtd[26]->Draw("PL");
-// 		gglobalnoisecm2_mtd[27]->Draw("PL");
-// 		TLegend *legc = new TLegend(0.13,0.93,0.94,0.98);
-// 			legc->SetTextSize(0.04);
-// 			legc->SetNColumns(4);
-// 			legc->SetFillColor(0);
-// 			//legc->SetFillStyle(0);
-// 			legc->AddEntry(gglobalnoisecm2      ,"TOF","P");
-// 			legc->AddEntry(gglobalnoisecm2_mtd[25],"MTD26","P");
-// 			legc->AddEntry(gglobalnoisecm2_mtd[26],"MTD27","P");
-// 			legc->AddEntry(gglobalnoisecm2_mtd[27],"MTD28","P");
-// 			legc->Draw();
-// 	ccan[ican]->Update(); ccan[ican]->cd();
-// 	ccan[ican]->Print("summary_noise.ps");
-// 	//
- 	++ican; sprintf(buf,"ccan%d",ican);
+ 	
+	
+	++ican; sprintf(buf,"ccan%d",ican);
  	ccan[ican] = new TCanvas(buf,buf,0,0,700,500);
  	ccan[ican]->SetFillColor(10);
  	ccan[ican]->cd(); ccan[ican]->Divide(1,1,0.0001,0.0001);
@@ -584,30 +391,9 @@ TH1::AddDirectory(kFALSE);
 			legc->Draw();
 	ccan[ican]->Update(); ccan[ican]->cd();
 	ccan[ican]->Print("summary_noise.ps");
-	//
-//  	++ican; sprintf(buf,"ccan%d",ican);
-//  	ccan[ican] = new TCanvas(buf,buf,0,0,700,500);
-//  	ccan[ican]->SetFillColor(10);
-//  	ccan[ican]->cd(); ccan[ican]->Divide(1,1,0.0001,0.0001);
-// 		frame	=	gPad->DrawFrame(1130,0,1270,4);
-// 			frame->GetXaxis()->SetTitle("Run-13 day number (x=1095 is Jan 1, 2013)  ");
-// 			frame->GetYaxis()->SetTitle("global noise rate per channel (Hz/cm^{2})");
-// 		TLegend *legd = new TLegend(0.13,0.80,0.94,0.98);
-// 			legd->SetTextSize(0.03);
-// 			legd->SetFillColor(0);
-// 			legd->SetNColumns(5);
-// 		for (int i=0;i<30;i++){
-// 			if (activeBL[i]){
-// 				gglobalnoisecm2_mtd[i]->Draw("PL");
-// 				sprintf(buf,"BL %d",i+1);
-// 				legd->AddEntry(gglobalnoisecm2_mtd[i],buf,"P");
-// 			}
-// 		}
-// 		legd->Draw();
-// 	ccan[ican]->Update(); ccan[ican]->cd();
-// 	ccan[ican]->Print("summary_noise.ps");
-	//
- 	++ican; sprintf(buf,"ccan%d",ican);
+ 
+
+	++ican; sprintf(buf,"ccan%d",ican);
  	ccan[ican] = new TCanvas(buf,buf,0,0,700,500);
  	ccan[ican]->SetFillColor(10);
  	ccan[ican]->cd(); ccan[ican]->Divide(1,1,0.0001,0.0001);
@@ -628,20 +414,6 @@ TH1::AddDirectory(kFALSE);
 		legd->Draw();
 	ccan[ican]->Update(); ccan[ican]->cd();
 	ccan[ican]->Print("summary_noise.ps");
-
-	//---- MCW
-	//
-//  	++ican; sprintf(buf,"ccan%d",ican);
-//  	ccan[ican] = new TCanvas(buf,buf,0,0,700,500);
-//  	ccan[ican]->SetFillColor(10);
-//  	ccan[ican]->cd(); ccan[ican]->Divide(1,1,0.0001,0.0001);
-// 		frame	=	gPad->DrawFrame(320,50,(year[ndays-1]-11)*365+lastday+6,70);
-// 			frame->GetXaxis()->SetTitle("Run-11 day number");
-// 			frame->GetYaxis()->SetTitle("MCW Temperature (def F)");
-// 		gMCW_day->Draw("PL");
-// 	ccan[ican]->Update(); ccan[ican]->cd();
-// 	ccan[ican]->Print("summary_noise.ps");
-
 
 
  	++ican; sprintf(buf,"ccan%d",ican);
@@ -667,164 +439,6 @@ TH1::AddDirectory(kFALSE);
 	ccan[ican]->Update(); ccan[ican]->cd();
 	ccan[ican]->Print("summary_noise.ps");
 
-	//---- tof tot page 1
-//  	++ican; sprintf(buf,"ccan%d",ican);
-//  	ccan[ican] = new TCanvas(buf,buf,0,0,700,500);
-//  	ccan[ican]->SetFillColor(10);
-//  	ccan[ican]->cd(); ccan[ican]->Divide(9,8,0.0001,0.0001);
-// 	for (int iday=0;iday<72;iday++){
-// 		ccan[ican]->cd(1+iday);
-// 		htot[iday]->SetFillStyle(1001);
-// 		htot[iday]->SetFillColor(3);
-// 		htot[iday]->Draw();
-// 		sprintf(buf,"%d %d",year[iday],day[iday]);
-// 		thistext->DrawLatex(0.59,0.8,buf);
-// 	}
-// 	ccan[ican]->Update(); ccan[ican]->cd();
-// 	ccan[ican]->Print("summary_noise.ps");
-// 	++ican; sprintf(buf,"ccan%d",ican);
-// 	ccan[ican] = new TCanvas(buf,buf,0,0,700,500);
-// 	ccan[ican]->SetFillColor(10);
-// 	ccan[ican]->cd(); ccan[ican]->Divide(9,8,0.0001,0.0001);
-// 	for (int iday=72;iday<ndays;iday++){
-// 		ccan[ican]->cd(1+iday-72);
-// 		htot[iday]->SetFillStyle(1001);
-// 		htot[iday]->SetFillColor(3);
-// 		htot[iday]->Draw();
-// 		sprintf(buf,"%d %d",year[iday],day[iday]);
-// 		thistext->DrawLatex(0.59,0.8,buf);
-// 	}
-// 	ccan[ican]->Update(); ccan[ican]->cd();
-// 	ccan[ican]->Print("summary_noise.ps");
-// 	//
-// 	int mtdiday0	= 65;
-// 	int mtdndays	= ndays-mtdiday0+1;
-// 	//
-//  	++ican; sprintf(buf,"ccan%d",ican);
-//  	ccan[ican] = new TCanvas(buf,buf,0,0,700,500);
-//  	ccan[ican]->SetFillColor(10);
-//  	ccan[ican]->cd(); ccan[ican]->Divide(9,8,0.0001,0.0001);
-// 	for (int iday=mtdiday0;iday<mtdiday0+72;iday++){
-// 		ccan[ican]->cd(1+iday-mtdiday0);
-// 		htot_mtd[25][iday]->SetFillStyle(1001);
-// 		htot_mtd[25][iday]->SetFillColor(kcolors_bl[25]);
-// 		htot_mtd[25][iday]->Draw();
-// 		sprintf(buf,"%d %d",year[iday],day[iday]);
-// 		thistext->DrawLatex(0.59,0.8,buf);
-// 	}
-// 	ccan[ican]->Update(); ccan[ican]->cd();
-// 	ccan[ican]->Print("summary_noise.ps");
-// 	++ican; sprintf(buf,"ccan%d",ican);
-// 	ccan[ican] = new TCanvas(buf,buf,0,0,700,500);
-// 	ccan[ican]->SetFillColor(10);
-// 	ccan[ican]->cd(); ccan[ican]->Divide(9,8,0.0001,0.0001);
-// 	for (int iday=mtdiday0+72;iday<ndays;iday++){
-// 		ccan[ican]->cd(1+iday-(mtdiday0+72));
-// 		htot_mtd[25][iday]->SetFillStyle(1001);
-// 		htot_mtd[25][iday]->SetFillColor(kcolors_bl[25]);
-// 		htot_mtd[25][iday]->Draw();
-// 		sprintf(buf,"%d %d",year[iday],day[iday]);
-// 		thistext->DrawLatex(0.59,0.8,buf);
-// 	}
-// 	ccan[ican]->Update(); ccan[ican]->cd();
-// 	ccan[ican]->Print("summary_noise.ps");
-//
-
-
-// 	const int nhv	 		=  7;
-// 	const int valhv[nhv]	= {7000,6900,6800,6600,6400,6200,7000};
-// 	const int valrun[nhv]	= {  34,  37,  45,  52,  54,  55,  59};
-//
-// 	TH1D*	hinfo_hv[nhv];
-// 	TH1D*	htot_hv[nhv];
-// 	TGraph *gglobalnoise_hv	= new TGraph();
-// 			gglobalnoise_hv->SetMarkerStyle(20);
-// 			gglobalnoise_hv->SetMarkerColor(1);
-// 			gglobalnoise_hv->SetLineColor(1);
-// 			gglobalnoise_hv->SetName("gglobalnoise");
-// 	TGraph *gglobalnoiseL_hv	= new TGraph();
-// 			gglobalnoiseL_hv->SetMarkerStyle(20);
-// 			gglobalnoiseL_hv->SetMarkerColor(4);
-// 			gglobalnoiseL_hv->SetLineColor(4);
-// 			gglobalnoiseL_hv->SetName("gglobalnoiseL");
-// 	TGraph *gglobalnoiseH_hv	= new TGraph();
-// 			gglobalnoiseH_hv->SetMarkerStyle(20);
-// 			gglobalnoiseH_hv->SetMarkerColor(2);
-// 			gglobalnoiseH_hv->SetLineColor(2);
-// 			gglobalnoiseH_hv->SetName("gglobalnoiseH");
-// 	TH1D*	hrate_tray_hv[nhv];
-// 	TH1D*	hrate_tray_totH_hv[nhv];
-// 	TH1D*	hrate_tray_totL_hv[nhv];
-//
-// 	for (int ihv=0;ihv<nhv;ihv++){
-// 		sprintf(buf,"noise_111120%d.root",valrun[ihv]);
-// 		cout<<ihv<<" "<<valhv[ihv]<<" "<<buf<<endl;
-// 		TFile *fin = new TFile(buf,"READ");
-// 			fin->cd();
-// 			hinfo_hv[ihv]	= (TH1D*)gDirectory->Get("hinfo");
-// 				sprintf(buf,"hinfo_hv%d",ihv);
-// 				hinfo_hv[ihv]->SetName(buf);
-// 			htot_hv[ihv]	= (TH1D*)gDirectory->Get("htot");
-// 				sprintf(buf,"htot_hv%d",ihv);
-// 				htot_hv[ihv]->SetName(buf);
-// 				sprintf(buf,"htot, HV=%d",valhv[ihv]);
-// 				htot_hv[ihv]->SetTitle(buf);
-// 			hrate_tray_hv[ihv]	= (TH1D*)gDirectory->Get("hrate_tray");
-// 				sprintf(buf,"hrate_tray_hv%d",ihv);
-// 				hrate_tray_hv[ihv]->SetName(buf);
-// 				sprintf(buf,"hrate_tray, HV=%d",valhv[ihv]);
-// 				hrate_tray_hv[ihv]->SetTitle(buf);
-// 			hrate_tray_totH_hv[ihv]	= (TH1D*)gDirectory->Get("hrate_tray_totH");
-// 				sprintf(buf,"hrate_tray_totH_hv%d",ihv);
-// 				hrate_tray_totH_hv[ihv]->SetName(buf);
-// 				sprintf(buf,"hrate_tray_totH, HV=%d",valhv[ihv]);
-// 				hrate_tray_totH_hv[ihv]->SetTitle(buf);
-// 			hrate_tray_totL_hv[ihv]	= (TH1D*)gDirectory->Get("hrate_tray_totL");
-// 				sprintf(buf,"hrate_tray_totL_hv%d",ihv);
-// 				hrate_tray_totL_hv[ihv]->SetName(buf);
-// 				sprintf(buf,"hrate_tray_totL, HV=%d",valhv[ihv]);
-// 				hrate_tray_totL_hv[ihv]->SetTitle(buf);
-// 		fin->Close();
-// 		//
-// 		float gnle	= hinfo_hv[ihv]->GetBinContent(3)/23040.;
-// 		float gnte	= hinfo_hv[ihv]->GetBinContent(4)/23040.;
-// 		float gn	= hinfo_hv[ihv]->GetBinContent(5)/23040.;
-// 		float gnL	= hinfo_hv[ihv]->GetBinContent(6)/23040.;
-// 		float gnH	= hinfo_hv[ihv]->GetBinContent(7)/23040.;
-// 		gglobalnoise_hv->SetPoint(ihv,valhv[ihv],gn);
-// 		gglobalnoiseL_hv->SetPoint(ihv,valhv[ihv],gnL);
-// 		gglobalnoiseH_hv->SetPoint(ihv,valhv[ihv],gnH);
-// 	}
-//
-//  	++ican; sprintf(buf,"ccan%d",ican);
-//  	ccan[ican] = new TCanvas(buf,buf,0,0,700,500);
-//  	ccan[ican]->SetFillColor(10);
-//  	ccan[ican]->cd(); ccan[ican]->Divide(1,1,0.0001,0.0001);
-// 		frame	=	gPad->DrawFrame(6100,0,7100,70);
-// 			frame->GetXaxis()->SetTitle("HV (V)");
-// 			frame->GetYaxis()->SetTitle("Day 112 global noise rate per channel (Hz)");
-// 		gglobalnoise_hv->Draw("P");
-// 		gglobalnoiseL_hv->Draw("P");
-// 		gglobalnoiseH_hv->Draw("P");
-// 	ccan[ican]->Update(); ccan[ican]->cd();
-// 	ccan[ican]->Print("summary_noise.ps");
-//
-//  	++ican; sprintf(buf,"ccan%d",ican);
-//  	ccan[ican] = new TCanvas(buf,buf,0,0,700,500);
-//  	ccan[ican]->SetFillColor(10);
-//  	ccan[ican]->cd(); ccan[ican]->Divide(3,3,0.0001,0.0001);
-// 	for (int ihv=0;ihv<nhv;ihv++){
-// 		ccan[ican]->cd(1+ihv);
-// 		hrate_tray_hv[ihv]->SetStats(0);
-// 		hrate_tray_totH_hv[ihv]->SetStats(0);
-// 		hrate_tray_totL_hv[ihv]->SetStats(0);
-// 		hrate_tray_hv[ihv]->Draw();
-// 		hrate_tray_totH_hv[ihv]->Draw("same");
-// 		hrate_tray_totL_hv[ihv]->Draw("same");
-// 	}
-// 	ccan[ican]->Update(); ccan[ican]->cd();
-// 	ccan[ican]->Print("summary_noise.ps");
-
 
 	gStyle->SetPadRightMargin(0.1);
 	gStyle->SetPadTopMargin(0.065);
@@ -835,24 +449,8 @@ TH1::AddDirectory(kFALSE);
 	for (int il=0;il<4;il++){
 		lmodules[il]	= new TLine(-0.5,((il+1)*24)-0.5,14.5,((il+1)*24)-0.5);
 	}
-	for (int i=0;i<kNmtdstripsbl;i++){
-		++ican; sprintf(buf,"ccan%d",ican);
-		ccan[ican] = new TCanvas(buf,buf,0,0,700,500);
-		ccan[ican]->SetFillColor(10);
-		ccan[ican]->cd(); ccan[ican]->Divide(1,1,0.0001,0.0001);
-		ccan[ican]->cd(1);
-			gPad->SetLogz(1);
-			hmtdstripsbl[i]->SetMaximum(5000);
-			hmtdstripsbl[i]->SetMinimum( 0.5);
-			hmtdstripsbl[i]->Draw("colz");
-			for (int il=0;il<4;il++){
-				lmodules[il]->Draw();
-			}
-		ccan[ican]->Update(); ccan[ican]->cd();
-		ccan[ican]->Print("summary_noise.ps");
-	}
-
 	//----- end of all processing......
+
 	cout<<"..... Writing summary.root "<<endl;
 	TFile *f = new TFile("summary.root","RECREATE");
 		f->cd();
@@ -876,12 +474,14 @@ TH1::AddDirectory(kFALSE);
 	f->Close();
 	//
 	ccan[ican]->Print("summary_noise.ps]");
-	sprintf(buf,"/usr/bin/ps2pdf %s.ps %s.pdf","summary_noise","summary_noise");
+
+	sprintf(buf,"/usr/local/bin/ps2pdf %s.ps %s.pdf","summary_noise","summary_noise");
 	cout<<"..... Executing ... "<<buf<<endl;
 	gSystem->Exec(buf);
-	sprintf(buf,"/bin/cp %s.pdf /star/u/geurts/WWW/files/","summary_noise");
+	sprintf(buf,"/bin/cp %s.pdf ~/public_html/","summary_noise");
 	cout<<"..... Executing ... "<<buf<<endl;
 	gSystem->Exec(buf);
+
 	cout<<"..... Done...."<<endl;
 
 }
