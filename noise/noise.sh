@@ -2,10 +2,10 @@
 STARLIB=SL18f
 WRKDIR=~/scheduler
 DAQDOER=./daqdoer
-BTOFONLINE=/star/u/geurts/BTOF-online
-DAQDIR=/gpfs01/star/scratch/geurts/daq
-LOGDIR=/star/u/geurts/logs
 SUBMIT=/afs/rhic.bnl.gov/star/packages/scripts/star-submit
+[ -z "$BTOFONLINE" ] && BTOFONLINE=/star/u/geurts/BTOF-online
+[ -z  "$DAQDIR" ]    && DAQDIR=/gpfs01/star/scratch/geurts/daq
+[ -z "$LOGDIR" ]     && LOGDIR=/star/u/geurts/logs
 
 for runnumber in $@
 do
