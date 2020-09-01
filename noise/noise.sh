@@ -24,7 +24,7 @@ do
  echo '<job name="tof noise' $runnumber'" >' >> $WRKDIR/$infile
  echo '<command>' >> $WRKDIR/$infile
  echo starver $STARLIB >> $WRKDIR/$infile
- echo ./daqdoer $runnumber/'*.daq &lt;&lt; endd' >> $WRKDIR/$infile
+ echo ./daqdoer '*.daq &lt;&lt; endd' >> $WRKDIR/$infile
  echo 1 >> $WRKDIR/$infile
  echo $run$day >> $WRKDIR/$infile
  echo endd >> $WRKDIR/$infile
