@@ -34,6 +34,8 @@ do
  echo ' <Package>' >> $WRKDIR/$infile
  echo "  <File>file:$BTOFONLINE/daqdoer/daqdoer</File>" >> $WRKDIR/$infile
  echo "  <File>file:$BTOFONLINE/noise/noise</File>" >> $WRKDIR/$infile
+ echo "  <File>file:$BTOFONLINE/noise/sl.root</File>" >> $WRKDIR/$infile
+ echo "  <File>file:$BTOFONLINE/noise/fitzhit_14042.root</File>" >> $WRKDIR/$infile
  echo "  <File>file:$DAQDIR/$year/$day/$runnumber/</File>" >> $WRKDIR/$infile
  echo ' </Package>' >> $WRKDIR/$infile >> $WRKDIR/$infile
  echo '</SandBox>' >> $WRKDIR/$infile >> $WRKDIR/$infile
@@ -47,5 +49,6 @@ do
  echo '</job>' >> $WRKDIR/$infile
 
  # submit file to SUMS
+ cd $WRKDIR
  $SUBMIT $WRKDIR/$infile
 done
