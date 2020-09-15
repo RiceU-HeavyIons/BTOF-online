@@ -1,6 +1,7 @@
 const float tofarea =  20.;
 const float mtd9area = 218.;
 const float mtd11area = 331.;
+const float ndaysmax = 1000;
 
 const float TRAYCUTOFF = 4.;
 
@@ -44,39 +45,49 @@ TH1::AddDirectory(kFALSE);
 		if (activeBL[i]){ ++j; }
 	}
 
-
 	ifstream input;
 	string line;
-	int ndays = 0;
-	input.open("input.txt");
-	while (getline(input, line))	
-	{
-		ndays++;
+  int ndays = 0;
+//	input.open("noiseruns.txt");
+//	while (getline(input, line))
+//	{
+//		ndays++;
+//	}
+//  cout << "number of data points " << ndays << endl;
+//
+//	input.close();
+	int runnum[ndaysmax], year[ndaysmax], day[ndaysmax];
+	input.open("noiseruns.txt");
+
+  while (getline(input, line)){
+		runnum[ndays] = atoi (line.c_str());
+		year[ndays] = runnum[ndays]/1000;
+		day[ndays] = runnum[ndays] - year[ndays]*1000;
+	  ndays++;
 	}
 	input.close();
-	int runnum[ndays], year[ndays], day[ndays];
-	input.open("input.txt");
-	for (int i=0; i<ndays; i++)
-	{
-		getline(input, line);
-		runnum[i] = atoi (line.c_str());
-		year[i] = runnum[i]/1000;
-		day[i] = runnum[i] - year[i]*1000;
-	}
-	
-	float gday[ndays];
+
+//	for (int i=0; i<ndays; i++)
+//	{
+//		getline(input, line);
+//		runnum[i] = atoi (line.c_str());
+//		year[i] = runnum[i]/1000;
+//		day[i] = runnum[i] - year[i]*1000;
+//	}
+
+	float gday[ndaysmax];
 	for (int n = 0; n<=ndays; n++){
-	gday[n] = (year[n]-11)*365 + day[n] + (year[n]-9)/4;	// (year[n]-9)/4 = number of leap days (works until year 2100!)	
+	gday[n] = (year[n]-11)*365 + day[n] + (year[n]-9)/4;	// (year[n]-9)/4 = number of leap days (works until year 2100!)
 	}
 
 	float		lastday	= day[ndays-1];
 	if (lastday>1000){ lastday	/= 10.; }
-	float 	timetotalTOF[ndays];
-	float 	timetotalMTD[ndays];
-	TH1D*	hinfo[ndays];
-	TH1D*	hrate_tray[523];
-	TH1D*	htot[ndays];
-	TH1D*	htot_mtd[30][ndays];
+	float 	timetotalTOF[ndaysmax];
+	float 	timetotalMTD[ndaysmax];
+	TH1D*	hinfo[ndaysmax];
+	TH1D*	hrate_tray[ndaysmax];
+	TH1D*	htot[ndaysmax];
+	TH1D*	htot_mtd[30][ndaysmax];
 	TGraph *gglobalnoise	= new TGraph();
     	gglobalnoise->SetMarkerStyle(20);
 	    gglobalnoise->SetMarkerSize(0.2);
@@ -146,7 +157,7 @@ TH1::AddDirectory(kFALSE);
 		int	thisntot_mtd[30]	= {0};
 		int thisday				= day[iday];
 		if (day[iday]<1000  ){
-			sprintf(buf,"/macstar/star4/btof/noise/noise_%d.root",runnum[iday]);}
+			sprintf(buf,"/gpfs01/star/subsysg/TOF/BTOF-online/noise/noise_%d.root",runnum[iday]);}
 		cout<<"i="<<iday<<"\t y="<<year[iday]<<"\t d="<<day[iday]<<" kFileID="<<runnum[iday]<<"\t"<<buf<<endl;
 		TFile *fin = new TFile(buf,"READ");
 			fin->cd();
@@ -366,8 +377,8 @@ TH1::AddDirectory(kFALSE);
 			legb->Draw();
 	ccan[ican]->Update(); ccan[ican]->cd();
 	ccan[ican]->Print("summary_noise.ps");
- 	
-	
+
+
 	++ican; sprintf(buf,"ccan%d",ican);
  	ccan[ican] = new TCanvas(buf,buf,0,0,700,500);
  	ccan[ican]->SetFillColor(10);
@@ -391,7 +402,7 @@ TH1::AddDirectory(kFALSE);
 			legc->Draw();
 	ccan[ican]->Update(); ccan[ican]->cd();
 	ccan[ican]->Print("summary_noise.ps");
- 
+
 
 	++ican; sprintf(buf,"ccan%d",ican);
  	ccan[ican] = new TCanvas(buf,buf,0,0,700,500);
@@ -475,10 +486,10 @@ TH1::AddDirectory(kFALSE);
 	//
 	ccan[ican]->Print("summary_noise.ps]");
 
-	sprintf(buf,"/usr/local/bin/ps2pdf %s.ps %s.pdf","summary_noise","summary_noise");
+	sprintf(buf,"ps2pdf %s.ps %s.pdf","summary_noise","summary_noise");
 	cout<<"..... Executing ... "<<buf<<endl;
 	gSystem->Exec(buf);
-	sprintf(buf,"/bin/cp %s.pdf ~/public_html/","summary_noise");
+	sprintf(buf,"cp %s.pdf ~/WWW/noise/","summary_noise");
 	cout<<"..... Executing ... "<<buf<<endl;
 	gSystem->Exec(buf);
 
