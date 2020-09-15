@@ -48,14 +48,6 @@ TH1::AddDirectory(kFALSE);
 	ifstream input;
 	string line;
   int ndays = 0;
-//	input.open("noiseruns.txt");
-//	while (getline(input, line))
-//	{
-//		ndays++;
-//	}
-//  cout << "number of data points " << ndays << endl;
-//
-//	input.close();
 	int runnum[ndaysmax], year[ndaysmax], day[ndaysmax];
 	input.open("noiseruns.txt");
 
@@ -66,14 +58,6 @@ TH1::AddDirectory(kFALSE);
 	  ndays++;
 	}
 	input.close();
-
-//	for (int i=0; i<ndays; i++)
-//	{
-//		getline(input, line);
-//		runnum[i] = atoi (line.c_str());
-//		year[i] = runnum[i]/1000;
-//		day[i] = runnum[i] - year[i]*1000;
-//	}
 
 	float gday[ndaysmax];
 	for (int n = 0; n<=ndays; n++){
