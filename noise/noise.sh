@@ -5,9 +5,54 @@
 STARLIB=SL18f
 WRKDIR=~/scheduler/noise
 SUBMIT=/afs/rhic.bnl.gov/star/packages/scripts/star-submit
+DAY=yes
 [ -z "$BTOFONLINE" ] && BTOFONLINE=/star/u/geurts/BTOF-online
 [ -z  "$DAQDIR" ]    && DAQDIR=/gpfs01/star/scratch/geurts/daq
 [ -z "$LOGDIR" ]     && LOGDIR=/star/u/geurts/logs
+
+RUNNUMBERS=()
+while [[ $# -gt 0 ]]
+do
+key="$1"
+
+case $key  in
+  -r )
+   DAY=no
+   shift
+   ;;
+  -n)
+   WRKDIR=/tmp
+   SUBMIT=/usr/bin/cat
+   shift
+   ;;
+  -d)
+    DAQDIR=$2
+    shift
+    shift
+    ;;
+  -h)
+   echo Usage: $0 [-h] [-n] [-r] [-d DAQDIR] runnumber ...
+   echo " -n  do not submit"
+   echo " -r  use run numbers instead of run days"
+   echo " -d  set DAQDIR"
+   echo " -h  this message"
+   echo Defaults:
+   echo - STARLIB = $STARLIB
+   echo - WRKDIR = $WRKDIR
+   echo - DAY = $DAY
+   echo - DAQDIR = $DAQDIR
+   echo - LOGDIR = $LOGDIR
+   echo - BTOFONLINE = $BTOFONLINE
+   exit
+   ;;
+  *) # unknown option, presume this to be a runnumber
+  RUNNUMBERS+=("$1") # save it in an array for later
+  shift
+  ;;
+esac
+done
+
+set -- "${RUNNUMBERS[@]}" # restore positional parameters
 
 for runnumber in $@
 do
@@ -26,9 +71,21 @@ do
  echo starver $STARLIB >> $WRKDIR/$infile
  echo ./daqdoer '*.daq &lt;&lt; endd' >> $WRKDIR/$infile
  echo 1 >> $WRKDIR/$infile
- echo $run$day >> $WRKDIR/$infile
+
+ if [[ $DAY == 'yes' ]]; then
+  echo $run$day >> $WRKDIR/$infile
+ else
+  echo $runnumber >> $WRKDIR/$infile
+ fi
+
  echo endd >> $WRKDIR/$infile
- echo "./noise -r $run$day" >> $WRKDIR/$infile
+
+ if [[ $DAY == 'yes' ]]; then
+  echo "./noise -r $run$day" >> $WRKDIR/$infile
+ else
+  echo "./noise -r $runnumber" >> $WRKDIR/$infile
+ fi
+
  echo '</command>' >> $WRKDIR/$infile
  echo '<SandBox>' >> $WRKDIR/$infile
  echo ' <Package>' >> $WRKDIR/$infile
@@ -39,7 +96,13 @@ do
  echo "  <File>file:$DAQDIR/$year/$day/$runnumber/</File>" >> $WRKDIR/$infile
  echo ' </Package>' >> $WRKDIR/$infile >> $WRKDIR/$infile
  echo '</SandBox>' >> $WRKDIR/$infile >> $WRKDIR/$infile
- echo '<stdout URL="file:'$LOGDIR/$run$day'.log" />' >> $WRKDIR/$infile
+
+ if [[ $DAY == 'yes' ]]; then
+  echo '<stdout URL="file:'$LOGDIR/$run$day'.log" />' >> $WRKDIR/$infile
+ else
+  echo '<stdout URL="file:'$LOGDIR/$runnumber'.log" />' >> $WRKDIR/$infile
+ fi
+
  echo '<Generator>' >> $WRKDIR/$infile
  echo " <Location>$WRKDIR</Location>" >> $WRKDIR/$infile
  echo " <ReportLocation>$WRKDIR/reports</ReportLocation>" >> $WRKDIR/$infile
