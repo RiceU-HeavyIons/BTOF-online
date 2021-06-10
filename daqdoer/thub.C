@@ -7,7 +7,7 @@ void thub() {
 
 char type[20];
 
-sprintf(type,"17058003_tof");
+sprintf(type,"22067011_tof");
 
 gErrorIgnoreLevel = 4000;
 char 		buf[100];
@@ -46,14 +46,14 @@ cout<<pdffile<<endl;
 // 		"tofmult4",			// 20	6
 // 		"",			// 40	7
 // 		"",					// 80	8
-// 		"",						// 100	9	
-// 		"",				// 200	10	
-// 		"",				// 400	11	
-// 		"",						// 800	12	
-// 		"",						// 1000	13	
-// 		"",						// 2000	14	
-// 		"",		// 4000	15	
-// 		"",				// 8000	16	
+// 		"",						// 100	9
+// 		"",				// 200	10
+// 		"",				// 400	11
+// 		"",						// 800	12
+// 		"",						// 1000	13
+// 		"",						// 2000	14
+// 		"",		// 4000	15
+// 		"",				// 8000	16
 // 		"BBC_mb",					// 10000	17
 // 		"VPD_mb",			// 20000	18
 // 		"ZDC-mb",			// 40000	19
@@ -67,42 +67,42 @@ cout<<pdffile<<endl;
 // 		"",			// 4000000	27
 // 		"",			// 8000000	28
 // 		"",					// 10000000	29
-// 		"",			// 20000000	
-// 		"",					// 40000000	
-// 		"",			// 80000000	
-// 		"",				// 100000000	
-// 		"",			// 200000000	
-// 		"",			// 400000000	
-// 		"",			// 800000000	
-// 		"",				// 1000000000	
-// 		"",				// 2000000000	
-// 		"",			// 4000000000	
-// 		"",		// 8000000000	
-// 		"",					// 10000000000	
-// 		"",					// 20000000000	
-// 		"",			// 40000000000	
-// 		"",			// 80000000000	
-// 		"",			// 100000000000	
-// 		"",			// 200000000000	
-// 		"",			// 400000000000	
-// 		"",			// 800000000000	
-// 		"",			// 1000000000000	
-// 		"",			// 2000000000000	
-// 		"",			// 4000000000000	
-// 		"",			// 8000000000000	
-// 		"",			// 10000000000000	
-// 		"",			// 20000000000000	
-// 		"",			// 40000000000000	
-// 		"",			// 80000000000000	
-// 		"",			// 100000000000000	
-// 		"",			// 200000000000000	
-// 		"",			// 400000000000000	
-// 		"",			// 800000000000000	
-// 		"",			// 1000000000000000	
-// 		"",			// 2000000000000000	
-// 		"",			// 4000000000000000	
-// 		""			// 8000000000000000	
-// 		};	
+// 		"",			// 20000000
+// 		"",					// 40000000
+// 		"",			// 80000000
+// 		"",				// 100000000
+// 		"",			// 200000000
+// 		"",			// 400000000
+// 		"",			// 800000000
+// 		"",				// 1000000000
+// 		"",				// 2000000000
+// 		"",			// 4000000000
+// 		"",		// 8000000000
+// 		"",					// 10000000000
+// 		"",					// 20000000000
+// 		"",			// 40000000000
+// 		"",			// 80000000000
+// 		"",			// 100000000000
+// 		"",			// 200000000000
+// 		"",			// 400000000000
+// 		"",			// 800000000000
+// 		"",			// 1000000000000
+// 		"",			// 2000000000000
+// 		"",			// 4000000000000
+// 		"",			// 8000000000000
+// 		"",			// 10000000000000
+// 		"",			// 20000000000000
+// 		"",			// 40000000000000
+// 		"",			// 80000000000000
+// 		"",			// 100000000000000
+// 		"",			// 200000000000000
+// 		"",			// 400000000000000
+// 		"",			// 800000000000000
+// 		"",			// 1000000000000000
+// 		"",			// 2000000000000000
+// 		"",			// 4000000000000000
+// 		""			// 8000000000000000
+// 		};
 
 	//run-14 auau 200
 // 	const char* triggernames[64] = {
@@ -114,14 +114,14 @@ cout<<pdffile<<endl;
 // 		"",			// 20	6
 // 		"",			// 40	7
 // 		"VPDMB-5-p-nobsmd",					// 80	8
-// 		"VPDMB-5-p-nobsmd-hltheavyfrag",						// 100	9	
-// 		"VPDMB-5-p-nobsmd-hltDiElectron",				// 200	10	
-// 		"VPDMB-5",				// 400	11	
-// 		"VPDMB-5-ssd",						// 800	12	
-// 		"VPDMB-30",						// 1000	13	
-// 		"MB-mon",						// 2000	14	
-// 		"Zdc-mon",		// 4000	15	
-// 		"VPD-ZDC-novtx-mon",				// 8000	16	
+// 		"VPDMB-5-p-nobsmd-hltheavyfrag",						// 100	9
+// 		"VPDMB-5-p-nobsmd-hltDiElectron",				// 200	10
+// 		"VPDMB-5",				// 400	11
+// 		"VPDMB-5-ssd",						// 800	12
+// 		"VPDMB-30",						// 1000	13
+// 		"MB-mon",						// 2000	14
+// 		"Zdc-mon",		// 4000	15
+// 		"VPD-ZDC-novtx-mon",				// 8000	16
 // 		"",					// 10000	17
 // 		"",			// 20000	18
 // 		"Central-5",			// 40000	19
@@ -170,7 +170,7 @@ cout<<pdffile<<endl;
 // 		"",			// 2000000000000000	62
 // 		"future-guardian",			// 4000000000000000	63
 // 		""			// 8000000000000000	64
-// 		};	
+// 		};
 
 //---- run14 3he+au 200
 // 	const char* triggernames[64] = {
@@ -182,14 +182,14 @@ cout<<pdffile<<endl;
 // 		"mtd-cosmic3",			// 20	6
 // 		"ZDCE",			// 40	7
 // 		"VPD",					// 80	8
-// 		"BBC",						// 100	9	
-// 		"",				// 200	10	
-// 		"Central",				// 400	11	
-// 		"BHT3-BBC-L2Gamma",						// 800	12	
-// 		"BHT2*BBC",						// 1000	13	
-// 		"BHT3*BBC",						// 2000	14	
-// 		"BHT1*BBC",		// 4000	15	
-// 		"",				// 8000	16	
+// 		"BBC",						// 100	9
+// 		"",				// 200	10
+// 		"Central",				// 400	11
+// 		"BHT3-BBC-L2Gamma",						// 800	12
+// 		"BHT2*BBC",						// 1000	13
+// 		"BHT3*BBC",						// 2000	14
+// 		"BHT1*BBC",		// 4000	15
+// 		"",				// 8000	16
 // 		"ZDC_coinc",					// 10000	17
 // 		"VPD-ZDC-mon",			// 20000	18
 // 		"BBC-ZDC-mon",			// 40000	19
@@ -203,42 +203,42 @@ cout<<pdffile<<endl;
 // 		"",			// 4000000	27
 // 		"",			// 8000000	28
 // 		"",					// 10000000	29
-// 		"",			// 20000000	
-// 		"",					// 40000000	
-// 		"",			// 80000000	
-// 		"",				// 100000000	
-// 		"",			// 200000000	
-// 		"",			// 400000000	
-// 		"",			// 800000000	
-// 		"",				// 1000000000	
-// 		"",				// 2000000000	
-// 		"",			// 4000000000	
-// 		"",		// 8000000000	
-// 		"",					// 10000000000	
-// 		"",					// 20000000000	
-// 		"",			// 40000000000	
-// 		"",			// 80000000000	
-// 		"",			// 100000000000	
-// 		"",			// 200000000000	
-// 		"",			// 400000000000	
-// 		"",			// 800000000000	
-// 		"",			// 1000000000000	
-// 		"",			// 2000000000000	
-// 		"",			// 4000000000000	
-// 		"",			// 8000000000000	
-// 		"",			// 10000000000000	
-// 		"",			// 20000000000000	
-// 		"",			// 40000000000000	
-// 		"",			// 80000000000000	
-// 		"",			// 100000000000000	
-// 		"",			// 200000000000000	
-// 		"",			// 400000000000000	
-// 		"Zero-bias",			// 800000000000000	
-// 		"",			// 1000000000000000	
-// 		"",			// 2000000000000000	
-// 		"",			// 4000000000000000	
-// 		""			// 8000000000000000	
-// 		};	
+// 		"",			// 20000000
+// 		"",					// 40000000
+// 		"",			// 80000000
+// 		"",				// 100000000
+// 		"",			// 200000000
+// 		"",			// 400000000
+// 		"",			// 800000000
+// 		"",				// 1000000000
+// 		"",				// 2000000000
+// 		"",			// 4000000000
+// 		"",		// 8000000000
+// 		"",					// 10000000000
+// 		"",					// 20000000000
+// 		"",			// 40000000000
+// 		"",			// 80000000000
+// 		"",			// 100000000000
+// 		"",			// 200000000000
+// 		"",			// 400000000000
+// 		"",			// 800000000000
+// 		"",			// 1000000000000
+// 		"",			// 2000000000000
+// 		"",			// 4000000000000
+// 		"",			// 8000000000000
+// 		"",			// 10000000000000
+// 		"",			// 20000000000000
+// 		"",			// 40000000000000
+// 		"",			// 80000000000000
+// 		"",			// 100000000000000
+// 		"",			// 200000000000000
+// 		"",			// 400000000000000
+// 		"Zero-bias",			// 800000000000000
+// 		"",			// 1000000000000000
+// 		"",			// 2000000000000000
+// 		"",			// 4000000000000000
+// 		""			// 8000000000000000
+// 		};
 
 //---- run15 pp 200 long
 //	const char* triggernames[64] = {
@@ -250,14 +250,14 @@ cout<<pdffile<<endl;
 //		"RP_RP2MU",			// 20	6
 //		"",			// 40	7
 //		"",					// 80	8
-//		"RP_ET",						// 100	9	
-//		"RP_CP",				// 200	10	
-//		"RP_CPT",				// 400	11	
-//		"RP_CPX",						// 800	12	
-//		"RP_Zerobias",						// 1000	13	
-//		"RP_CPT2",						// 2000	14	
-//		"BHT1*VPDMB-30-nobsmd",		// 4000	15	
-//		"",				// 8000	16	
+//		"RP_ET",						// 100	9
+//		"RP_CP",				// 200	10
+//		"RP_CPT",				// 400	11
+//		"RP_CPX",						// 800	12
+//		"RP_Zerobias",						// 1000	13
+//		"RP_CPT2",						// 2000	14
+//		"BHT1*VPDMB-30-nobsmd",		// 4000	15
+//		"",				// 8000	16
 //		"JP2",					// 10000	17
 //		"JP2-bsmd",			// 20000	18
 //		"AJP",			// 40000	19
@@ -271,43 +271,43 @@ cout<<pdffile<<endl;
 //		"VPDMB-5-ssd",			// 4000000	27
 //		"",			// 8000000	28
 //		"BBCMB",					// 10000000	29
-//		"",			// 20000000	
-//		"BHT0*VPDMB-5",					// 40000000	
-//		"BHT1*VPDMB-30",			// 80000000	
-//		"BHT0*BBCMB",				// 100000000	
-//		"BHT1*BBCMB",			// 200000000	
-//		"BHT2*BBCMB",			// 400000000	
-//		"",			// 800000000	
-//		"singlemuon-5",				// 1000000000	
-//		"emuon-30",				// 2000000000	
-//		"dimuon",			// 4000000000	
-//		"bbc-mtdcosmic",		// 8000000000	
-//		"",					// 10000000000	
-//		"FMS-sm-bs1",					// 20000000000	
-//		"FMS-sm-bs2",			// 40000000000	
-//		"FMS-sm-bs3",			// 80000000000	
-//		"FMS-lg-bs1",			// 100000000000	
-//		"FMS-lg-bs2",			// 200000000000	
-//		"FMS-lg-bs3",			// 400000000000	
-//		"FMS-DIBS",			// 800000000000	
-//		"FMS-JP2",			// 1000000000000	
-//		"FMS-JP1",			// 2000000000000	
-//		"FMS-JP0",			// 4000000000000	
-//		"FMS-DIJP",			// 8000000000000	
-//		"FMS_RP",			// 10000000000000	
-//		"RMS-LED",			// 20000000000000	
-//		"",			// 40000000000000	
-//		"VPDMB-novtx",			// 80000000000000	
-//		"ZDCMB-trgonly",			// 100000000000000	
-//		"VPDMB-30",			// 200000000000000	
-//		"",			// 400000000000000	
-//		"",			// 800000000000000	
-//		"ZEROBIAS",			// 1000000000000000	
-//		"",			// 2000000000000000	
-//		"",			// 4000000000000000	
-//		""			// 8000000000000000	
-//		};	
-	
+//		"",			// 20000000
+//		"BHT0*VPDMB-5",					// 40000000
+//		"BHT1*VPDMB-30",			// 80000000
+//		"BHT0*BBCMB",				// 100000000
+//		"BHT1*BBCMB",			// 200000000
+//		"BHT2*BBCMB",			// 400000000
+//		"",			// 800000000
+//		"singlemuon-5",				// 1000000000
+//		"emuon-30",				// 2000000000
+//		"dimuon",			// 4000000000
+//		"bbc-mtdcosmic",		// 8000000000
+//		"",					// 10000000000
+//		"FMS-sm-bs1",					// 20000000000
+//		"FMS-sm-bs2",			// 40000000000
+//		"FMS-sm-bs3",			// 80000000000
+//		"FMS-lg-bs1",			// 100000000000
+//		"FMS-lg-bs2",			// 200000000000
+//		"FMS-lg-bs3",			// 400000000000
+//		"FMS-DIBS",			// 800000000000
+//		"FMS-JP2",			// 1000000000000
+//		"FMS-JP1",			// 2000000000000
+//		"FMS-JP0",			// 4000000000000
+//		"FMS-DIJP",			// 8000000000000
+//		"FMS_RP",			// 10000000000000
+//		"RMS-LED",			// 20000000000000
+//		"",			// 40000000000000
+//		"VPDMB-novtx",			// 80000000000000
+//		"ZDCMB-trgonly",			// 100000000000000
+//		"VPDMB-30",			// 200000000000000
+//		"",			// 400000000000000
+//		"",			// 800000000000000
+//		"ZEROBIAS",			// 1000000000000000
+//		"",			// 2000000000000000
+//		"",			// 4000000000000000
+//		""			// 8000000000000000
+//		};
+
 ////---- run16 Au+Au (17045001_tof)
 //	const char* triggernames[64] = {
 //		"VPDMB-5-p-sst",						// 1	1
@@ -318,14 +318,14 @@ cout<<pdffile<<endl;
 //		"central-5",			// 20	6
 //		"BHT1*VPDMB*10",			// 40	7
 //		"dimuon*VPDMB-10",					// 80	8
-//		"",						// 100	9	
-//		"",				// 200	10	
-//		"dimuon",				// 400	11	
-//		"",						// 800	12	
-//		"single-muon",						// 1000	13	
-//		"e-muon-BHT1",						// 2000	14	
-//		"e-muon-BHT0",		// 4000	15	
-//		"",				// 8000	16	
+//		"",						// 100	9
+//		"",				// 200	10
+//		"dimuon",				// 400	11
+//		"",						// 800	12
+//		"single-muon",						// 1000	13
+//		"e-muon-BHT1",						// 2000	14
+//		"e-muon-BHT0",		// 4000	15
+//		"",				// 8000	16
 //		"",					// 10000	17
 //		"UPC-inclusive",			// 20000	18
 //		"UPC-zdcsum",			// 40000	19
@@ -340,15 +340,15 @@ cout<<pdffile<<endl;
 //		"",			// 8000000	28
 //		"",					// 10000000	29
 //		"",			// 20000000	 30
-//		"",					// 40000000 31	
+//		"",					// 40000000 31
 //		"",			// 80000000	32
-//		"",				// 100000000 33	
+//		"",				// 100000000 33
 //		"",			// 200000000	34
 //		"",			// 400000000	35
 //		"",			// 800000000	36
-//		"",				// 1000000000 37	
+//		"",				// 1000000000 37
 //		"",				// 2000000000	38
-//		"",			// 4000000000 39	
+//		"",			// 4000000000 39
 //		"",		// 8000000000	40
 //		"",					// 10000000000	41
 //		"",					// 20000000000	42
@@ -366,83 +366,153 @@ cout<<pdffile<<endl;
 //		"",			// 20000000000000	54
 //		"",			// 40000000000000	55
 //		"",			// 80000000000000	56
-//		"",			// 100000000000000 57	
+//		"",			// 100000000000000 57
 //		"",			// 200000000000000	58
 //		"",			// 400000000000000	59
 //		"",			// 800000000000000	60
-//		"zerobias",			// 1000000000000000 61	
+//		"zerobias",			// 1000000000000000 61
 //		"",			// 2000000000000000	 62
 //		"future-guardian",			// 4000000000000000	 63
 //		""			// 8000000000000000	 64
-//		};	
+//		};
 
 //---- run16 Au+Au (17056042_tof)
-	const char* triggernames[64] = {
-		"1",						// 1	1
-		"2",						// 2	2
-		"3",						// 4	3
-		"4",						// 8	4
-		"5",			// 10	5
-		"6",			// 20	6
-		"7",			// 40	7
-		"8",					// 80	8
-		"9",						// 100	9	
-		"10",				// 200	10	
-		"11",				// 400	11	
-		"12",						// 800	12	
-		"13",						// 1000	13	
-		"14",						// 2000	14	
-		"15",		// 4000	15	
-		"16",				// 8000	16	
-		"",					// 10000	17
-		"",			// 20000	18
-		"",			// 40000	19
-		"",					// 80000	20
-		"",			// 100000	21
-		"",			// 200000	22
-		"",			// 400000	23
-		"",			// 800000	24
-		"",			// 1000000	25
-		"",			// 2000000	26
-		"",			// 4000000	27
-		"",			// 8000000	28
-		"",					// 10000000	29
-		"",			// 20000000	 30
-		"",					// 40000000 31	
-		"",			// 80000000	32
-		"",				// 100000000 33	
-		"",			// 200000000	34
-		"",			// 400000000	35
-		"",			// 800000000	36
-		"",				// 1000000000 37	
-		"",				// 2000000000	38
-		"",			// 4000000000 39	
-		"",		// 8000000000	40
-		"",					// 10000000000	41
-		"",					// 20000000000	42
-		"VPDMB-5-p-hlt",			// 40000000000	43
-		"MTD-di,uon-hlt",			// 80000000000	 44
-		"",			// 100000000000	 45
-		"",			// 200000000000	  46
-		"MTD-quarkonium-hlt",			// 400000000000	47
-		"diElectron-hlt",			// 800000000000	  48
-		"diElectron2Twr-hlt",			// 1000000000000	 49
-		"heavyFragment-hlt",			// 2000000000000	50
-		"",			// 4000000000000	51
-		"",			// 8000000000000	52
-		"",			// 10000000000000	53
-		"",			// 20000000000000	54
-		"",			// 40000000000000	55
-		"",			// 80000000000000	56
-		"",			// 100000000000000 57	
-		"",			// 200000000000000	58
-		"",			// 400000000000000	59
-		"",			// 800000000000000	60
-		"zerobias",			// 1000000000000000 61	
-		"",			// 2000000000000000	 62
-		"future-guardian",			// 4000000000000000	 63
-		""			// 8000000000000000	 64
-		};	
+	// const char* triggernames[64] = {
+	// 	"1",						// 1	1
+	// 	"2",						// 2	2
+	// 	"3",						// 4	3
+	// 	"4",						// 8	4
+	// 	"5",			// 10	5
+	// 	"6",			// 20	6
+	// 	"7",			// 40	7
+	// 	"8",					// 80	8
+	// 	"9",						// 100	9
+	// 	"10",				// 200	10
+	// 	"11",				// 400	11
+	// 	"12",						// 800	12
+	// 	"13",						// 1000	13
+	// 	"14",						// 2000	14
+	// 	"15",		// 4000	15
+	// 	"16",				// 8000	16
+	// 	"",					// 10000	17
+	// 	"",			// 20000	18
+	// 	"",			// 40000	19
+	// 	"",					// 80000	20
+	// 	"",			// 100000	21
+	// 	"",			// 200000	22
+	// 	"",			// 400000	23
+	// 	"",			// 800000	24
+	// 	"",			// 1000000	25
+	// 	"",			// 2000000	26
+	// 	"",			// 4000000	27
+	// 	"",			// 8000000	28
+	// 	"",					// 10000000	29
+	// 	"",			// 20000000	 30
+	// 	"",					// 40000000 31
+	// 	"",			// 80000000	32
+	// 	"",				// 100000000 33
+	// 	"",			// 200000000	34
+	// 	"",			// 400000000	35
+	// 	"",			// 800000000	36
+	// 	"",				// 1000000000 37
+	// 	"",				// 2000000000	38
+	// 	"",			// 4000000000 39
+	// 	"",		// 8000000000	40
+	// 	"",					// 10000000000	41
+	// 	"",					// 20000000000	42
+	// 	"VPDMB-5-p-hlt",			// 40000000000	43
+	// 	"MTD-di,uon-hlt",			// 80000000000	 44
+	// 	"",			// 100000000000	 45
+	// 	"",			// 200000000000	  46
+	// 	"MTD-quarkonium-hlt",			// 400000000000	47
+	// 	"diElectron-hlt",			// 800000000000	  48
+	// 	"diElectron2Twr-hlt",			// 1000000000000	 49
+	// 	"heavyFragment-hlt",			// 2000000000000	50
+	// 	"",			// 4000000000000	51
+	// 	"",			// 8000000000000	52
+	// 	"",			// 10000000000000	53
+	// 	"",			// 20000000000000	54
+	// 	"",			// 40000000000000	55
+	// 	"",			// 80000000000000	56
+	// 	"",			// 100000000000000 57
+	// 	"",			// 200000000000000	58
+	// 	"",			// 400000000000000	59
+	// 	"",			// 800000000000000	60
+	// 	"zerobias",			// 1000000000000000 61
+	// 	"",			// 2000000000000000	 62
+	// 	"future-guardian",			// 4000000000000000	 63
+	// 	""			// 8000000000000000	 64
+	// 	};
+
+		//---- run21 Au+Au (22067002_tof)
+			const char* triggernames[64] = {
+				"1",						// 1	1
+				"minbias",						// 2	2
+				"minbias_withetof",						// 4	3
+				"4",						// 8	4
+				"minbias_gmt",			// 10	5
+				"6",			// 20	6
+				"7",			// 40	7
+				"8",					// 80	8
+				"9",						// 100	9
+				"10",				// 200	10
+				"11",				// 400	11
+				"12",						// 800	12
+				"minbias-hlt70",						// 1000	13
+				"minbias-hlt150",						// 2000	14
+				"minbias-allvtx",		// 4000	15
+				"minbias-sendvtxt",				// 8000	16
+				"bbc-tof0",					// 10000	17
+				"bbc",			// 20000	18
+				"bbc-tac",			// 40000	19
+				"bbc-tac-tofmult0",					// 80000	20
+				"epd",			// 100000	21
+				"epd-tac-nocut",			// 200000	22
+				"epd-tac",			// 400000	23
+				"epd-tac-tofmult0",			// 800000	24
+				"vpd",			// 1000000	25
+				"vpd-tac",			// 2000000	26
+				"vpd-tac-tofmult0",			// 4000000	27
+				"zdc",			// 8000000	28
+				"zdc-tac",					// 10000000	29
+				"zdc-tac-tofmult0",			// 20000000	 30
+				"",					// 40000000 31
+				"",			// 80000000	32
+				"",				// 100000000 33
+				"",			// 200000000	34
+				"mb_epdcomponent",			// 400000000	35
+				"mb_vpdcomponent",			// 800000000	36
+				"mb_zdccomponent",				// 1000000000 37
+				"",				// 2000000000	38
+				"",			// 4000000000 39
+				"",		// 8000000000	40
+				"",					// 10000000000	41
+				"fcs_HT",					// 20000000000	42
+				"fcs_EcalTot",			// 40000000000	43
+				"fcs_HCalTot",			// 80000000000	 44
+				"",			// 100000000000	 45
+				"",			// 200000000000	  46
+				"",			// 400000000000	47
+				"",			// 800000000000	  48
+				"",			// 1000000000000	 49
+				"",			// 2000000000000	50
+				"",			// 4000000000000	51
+				"",			// 8000000000000	52
+				"",			// 10000000000000	53
+				"",			// 20000000000000	54
+				"",			// 40000000000000	55
+				"",			// 80000000000000	56
+				"",			// 100000000000000 57
+				"",			// 200000000000000	58
+				"",			// 400000000000000	59
+				"zerobias",			// 800000000000000	60
+				"",			// 1000000000000000 61
+				"",			// 2000000000000000	 62
+				"",			// 4000000000000000	 63
+				""			// 8000000000000000	 64
+				};
+
+
 
 
 
@@ -471,7 +541,7 @@ TLatex *thistext = new TLatex();
 
 TH1::AddDirectory(kFALSE);
 
-sprintf(buf,"/star/institutions/rice/geurts/dd/daqdoer_%s.root",type);
+sprintf(buf,"/gpfs01/star/subsysg/TOF/BTOF-online/dd/daqdoer_%s.root",type);
 TFile *f = new TFile(buf,"READ");
 cout<<buf<<endl;
 
@@ -493,7 +563,7 @@ cout<<buf<<endl;
 		hcrossingkeep_traycorrected->SetFillColor(7);
 
 	cout<<"Doing crossing time interval fits...."<<endl;
-	TF1 *g1	= new TF1("g1","gaus",-2894,-2854);		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	TF1 *g1	= new TF1("g1","gaus",-1840,-1770);		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //	TF1 *g1	= new TF1("g1","gaus",-2820,-2780);		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		g1->SetLineWidth(2);
 		g1->SetLineColor(2);
@@ -507,7 +577,7 @@ cout<<buf<<endl;
 	g1->GetParameters(gpars1);
 	g2->GetParameters(gpars2);
 	float crossingperiod	= (gpars2[1]-gpars1[1])/46.;
-	cout<<"Crossing Period = "<<crossingperiod<<endl; 
+	cout<<"Crossing Period = "<<crossingperiod<<endl;
 	float crossings[48];
 	TLine *lcrossings[48];
 	for (int i=0;i<48;i++){
@@ -589,7 +659,7 @@ cout<<buf<<endl;
 		sprintf(buf,"htrgdtimekeep_mtd_tray%d",i);
 		htrgdtimekeep_mtd_tray[i]	= (TH1D*)f->Get(buf);
 	}
-	
+
 	TH1D *hnhitstof_xingall	= (TH1D*)f->Get("hnhitstof_xingall");
 	TH1D *hnhitstof_xingtrg	= (TH1D*)f->Get("hnhitstof_xingtrg");
 	TH1D *hnhitstof_xingm2	= (TH1D*)f->Get("hnhitstof_xingm2");
@@ -609,9 +679,9 @@ cout<<buf<<endl;
 			hbunchidoffset_thubhalf[ithub][ih] = (TH1D*)f->Get(buf);
 		}
 	}
-	
+
 	//------------------------------------------------------------------
-	
+
 	gStyle->SetPadGridX(kFALSE);
 	gStyle->SetPadGridY(kFALSE);
 	gStyle->SetPadLeftMargin(0.09);
@@ -636,7 +706,7 @@ cout<<buf<<endl;
 		tdummy->Draw("same");
 	ccan[ican]->cd(); ccan[ican]->Update();
 	ccan[ican]->Print(psfileopen);
-	
+
 	//
 	float anhitall[6]={0};
 	float anhitkeep1[6]={0};
@@ -657,37 +727,38 @@ cout<<buf<<endl;
 		anhitall[i]		= htrgdtime[i]->Integral();
 		anhitkeep1[i]	= htrgdtimekeep[i]->Integral();
 		anhitkeep3[i]	= htrgdtimekeep3[i]->Integral();
-		if (anhitall[i]>0){ 
-			anhitrat1[i] = anhitkeep1[i]/anhitall[i]; 
-			anhitrat3[i] = anhitkeep3[i]/anhitall[i]; 
+		if (anhitall[i]>0){
+			anhitrat1[i] = anhitkeep1[i]/anhitall[i];
+			anhitrat3[i] = anhitkeep3[i]/anhitall[i];
 		}
 		sprintf(buf,"Prob(kept,#pm1)=%4.1f%%",100.*anhitrat3[i]);
 		anhittext3[i]	= new TLatex(0.14,0.87,buf);
 			anhittext3[i]->SetNDC();
-			anhittext3[i]->SetTextSize(0.05);			
-			anhittext3[i]->SetTextColor(1);			
+			anhittext3[i]->SetTextSize(0.05);
+			anhittext3[i]->SetTextColor(1);
 		sprintf(buf,"Prob(kept,0)=%4.1f%%",100.*anhitrat1[i]);
 		anhittext1[i]	= new TLatex(0.14,0.81,buf);
 			anhittext1[i]->SetNDC();
-			anhittext1[i]->SetTextSize(0.05);			
-			anhittext1[i]->SetTextColor(1);			
+			anhittext1[i]->SetTextSize(0.05);
+			anhittext1[i]->SetTextColor(1);
 		//
-		if (i< 4){ 
-			htrgdtime[i]->SetTitle(Form("trgdtime, TRAY thub=%d",i)); 
-			htrgdtime[i]->GetXaxis()->SetRangeUser(2400.,3200.);
-		} else if (i==4){ 
-			htrgdtime[i]->SetTitle(Form("trgdtime, VPD 121")); 
+		if (i< 4){
+			htrgdtime[i]->SetTitle(Form("trgdtime, TRAY thub=%d",i));
+//			htrgdtime[i]->GetXaxis()->SetRangeUser(2400.,3200.);
+			htrgdtime[i]->GetXaxis()->SetRangeUser(800.,1600.);
+		} else if (i==4){
+			htrgdtime[i]->SetTitle(Form("trgdtime, VPD 121"));
 			htrgdtime[i]->GetXaxis()->SetRangeUser(-10.,510.);
-		} else if (i==5){ 
-			htrgdtime[i]->SetTitle(Form("trgdtime, VPD 122")); 
+		} else if (i==5){
+			htrgdtime[i]->SetTitle(Form("trgdtime, VPD 122"));
 			htrgdtime[i]->GetXaxis()->SetRangeUser(-10.,510.);
-		} 
+		}
 		htrgdtime[i]->Draw();
 		htrgdtimekeep3[i]->Draw("same");
 		htrgdtimekeep[i]->Draw("same");
 		htrgdtime[i]->Draw("same");
-		anhittext3[i]->Draw("same");			
-		anhittext1[i]->Draw("same");			
+		anhittext3[i]->Draw("same");
+		anhittext1[i]->Draw("same");
 	}
 	ccan[ican]->cd(); ccan[ican]->Update();
 	ccan[ican]->Print(psfile);
@@ -711,7 +782,8 @@ cout<<buf<<endl;
 			gPad->SetLogy(0);
 		}
 		htrgdtime0_bytrig[i]->GetYaxis()->SetLabelSize(0.08);
-		htrgdtime0_bytrig[i]->GetXaxis()->SetRangeUser(2400.,3300.);		//!!!!!!!
+//		htrgdtime0_bytrig[i]->GetXaxis()->SetRangeUser(2400.,3300.);		//!!!!!!!
+		htrgdtime0_bytrig[i]->GetXaxis()->SetRangeUser(800.,1700.);		//!!!!!!!
 		htrgdtime0_bytrig[i]->Draw();
 		htrgdtime0keep_bytrig[i]->Draw("same");
 		sprintf(buf,"%s",triggernames[i]);
@@ -737,7 +809,8 @@ cout<<buf<<endl;
 			gPad->SetLogy(0);
 		}
 		htrgdtime0_bytrig[i]->GetYaxis()->SetLabelSize(0.08);
-		htrgdtime0_bytrig[i]->GetXaxis()->SetRangeUser(2400.,3300.);		//!!!!!!!
+//		htrgdtime0_bytrig[i]->GetXaxis()->SetRangeUser(2400.,3300.);		//!!!!!!!
+	  htrgdtime0_bytrig[i]->GetXaxis()->SetRangeUser(800.,1700.);		//!!!!!!!
 		htrgdtime0_bytrig[i]->Draw();
 		htrgdtime0keep_bytrig[i]->Draw("same");
 		sprintf(buf,"%s",triggernames[i]);
@@ -936,13 +1009,13 @@ cout<<buf<<endl;
 			hnhitstof_xingm2->Draw();
 		ccan[ican]->cd(4);
 			gPad->SetLogy(1);
-			hnhitstof_xingp2->Draw();	
+			hnhitstof_xingp2->Draw();
 		ccan[ican]->cd(5);
 			gPad->SetLogy(1);
-			hnhitstof_xingm7->Draw();	
+			hnhitstof_xingm7->Draw();
 		ccan[ican]->cd(6);
 			gPad->SetLogy(1);
-			hnhitstof_xingp7->Draw();	
+			hnhitstof_xingp7->Draw();
 	ccan[ican]->cd(); ccan[ican]->Update();
 	ccan[ican]->Print(psfile);
 	gStyle->SetOptStat(0);
@@ -963,16 +1036,16 @@ cout<<buf<<endl;
 			hnhitstof_xingm2_vpd->Draw();
 		ccan[ican]->cd(4);
 			gPad->SetLogy(1);
-			hnhitstof_xingp2_vpd->Draw();	
+			hnhitstof_xingp2_vpd->Draw();
 		ccan[ican]->cd(5);
 			gPad->SetLogy(1);
-			hnhitstof_xingm7_vpd->Draw();	
+			hnhitstof_xingm7_vpd->Draw();
 		ccan[ican]->cd(6);
 			gPad->SetLogy(1);
-			hnhitstof_xingp7_vpd->Draw();	
+			hnhitstof_xingp7_vpd->Draw();
 	ccan[ican]->cd(); ccan[ican]->Update();
 	ccan[ican]->Print(psfile);
-	gStyle->SetOptStat(0);	
+	gStyle->SetOptStat(0);
 	//
 //  	++ican; sprintf(buf,"ccan%d",ican);
 //  	ccan[ican] = new TCanvas(buf,buf,0,0,750.,750.*(8.5/11.));
@@ -998,7 +1071,7 @@ cout<<buf<<endl;
 // 	}
 // 	ccan[ican]->cd(); ccan[ican]->Update();
 // 	ccan[ican]->Print(psfile);
-	
+
 	gStyle->SetPadLeftMargin(0.16);
  	++ican; sprintf(buf,"ccan%d",ican);
  	ccan[ican] = new TCanvas(buf,buf,0,0,750.,750.*(8.5/11.));
@@ -1143,14 +1216,14 @@ cout<<buf<<endl;
 		ggausmtd[i]->SetLineColor(2);
 		ggausmtd[i]->SetLineWidth(2);
 		ggausmtd[i]->Draw("same");
-		//      
+		//
 		if (htrgdtimekeep_mtd_tray[i]->GetEntries()>100){
 			sprintf(buf,"#mu=%6.1f       #sigma=%4.1f",
-					ggausmtd[i]->GetParameter(1),ggausmtd[i]->GetParameter(2));	
+					ggausmtd[i]->GetParameter(1),ggausmtd[i]->GetParameter(2));
 			thistext->SetTextSize(0.09);
 			thistext->DrawLatex(0.18,0.84,buf);
 			cout<<i+1<<" "<<ggausmtd[i]->GetParameter(1)<<" "
-				<<ggausmtd[i]->GetParameter(2)<<endl;	
+				<<ggausmtd[i]->GetParameter(2)<<endl;
 		}
 	}
 	ccan[ican]->cd(); ccan[ican]->Update();
@@ -1164,13 +1237,14 @@ cout<<buf<<endl;
  	ccan[ican]->cd(); ccan[ican]->Divide(1,1,0.0001,0.0001);
 	ccan[ican]->cd(1);
 		gPad->SetLogz(1);
-		htrgdtime_tray->GetYaxis()->SetRangeUser(2600,3200.);
+//		htrgdtime_tray->GetYaxis()->SetRangeUser(2600,3200.);
+		htrgdtime_tray->GetYaxis()->SetRangeUser(800,1400.);
 		htrgdtime_tray->Draw("col");
 	ccan[ican]->cd(); ccan[ican]->Update();
 	ccan[ican]->Print(psfile);
 
 	gStyle->SetPadLeftMargin(0.12);
-	
+
 	TH1D *htrgdtime_bytray[122];
 	TF1	*thisgaus[122];
 	double gpars[3];
@@ -1189,7 +1263,7 @@ cout<<buf<<endl;
 		if ((ix-1)%20==0){
 			//cout<<"new canvas... "<<ix<<" "<<jpad<<endl;
 			++ican; sprintf(buf,"ccan%d",ican);
-			//cout<<"new canvas "<<ican<<endl; 
+			//cout<<"new canvas "<<ican<<endl;
 			ccan[ican] = new TCanvas(buf,buf,0,0,750.,750.*(8.5/11.));
 			ccan[ican]->SetFillColor(10);
 			ccan[ican]->cd(); ccan[ican]->Divide(5,4,0.0001,0.0001);
@@ -1208,7 +1282,7 @@ cout<<buf<<endl;
 			thisgaus[ix-1]->SetLineColor(3);
 			thisgaus[ix-1]->SetLineWidth(1);
 		htrgdtime_bytray[ix-1]->Fit(buf,"QNR");
-		thisgaus[ix-1]->GetParameters(gpars);			
+		thisgaus[ix-1]->GetParameters(gpars);
 		//
 		peaks[ix-1]	= xpeak;
 		peaks[ix-1]	= gpars[1];
@@ -1243,7 +1317,7 @@ cout<<buf<<endl;
 		}
 	}
 	cout<<" max Y = "<<amax_max<<endl;
-	
+
 	for (int i=0;i<122;i++){
 		sprintf(buf,"%5.1f",peaks[i]);
 		cout<<buf;
@@ -1286,7 +1360,7 @@ cout<<buf<<endl;
 // 		hnearly_nintime->Draw("col");
 // 	ccan[ican]->cd(); ccan[ican]->Update();
 // 	ccan[ican]->Print(psfile);
-// 
+//
 //  	++ican; sprintf(buf,"ccan%d",ican);
 //  	ccan[ican] = new TCanvas(buf,buf,0,0,750.,750.*(8.5/11.));
 //  	ccan[ican]->SetFillColor(10);
@@ -1332,9 +1406,9 @@ cout<<buf<<endl;
 // 	}
 // 	ccan[ican]->cd(); ccan[ican]->Update();
 // 	ccan[ican]->Print(psfile);
-	
 
-	
+
+
 	ccan[ican]->Print(psfileclose);
 	sprintf(buf,"ps2pdf %s %s",psfile,pdffile);
 	cout<<buf<<endl;
