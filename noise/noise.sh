@@ -16,7 +16,7 @@ do
 key="$1"
 
 case $key  in
-  -r )
+  -r)
    DAY=no
    shift
    ;;
