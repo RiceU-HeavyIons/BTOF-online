@@ -4,6 +4,7 @@ dataqa/dataqa
 muapp/muapp
 ndaqdoer/daqdoer
 noise/noise
+noise/summary.root
 *.o
 *.ps
 *.pdf
