@@ -29,7 +29,7 @@
 #include <iostream>
 #include "StTriggerData2022.h"
 
-ClassImp(StTriggerData2022)
+//ClassImp(StTriggerData2022)
 
 StTriggerData2022::StTriggerData2022():mData()
 {
@@ -86,9 +86,10 @@ void StTriggerData2022::readData(const TriggerDataBlk2022* data, int bs) {
         unsigned int size = data->totalTriggerLength;
         if (bs) swapI(&size);
         if (size > y22MAX_TRG_BLK_SIZE) {
-            gMessMgr->Warning() << "StTriggerData2022: Data length = " << size
+//FG
+	  cout << "StTriggerData2022: Data length = " << size
             << " is bigger than max = " << y22MAX_TRG_BLK_SIZE
-            << endm;
+            << endl;
             assert(0);
         }
         if (mDebug==1) printf("StTriggerData2022: size = %d, maxsize = %d\n",size,y22MAX_TRG_BLK_SIZE);
@@ -116,16 +117,18 @@ void StTriggerData2022::readData(const TriggerDataBlk2022* data, int bs) {
     }
     if (EvtDesc==0 || L1_DSM==0 || TrgSum==0){
         mErrorFlag = mErrorFlag | 0x1;
-        gMessMgr->Warning() << "StTriggerData2022: EvtDesc, L1_DSM or TrgSum is missing"
-        <<" mErrorFlag="<<mErrorFlag<<endm;
+//FG
+        cout << "StTriggerData2022: EvtDesc, L1_DSM or TrgSum is missing"
+        <<" mErrorFlag="<<mErrorFlag<<endl;
     }
     
     int npre  = numberOfPreXing();
     int npost = numberOfPostXing();
     if (npre<0 || npre>10 || npost<0 || npost>10){
         mErrorFlag = mErrorFlag | 0x2;
-        gMessMgr->Warning() << "StTriggerData2022: Invalid npre/post  = "<< npre << " / " << npost
-        <<" mErrorFlag="<<mErrorFlag<<endm;
+//FG
+        cout << "StTriggerData2022: Invalid npre/post  = "<< npre << " / " << npost
+        <<" mErrorFlag="<<mErrorFlag<<endl;
     }
     if (mDebug==1) printf("StTriggerData2022: pre=%d post=%d\n",npre,npost);
     
@@ -169,9 +172,10 @@ void StTriggerData2022::readData(const TriggerDataBlk2022* data, int bs) {
         for(int k=0; k<y22MAX_OFFLEN; k++) {
             if(static_cast<unsigned int>(offlen[k].length + offlen[k].offset) > static_cast<unsigned int>(mData->totalTriggerLength)) {
                 mErrorFlag = mErrorFlag | (1 << k);
-                gMessMgr->Warning() << "StTriggerData2022: offset ("<<offlen[k].offset<<") + length ("<<offlen[k].length
+//FG
+                cout << "StTriggerData2022: offset ("<<offlen[k].offset<<") + length ("<<offlen[k].length
                 <<") exceeds total size("<<mData->totalTriggerLength<<") for data block id="<<k
-                <<" mErrorFlag="<<mErrorFlag<<endm;
+                <<" mErrorFlag="<<mErrorFlag<<endl;
             }
         }
         int j;
@@ -1050,7 +1054,8 @@ unsigned long StTriggerData2022::pp2ppDSM(int prepost) const {
 unsigned short StTriggerData2022::bemcLayer1DSM(int channel, int prepost) const {
     const int n_bemc_layer1=48;
     if (channel<0 || channel >=n_bemc_layer1) {
-        gMessMgr->Warning() << "Barrel DSM layer 1 out of range (" << channel << ")" << endm;
+//FG
+        cout  << "Barrel DSM layer 1 out of range (" << channel << ")" << endl;
         return 0;
     }
     int buffer = prepostAddress(prepost);
@@ -1061,7 +1066,8 @@ unsigned short StTriggerData2022::bemcLayer1DSM(int channel, int prepost) const 
 unsigned short StTriggerData2022::eemcLayer1DSM(int channel, int prepost) const {
     const int n_eemc_layer1=16;
     if (channel<0 || channel >=n_eemc_layer1) {
-        gMessMgr->Warning() << "Endap DSM layer 1 out of range (" << channel << ")" << endm;
+//FG
+        cout << "Endap DSM layer 1 out of range (" << channel << ")" << endl;
         return 0;
     }
     int buffer = prepostAddress(prepost);
@@ -1072,7 +1078,8 @@ unsigned short StTriggerData2022::eemcLayer1DSM(int channel, int prepost) const 
 unsigned short StTriggerData2022::emcLayer2DSM(int channel) const {
     const int n_emc_layer2=8;
     if (channel<0 || channel >=n_emc_layer2) {
-        gMessMgr->Warning() << "EMC DSM layer 2 out of range (" << channel << ")" << endm;
+//FG
+        cout  << "EMC DSM layer 2 out of range (" << channel << ")" << endl;
         return 0;
     }
     return L1_DSM->EMC[channel];
@@ -1081,7 +1088,8 @@ unsigned short StTriggerData2022::emcLayer2DSM(int channel) const {
 unsigned short StTriggerData2022::tpcMaskDSM(int channel) const {
     const int n_tpcMask=8;
     if (channel<0 || channel >=n_tpcMask) {
-        gMessMgr->Warning() << "TPCMask DSM out of range (" << channel << ")" << endm;
+//FG
+        cout << "TPCMask DSM out of range (" << channel << ")" << endl;
         return 0;
     }
     return L1_DSM->TPCMask[channel];
@@ -1091,7 +1099,8 @@ unsigned char StTriggerData2022::bemcHighTower(int patch_id, int prepost) const 
     // Unpacking of Bemc trigger data (level 0 DSM input, trigger patches)
     const int m_max_patch=300; // Full barrel
     if ( patch_id < 0 || patch_id >= m_max_patch) {
-        gMessMgr->Warning() << "Invalid Barrel patch id: " << patch_id << endm;
+//FG
+        cout << "Invalid Barrel patch id: " << patch_id << endl;
         return 0;
     }
     int buffer = prepostAddress(prepost);
@@ -1121,7 +1130,8 @@ unsigned char StTriggerData2022::bemcJetPatch (int patch_id, int prepost) const
     // Unpacking of Bemc trigger data (level 0 DSM input, trigger patches)
     const int m_max_patch=300; // Full barrel
     if ( patch_id < 0 || patch_id >= m_max_patch) {
-        gMessMgr->Warning() << "Invalid Barrel patch id: " << patch_id << endm;
+//FG
+        cout << "Invalid Barrel patch id: " << patch_id << endl;
         return 0;
     }
     int buffer = prepostAddress(prepost);
@@ -1152,7 +1162,8 @@ unsigned char StTriggerData2022::eemcHighTower(int patch_id, int prepost) const
     // Unpacking of Eemc trigger data (level 0 DSM input, trigger patches)
     const int m_max_patch=90;
     if ( patch_id < 0 || patch_id >= m_max_patch) {
-        gMessMgr->Warning() << "Invalid Endcap patch id" << endm;
+//FG
+        cout << "Invalid Endcap patch id" << endl;
         return 0;
     }
     int buffer = prepostAddress(prepost);
@@ -1170,7 +1181,8 @@ unsigned char StTriggerData2022::eemcJetPatch (int patch_id, int prepost) const
     // Unpacking of Eemc trigger data (level 0 DSM input, trigger patches)
     const int m_max_patch=90;
     if ( patch_id < 0 || patch_id >= m_max_patch) {
-        gMessMgr->Warning() << "Invalid Endcap patch id" << endm;
+//FG
+      cout << "Invalid Endcap patch id" << endl;
         return 0;
     }
     int buffer = prepostAddress(prepost);
@@ -1875,16 +1887,16 @@ void StTriggerData2022::swapRawDet(DataBlock2022* data, int name, int hlength,in
                name,data->name[0],data->name[1],data->name[2],data->name[3],data->length);
 }
 
-void StTriggerData2022::Streamer(TBuffer &R__b)
-{
-	// Stream an object of class StTriggerData2022.
-
-	if (R__b.IsReading()) {
-		R__b.ReadClassBuffer(StTriggerData2022::Class(),this);
-		//     cout << "StTriggerData2022::Streamer read trigger data!!!"<<endl;
-		if(mData) readData();
-	}
-	else {
-		R__b.WriteClassBuffer(StTriggerData2022::Class(),this);
-	}
-}
+//FG void StTriggerData2022::Streamer(TBuffer &R__b)
+//FG {
+//FG 	// Stream an object of class StTriggerData2022.
+//FG 
+//FG 	if (R__b.IsReading()) {
+//FG 		R__b.ReadClassBuffer(StTriggerData2022::Class(),this);
+//FG 		//     cout << "StTriggerData2022::Streamer read trigger data!!!"<<endl;
+//FG 		if(mData) readData();
+//FG 	}
+//FG 	else {
+//FG 		R__b.WriteClassBuffer(StTriggerData2022::Class(),this);
+//FG 	}
+//FG }

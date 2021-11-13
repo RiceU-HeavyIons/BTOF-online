@@ -22,7 +22,8 @@
 #define StTriggerData2022_hh
 
 #include "StTriggerData.h"
-#include "StDaqLib/TRG/trgStructures2022.h"
+//FG
+#include "trgStructures2022.h"
 
 class StTriggerData2022 : public StTriggerData {
     
@@ -283,7 +284,7 @@ protected:
     void swapRawDetOfflen(TrgOfflen2022* offlen);
     void swapRawDet(DataBlock2022* data, int name, int hlength, int bs);
     
-    ClassDef(StTriggerData2022,1) 
+//FG    ClassDef(StTriggerData2022,1) 
 };
 
 inline void StTriggerData2022::swapOfflen(TrgOfflen2022* offlen)
