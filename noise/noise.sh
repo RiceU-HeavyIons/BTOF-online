@@ -2,7 +2,7 @@
 #
 # Build and submit Scheduler XML files for single noise run analysis
 #
-STARLIB=SL18f
+STARLIB=SL21b
 WRKDIR=~/scheduler/noise
 SUBMIT=/afs/rhic.bnl.gov/star/packages/scripts/star-submit
 DAY=yes
@@ -66,7 +66,7 @@ do
 
  # build input file
  echo '<?xml version="1.0" encoding="utf-8" ?>' > $WRKDIR/$infile
- echo '<job name="tof noise' $runnumber'" >' >> $WRKDIR/$infile
+ echo '<job name="tof-noise_'$runnumber'" >' >> $WRKDIR/$infile
  echo '<command>' >> $WRKDIR/$infile
  echo starver $STARLIB >> $WRKDIR/$infile
  echo ./daqdoer '*.daq &lt;&lt; endd' >> $WRKDIR/$infile
