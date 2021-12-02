@@ -66,7 +66,7 @@ do
 
  # build input file
  echo '<?xml version="1.0" encoding="utf-8" ?>' > $WRKDIR/$infile
- echo '<job name="tof-noise_'$runnumber'" >' >> $WRKDIR/$infile
+ echo '<job name="tof-noise'$runnumber'_" >' >> $WRKDIR/$infile
  echo '<command>' >> $WRKDIR/$infile
  echo starver $STARLIB >> $WRKDIR/$infile
  echo ./daqdoer '*.daq &lt;&lt; endd' >> $WRKDIR/$infile
