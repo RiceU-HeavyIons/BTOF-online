@@ -470,9 +470,15 @@ TH1::AddDirectory(kFALSE);
 	//
 	ccan[ican]->Print("summary_noise.ps]");
 
+	// convert PS to PDF file
 	sprintf(buf,"ps2pdf %s.ps %s.pdf","summary_noise","summary_noise");
 	cout<<"..... Executing ... "<<buf<<endl;
 	gSystem->Exec(buf);
+	// backup old summary file
+	sprintf(buf,"cp ~/WWW/noise/%s.pdf ~/WWW/noise/%s.pdf","summary_noise","summary_noise-OLD");
+	cout<<"..... Executing ... "<<buf<<endl;
+	gSystem->Exec(buf);
+	// copy new summary file to WWW area
 	sprintf(buf,"cp %s.pdf ~/WWW/noise/","summary_noise");
 	cout<<"..... Executing ... "<<buf<<endl;
 	gSystem->Exec(buf);
