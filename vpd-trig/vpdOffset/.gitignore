@@ -1,0 +1,10 @@
+*.pdf
+*.lis
+*.o
+analysis
+*.list
+*.pdf
+*.o
+analysis
+analysis_relative
+*.dat
