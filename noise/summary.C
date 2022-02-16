@@ -5,15 +5,11 @@ const float ndaysmax = 1000;
 
 const float TRAYCUTOFF = 4.;
 
-int GetDayNum(int im, int id){
-	int idaynum	= 0;
-	if (im==1){ idaynum = id; } else				// jan
-	if (im==2){ idaynum = id+31; } else				// feb
-	if (im==3){ idaynum = id+31+28; } else			// mar
-	if (im==4){ idaynum = id+31+28+31; } else		// apr
-	if (im==5){ idaynum = id+31+28+31+30; } 		// may
-	//cout<<im<<" "<<id<<" "<<idaynum<<endl;
-	return idaynum;
+int GetDayNum(int runnum){
+	int year = runnum/1000;
+	int day = runnum - year*1000;
+  int iglobaldaynum = (year-11)*365 + day + (year-9)/4;
+	return iglobaldaynum;
 }
 
 
