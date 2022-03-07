@@ -243,12 +243,14 @@ TH1::AddDirectory(kFALSE);
 	gStyle->SetTitleOffset(0.90,"X");
 	gStyle->SetTitleOffset(0.90,"Y");
 
-	const int nmodes=17;
+	const int nmodes=24;
 	TBox *modes[nmodes];
+	// run-10
 	modes[0]	= new TBox(-21,0,113,70);
 	modes[1]	= new TBox(113,0,147,70);
 	modes[2]	= new TBox(147,0,210,70);
 	modes[3]	= new TBox(210,0,264,70);
+	// run-11
 	modes[4]	= new TBox(264,0,315,70);
 	modes[5]	= new TBox(315,0,553,70);
 	//run-12
@@ -268,24 +270,48 @@ TH1::AddDirectory(kFALSE);
 	modes[15]	= new TBox(1790,0,2004,70); 	// recirc
         // run-16
 	modes[16]	= new TBox(2207,0,gday[ndays-1]+6,70); 	// recirc
-	//
-	modes[0]->SetFillColor(41);		// recirc w/out aux
-	modes[1]->SetFillColor(5);		// recirc w/ aux
-	modes[2]->SetFillColor(30);		// purge
-	modes[3]->SetFillColor(0);		//
-	modes[4]->SetFillColor(18);		// N2
-	modes[5]->SetFillColor(30);		// purge
-	modes[6]->SetFillColor(18);		// N2
-	modes[7]->SetFillColor(30);		// purge
-	modes[8]->SetFillColor(0);		// off
-	modes[9]->SetFillColor(30);		// purge
-	modes[10]->SetFillColor(18);	// n2
-	modes[11]->SetFillColor(30);	// purge
-	modes[12]->SetFillColor(18);	// n2		// run13-14 shutdown
-	modes[13]->SetFillColor(30);	// purge
-	modes[14]->SetFillColor(41);	// recirc
-	modes[15]->SetFillColor(0);	//
-	modes[16]->SetFillColor(30);	// purge(?)
+	// run-17
+	modes[17] = new TBox(2487,0,2739,70); 	// recirc 270ccm
+	// run-18
+	modes[18] = new TBox(2975,0,3094,70); 	// recirc360
+	// run-19-21 (BES)
+	modes[19] = new TBox(3300,0,3484,70); 	// recirc255
+	// run-20 (BES)
+	modes[20] = new TBox(3583,0,3733,70); 	// purge1000
+	modes[21] = new TBox(3821,0,3913,70); 	// purge1000
+	// run 21
+	modes[22] = new TBox(4051,0,4209,70); 	// recirc270
+	// run 22
+	modes[23] = new TBox(4334,0,gday[ndays-1]+6,70); 	// recirc270
+
+
+	//enum modetypes{mOff=0,mPurge=30, mN2=18, mRecirc450=41, mRecirc800=5};
+	enum gasmodetypes{mOff=0,mN2=18,mPurge1000=30, mPurge1250=31, mPurge1500=32,mRecirc255=20,mRecirc260=21,mRecirc270=22,mRecirc360=23,mRecirc450=24,mRecirc700=25,mRecirc800=26};
+
+	modes[0]->SetFillColor(mRecirc450);		// recirc w/out aux
+	modes[1]->SetFillColor(mRecirc800);		// recirc w/ aux
+	modes[2]->SetFillColor(mPurge1500);		// purge
+	modes[3]->SetFillColor(mOff);		//
+	modes[4]->SetFillColor(mN2);		// N2
+	modes[5]->SetFillColor(mPurge1500);		// purge
+	modes[6]->SetFillColor(mN2);		// N2
+	modes[7]->SetFillColor(mPurge1500);		// purge
+	modes[8]->SetFillColor(mOff);		// off
+	modes[9]->SetFillColor(mPurge1500);		// purge
+	modes[10]->SetFillColor(mN2);	// n2
+	modes[11]->SetFillColor(mPurge1500);	// purge
+	modes[12]->SetFillColor(mN2);	// n2		// run13-14 shutdown
+	modes[13]->SetFillColor(mPurge1250);	// purge
+	modes[14]->SetFillColor(mRecirc700);	// recirc
+	modes[15]->SetFillColor(mRecirc260);	//
+	modes[16]->SetFillColor(mRecirc260);	// purge(?)
+	modes[17]->SetFillColor(mRecirc270);	// purge(?)
+	modes[18]->SetFillColor(mRecirc360);	// purge(?)
+	modes[19]->SetFillColor(mRecirc255);	// purge(?)
+	modes[20]->SetFillColor(mPurge1000);	// purge(?)
+	modes[21]->SetFillColor(mPurge1000);	// purge(?)
+	modes[22]->SetFillColor(mRecirc270);	// purge(?)
+	modes[23]->SetFillColor(mRecirc270);	// purge(?)
 	TH1* hdum1 = new TH1F("hdum1","hdum1",1,0,1); hdum1->SetFillStyle(1001); hdum1->SetFillColor(41);
 	TH1* hdum2 = new TH1F("hdum2","hdum2",1,0,1); hdum2->SetFillStyle(1001); hdum2->SetFillColor(5);
 	TH1* hdum3 = new TH1F("hdum3","hdum3",1,0,1); hdum3->SetFillStyle(1001); hdum3->SetFillColor(30);
