@@ -6,6 +6,8 @@ STARLIB=SL21b
 WRKDIR=~/scheduler/noise
 SUBMIT=/afs/rhic.bnl.gov/star/packages/scripts/star-submit
 DAY=yes
+BTOFWWW=/star/u/geurts/WWW/noise
+HTREE=/star/u/geurts/bin/tree
 [ -z "$BTOFONLINE" ] && BTOFONLINE=/star/u/geurts/BTOF-online
 [ -z  "$DAQDIR" ]    && DAQDIR=/gpfs01/star/scratch/geurts/daq
 [ -z "$LOGDIR" ]     && LOGDIR=/star/u/geurts/logs
@@ -84,6 +86,12 @@ do
   echo "./noise -r $run$day" >> $WRKDIR/$infile
  else
   echo "./noise -r $runnumber" >> $WRKDIR/$infile
+ fi
+
+# update index file of the local web repository (RCF does not allow directory browsing)
+ if [[ -x $HTREE ]]; then
+  echo "cd $BTOFWWW/run$(($run-1))" >> $WRKDIR/$infile
+  echo "$HTREE --dirsfirst -C -H  'https://www4.rcf.bnl.gov/~geurts/noise/run$(($run-1))' &gt; index.html"  >> $WRKDIR/$infile
  fi
 
  echo '</command>' >> $WRKDIR/$infile
