@@ -47,10 +47,11 @@ TH1::AddDirectory(kFALSE);
 	int runnum[ndaysmax], year[ndaysmax], day[ndaysmax];
 	input.open("noiseruns.txt");
 
-  while (getline(input, line)){
-		runnum[ndays] = atoi (line.c_str());
-		year[ndays] = runnum[ndays]/1000;
-		day[ndays] = runnum[ndays] - year[ndays]*1000;
+	while (getline(input, line)){
+	  if (line.find("#") == 0){continue;}
+	  runnum[ndays] = atoi (line.c_str());
+	  year[ndays] = runnum[ndays]/1000;
+	  day[ndays] = runnum[ndays] - year[ndays]*1000;
 	  ndays++;
 	}
 	input.close();
